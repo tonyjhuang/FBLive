@@ -13,6 +13,8 @@
 		25B26BFA245768DE00A7CEB3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25B26BF8245768DE00A7CEB3 /* Main.storyboard */; };
 		25B26BFC245768DF00A7CEB3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25B26BFB245768DF00A7CEB3 /* Assets.xcassets */; };
 		25B26BFF245768DF00A7CEB3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25B26BFD245768DF00A7CEB3 /* LaunchScreen.storyboard */; };
+		25B26C07245769C200A7CEB3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 25B26C06245769C200A7CEB3 /* GoogleService-Info.plist */; };
+		25B26C0924576BA800A7CEB3 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 25B26C0824576BA800A7CEB3 /* Podfile */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		25B26BFB245768DF00A7CEB3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		25B26BFE245768DF00A7CEB3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		25B26C00245768DF00A7CEB3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		25B26C06245769C200A7CEB3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		25B26C0824576BA800A7CEB3 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +66,9 @@
 				25B26BF8245768DE00A7CEB3 /* Main.storyboard */,
 				25B26BFB245768DF00A7CEB3 /* Assets.xcassets */,
 				25B26BFD245768DF00A7CEB3 /* LaunchScreen.storyboard */,
+				25B26C0824576BA800A7CEB3 /* Podfile */,
 				25B26C00245768DF00A7CEB3 /* Info.plist */,
+				25B26C06245769C200A7CEB3 /* GoogleService-Info.plist */,
 			);
 			path = "Create Live";
 			sourceTree = "<group>";
@@ -125,7 +131,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25B26C0924576BA800A7CEB3 /* Podfile in Resources */,
 				25B26BFF245768DF00A7CEB3 /* LaunchScreen.storyboard in Resources */,
+				25B26C07245769C200A7CEB3 /* GoogleService-Info.plist in Resources */,
 				25B26BFC245768DF00A7CEB3 /* Assets.xcassets in Resources */,
 				25B26BFA245768DE00A7CEB3 /* Main.storyboard in Resources */,
 			);
