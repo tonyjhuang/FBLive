@@ -213,8 +213,7 @@ class PlayerActivity : AppCompatActivity(), PlaybackPreparer, PlayerControlView.
     }
 
     private fun createTopLevelMediaSource(): MediaSource? {
-        val sample =
-            Sample.createFromIntent(intent) as HlsSample
+        val sample = HlsSample.createFromIntent(intent)
         if (!Util.checkCleartextTrafficPermitted(sample.uri)) {
             showToast("R.string.error_cleartext_not_permitted")
             return null
