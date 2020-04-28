@@ -50,6 +50,8 @@ dependencies {
 
     implementation project(':mux-r2.11.1')
     implementation project(':streamaxia-opensdk')
+    implementation 'com.karumi:dexter:6.1.0'
+
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
