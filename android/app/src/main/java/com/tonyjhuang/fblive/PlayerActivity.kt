@@ -1,23 +1,7 @@
-/*
- * Copyright (C) 2016 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 package com.tonyjhuang.fblive
 
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.net.Uri
 import android.os.Bundle
 import android.util.Pair
 import android.view.KeyEvent
@@ -28,14 +12,16 @@ import com.google.android.exoplayer2.*
 import com.google.android.exoplayer2.audio.AudioAttributes
 import com.google.android.exoplayer2.mediacodec.MediaCodecRenderer.DecoderInitializationException
 import com.google.android.exoplayer2.mediacodec.MediaCodecUtil.DecoderQueryException
-import com.google.android.exoplayer2.offline.DownloadHelper
 import com.google.android.exoplayer2.source.BehindLiveWindowException
 import com.google.android.exoplayer2.source.MediaSource
 import com.google.android.exoplayer2.source.TrackGroupArray
 import com.google.android.exoplayer2.source.hls.HlsMediaSource
-import com.google.android.exoplayer2.trackselection.*
+import com.google.android.exoplayer2.trackselection.AdaptiveTrackSelection
+import com.google.android.exoplayer2.trackselection.DefaultTrackSelector
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector.ParametersBuilder
 import com.google.android.exoplayer2.trackselection.MappingTrackSelector.MappedTrackInfo
+import com.google.android.exoplayer2.trackselection.TrackSelection
+import com.google.android.exoplayer2.trackselection.TrackSelectionArray
 import com.google.android.exoplayer2.ui.DebugTextViewHelper
 import com.google.android.exoplayer2.ui.PlayerControlView
 import com.google.android.exoplayer2.ui.PlayerView
@@ -47,20 +33,15 @@ import com.tonyjhuang.fblive.Sample.HlsSample
 import java.net.CookieHandler
 import java.net.CookieManager
 import java.net.CookiePolicy
+import kotlin.math.max
 
 /**
  * An activity that plays media using [SimpleExoPlayer].
  */
 class PlayerActivity : AppCompatActivity(), PlaybackPreparer, PlayerControlView.VisibilityListener {
     companion object {
-        // Player configuration extras.
-        const val ABR_ALGORITHM_EXTRA = "abr_algorithm"
-        const val ABR_ALGORITHM_DEFAULT = "default"
-        const val ABR_ALGORITHM_RANDOM = "random"
         // Media item configuration extras.
         const val URI_EXTRA = "uri"
-        const val PREFER_EXTENSION_DECODERS_EXTRA = "prefer_extension_decoders"
-        const val TUNNELING_EXTRA = "tunneling"
         // Saved instance state keys.
         private const val KEY_TRACK_SELECTOR_PARAMETERS = "track_selector_parameters"
         private const val KEY_WINDOW = "window"
@@ -100,7 +81,6 @@ class PlayerActivity : AppCompatActivity(), PlaybackPreparer, PlayerControlView.
     private var startPosition: Long = 0
     // Activity lifecycle
     public override fun onCreate(savedInstanceState: Bundle?) {
-        val intent = intent
         super.onCreate(savedInstanceState)
         dataSourceFactory = buildDataSourceFactory()
         if (CookieHandler.getDefault() !== DEFAULT_COOKIE_MANAGER) {
@@ -120,11 +100,6 @@ class PlayerActivity : AppCompatActivity(), PlaybackPreparer, PlayerControlView.
             startPosition = savedInstanceState.getLong(KEY_POSITION)
         } else {
             val builder = ParametersBuilder( /* context= */this)
-            val tunneling =
-                intent.getBooleanExtra(TUNNELING_EXTRA, false)
-            if (tunneling) {
-                builder.setTunnelingAudioSessionId(C.generateAudioSessionIdV21( /* context= */this))
-            }
             trackSelectorParameters = builder.build()
             clearStartPosition()
         }
@@ -204,30 +179,14 @@ class PlayerActivity : AppCompatActivity(), PlaybackPreparer, PlayerControlView.
     // Internal methods
     private fun initializePlayer() {
         if (player == null) {
-            val intent = intent
             mediaSource = createTopLevelMediaSource()
             if (mediaSource == null) {
                 return
             }
             val trackSelectionFactory: TrackSelection.Factory
-            val abrAlgorithm =
-                intent.getStringExtra(ABR_ALGORITHM_EXTRA)
-            trackSelectionFactory =
-                if (abrAlgorithm == null || ABR_ALGORITHM_DEFAULT == abrAlgorithm) {
-                    AdaptiveTrackSelection.Factory()
-                } else if (ABR_ALGORITHM_RANDOM == abrAlgorithm) {
-                    RandomTrackSelection.Factory()
-                } else {
-                    showToast("Unrecognized ABR algorithm")
-                    finish()
-                    return
-                }
-            val preferExtensionDecoders = intent.getBooleanExtra(
-                PREFER_EXTENSION_DECODERS_EXTRA,
-                false
-            )
+            trackSelectionFactory = AdaptiveTrackSelection.Factory()
             val renderersFactory =
-                (application as DemoApplication).buildRenderersFactory(preferExtensionDecoders)
+                (application as App).buildRenderersFactory()
             trackSelector = DefaultTrackSelector( /* context= */this, trackSelectionFactory)
             trackSelector!!.parameters = trackSelectorParameters!!
             lastSeenTrackGroupArray = null
@@ -254,8 +213,7 @@ class PlayerActivity : AppCompatActivity(), PlaybackPreparer, PlayerControlView.
     }
 
     private fun createTopLevelMediaSource(): MediaSource? {
-        val sample =
-            Sample.createFromIntent(intent) as HlsSample
+        val sample = HlsSample.createFromIntent(intent)
         if (!Util.checkCleartextTrafficPermitted(sample.uri)) {
             showToast("R.string.error_cleartext_not_permitted")
             return null
@@ -266,32 +224,12 @@ class PlayerActivity : AppCompatActivity(), PlaybackPreparer, PlayerControlView.
             )
         ) { // The player will be reinitialized if the permission is granted.
             null
-        } else createLeafMediaSource(sample)
+        } else createHlsMediaSource(sample)
     }
 
-    private fun createLeafMediaSource(parameters: HlsSample): MediaSource {
-        val downloadRequest =
-            (application as DemoApplication)
-                .downloadTracker
-                .getDownloadRequest(parameters.uri)
-        return if (downloadRequest != null) {
-            DownloadHelper.createMediaSource(downloadRequest, dataSourceFactory!!)
-        } else createLeafMediaSource(
-            parameters.uri,
-            parameters.extension
-        )
-    }
-
-    private fun createLeafMediaSource(
-        uri: Uri, extension: String
-    ): MediaSource {
-        @C.ContentType val type =
-            Util.inferContentType(uri, extension)
-        return when (type) {
-            C.TYPE_HLS -> HlsMediaSource.Factory(dataSourceFactory!!)
-                .createMediaSource(uri)
-            else -> throw IllegalStateException("Unsupported type: $type")
-        }
+    private fun createHlsMediaSource(parameters: HlsSample): MediaSource {
+        return HlsMediaSource.Factory(dataSourceFactory!!)
+            .createMediaSource(parameters.uri)
     }
 
     private fun releasePlayer() {
@@ -317,7 +255,7 @@ class PlayerActivity : AppCompatActivity(), PlaybackPreparer, PlayerControlView.
         if (player != null) {
             startAutoPlay = player!!.playWhenReady
             startWindow = player!!.currentWindowIndex
-            startPosition = Math.max(0, player!!.contentPosition)
+            startPosition = max(0, player!!.contentPosition)
         }
     }
 
@@ -331,7 +269,7 @@ class PlayerActivity : AppCompatActivity(), PlaybackPreparer, PlayerControlView.
      * Returns a new DataSource factory.
      */
     private fun buildDataSourceFactory(): DataSource.Factory {
-        return (application as DemoApplication).buildDataSourceFactory()
+        return (application as App).buildDataSourceFactory()
     }
 
     // User controls
