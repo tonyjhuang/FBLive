@@ -43,16 +43,9 @@ import com.google.android.exoplayer2.util.Util;
 import java.io.File;
 import java.io.IOException;
 
-/**
- * Placeholder application to facilitate overriding Application methods for debugging and testing.
- */
-public class DemoApplication extends Application {
+public class App extends Application {
 
-  public static final String DOWNLOAD_NOTIFICATION_CHANNEL_ID = "download_channel";
 
-  private static final String TAG = "DemoApplication";
-  private static final String DOWNLOAD_ACTION_FILE = "actions";
-  private static final String DOWNLOAD_TRACKER_ACTION_FILE = "tracked_actions";
   private static final String DOWNLOAD_CONTENT_DIRECTORY = "downloads";
 
   protected String userAgent;
@@ -60,9 +53,6 @@ public class DemoApplication extends Application {
   private DatabaseProvider databaseProvider;
   private File downloadDirectory;
   private Cache downloadCache;
-  private DownloadManager downloadManager;
-  private DownloadTracker downloadTracker;
-  private DownloadNotificationHelper downloadNotificationHelper;
 
   @Override
   public void onCreate() {
@@ -87,24 +77,6 @@ public class DemoApplication extends Application {
         .setExtensionRendererMode(DefaultRenderersFactory.EXTENSION_RENDERER_MODE_OFF);
   }
 
-  public DownloadNotificationHelper getDownloadNotificationHelper() {
-    if (downloadNotificationHelper == null) {
-      downloadNotificationHelper =
-          new DownloadNotificationHelper(this, DOWNLOAD_NOTIFICATION_CHANNEL_ID);
-    }
-    return downloadNotificationHelper;
-  }
-
-  public DownloadManager getDownloadManager() {
-    initDownloadManager();
-    return downloadManager;
-  }
-
-  public DownloadTracker getDownloadTracker() {
-    initDownloadManager();
-    return downloadTracker;
-  }
-
   protected synchronized Cache getDownloadCache() {
     if (downloadCache == null) {
       File downloadContentDirectory = new File(getDownloadDirectory(), DOWNLOAD_CONTENT_DIRECTORY);
@@ -112,37 +84,6 @@ public class DemoApplication extends Application {
           new SimpleCache(downloadContentDirectory, new NoOpCacheEvictor(), getDatabaseProvider());
     }
     return downloadCache;
-  }
-
-  private synchronized void initDownloadManager() {
-    if (downloadManager == null) {
-      DefaultDownloadIndex downloadIndex = new DefaultDownloadIndex(getDatabaseProvider());
-      upgradeActionFile(
-          DOWNLOAD_ACTION_FILE, downloadIndex, /* addNewDownloadsAsCompleted= */ false);
-      upgradeActionFile(
-          DOWNLOAD_TRACKER_ACTION_FILE, downloadIndex, /* addNewDownloadsAsCompleted= */ true);
-      DownloaderConstructorHelper downloaderConstructorHelper =
-          new DownloaderConstructorHelper(getDownloadCache(), buildHttpDataSourceFactory());
-      downloadManager =
-          new DownloadManager(
-              this, downloadIndex, new DefaultDownloaderFactory(downloaderConstructorHelper));
-      downloadTracker =
-          new DownloadTracker(/* context= */ this, buildDataSourceFactory(), downloadManager);
-    }
-  }
-
-  private void upgradeActionFile(
-          String fileName, DefaultDownloadIndex downloadIndex, boolean addNewDownloadsAsCompleted) {
-    try {
-      ActionFileUpgradeUtil.upgradeAndDelete(
-          new File(getDownloadDirectory(), fileName),
-          /* downloadIdProvider= */ null,
-          downloadIndex,
-          /* deleteOnFailure= */ true,
-          addNewDownloadsAsCompleted);
-    } catch (IOException e) {
-      Log.e(TAG, "Failed to upgrade action file: " + fileName, e);
-    }
   }
 
   private DatabaseProvider getDatabaseProvider() {

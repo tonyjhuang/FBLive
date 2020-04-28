@@ -201,7 +201,7 @@ class PlayerActivity : AppCompatActivity(), PlaybackPreparer, PlayerControlView.
             val trackSelectionFactory: TrackSelection.Factory
             trackSelectionFactory = AdaptiveTrackSelection.Factory()
             val renderersFactory =
-                (application as DemoApplication).buildRenderersFactory()
+                (application as App).buildRenderersFactory()
             trackSelector = DefaultTrackSelector( /* context= */this, trackSelectionFactory)
             trackSelector!!.parameters = trackSelectorParameters!!
             lastSeenTrackGroupArray = null
@@ -285,7 +285,7 @@ class PlayerActivity : AppCompatActivity(), PlaybackPreparer, PlayerControlView.
      * Returns a new DataSource factory.
      */
     private fun buildDataSourceFactory(): DataSource.Factory {
-        return (application as DemoApplication).buildDataSourceFactory()
+        return (application as App).buildDataSourceFactory()
     }
 
     // User controls

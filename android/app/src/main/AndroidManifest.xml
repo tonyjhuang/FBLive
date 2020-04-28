@@ -11,7 +11,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:name="com.tonyjhuang.fblive.DemoApplication"
+        android:name="com.tonyjhuang.fblive.App"
         android:theme="@style/AppTheme">
 
         <activity
