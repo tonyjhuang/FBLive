@@ -20,22 +20,25 @@ import android.net.Uri;
 
 abstract class Sample {
 
-    public static final class UriSample extends Sample {
+    public static final class HlsSample extends Sample {
 
-        public static UriSample createFromIntent(Uri uri, Intent intent, String extrasKeySuffix) {
-            return new UriSample(uri);
+        public static HlsSample createFromIntent(Uri uri, Intent intent, String extrasKeySuffix) {
+            return new HlsSample(uri);
         }
 
-        public final Uri uri = Uri.parse("https://stream.mux.com/uQYPThOb9025tjrsMyiHisTe0257eS00kCpbw301sl00h47M.m3u8");
+        public final Uri uri;
         public final String extension = "m3u8";
 
-        public UriSample(Uri uri) {
-            //this.uri = uri;
+        public HlsSample(Uri uri) {
+          if (uri != null) {
+            this.uri = uri;
+          } else {
+            this.uri = Uri.parse("https://stream.mux.com/uQYPThOb9025tjrsMyiHisTe0257eS00kCpbw301sl00h47M.m3u8");
+          }
         }
     }
 
     public static Sample createFromIntent(Intent intent) {
-      return new UriSample(null);
-        //return UriSample.createFromIntent(intent.getData(), intent, /* extrasKeySuffix= */ "");
+      return new HlsSample(intent.getData());
     }
 }

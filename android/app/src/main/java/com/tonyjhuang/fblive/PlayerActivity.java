@@ -22,7 +22,6 @@ import android.os.Bundle;
 import android.util.Pair;
 import android.view.KeyEvent;
 import android.view.View;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -82,18 +81,6 @@ import java.net.CookiePolicy;
 public class PlayerActivity extends AppCompatActivity
         implements PlaybackPreparer, PlayerControlView.VisibilityListener {
 
-    // Activity extras.
-
-    public static final String SPHERICAL_STEREO_MODE_EXTRA = "spherical_stereo_mode";
-    public static final String SPHERICAL_STEREO_MODE_MONO = "mono";
-    public static final String SPHERICAL_STEREO_MODE_TOP_BOTTOM = "top_bottom";
-    public static final String SPHERICAL_STEREO_MODE_LEFT_RIGHT = "left_right";
-
-    // Actions.
-
-    public static final String ACTION_VIEW = "com.google.android.exoplayer.demo.action.VIEW";
-    public static final String ACTION_VIEW_LIST =
-            "com.google.android.exoplayer.demo.action.VIEW_LIST";
 
     // Player configuration extras.
 
@@ -104,21 +91,8 @@ public class PlayerActivity extends AppCompatActivity
     // Media item configuration extras.
 
     public static final String URI_EXTRA = "uri";
-    public static final String EXTENSION_EXTRA = "extension";
-    public static final String IS_LIVE_EXTRA = "is_live";
-
-    public static final String DRM_SCHEME_EXTRA = "drm_scheme";
-    public static final String DRM_LICENSE_URL_EXTRA = "drm_license_url";
-    public static final String DRM_KEY_REQUEST_PROPERTIES_EXTRA = "drm_key_request_properties";
-    public static final String DRM_MULTI_SESSION_EXTRA = "drm_multi_session";
     public static final String PREFER_EXTENSION_DECODERS_EXTRA = "prefer_extension_decoders";
     public static final String TUNNELING_EXTRA = "tunneling";
-    public static final String AD_TAG_URI_EXTRA = "ad_tag_uri";
-    public static final String SUBTITLE_URI_EXTRA = "subtitle_uri";
-    public static final String SUBTITLE_MIME_TYPE_EXTRA = "subtitle_mime_type";
-    public static final String SUBTITLE_LANGUAGE_EXTRA = "subtitle_language";
-    // For backwards compatibility only.
-    public static final String DRM_SCHEME_UUID_EXTRA = "drm_scheme_uuid";
 
     // Saved instance state keys.
 
@@ -135,10 +109,7 @@ public class PlayerActivity extends AppCompatActivity
     }
 
     private PlayerView playerView;
-    private LinearLayout debugRootView;
-    private Button selectTracksButton;
     private TextView debugTextView;
-    private boolean isShowingTrackSelectionDialog;
 
     private DataSource.Factory dataSourceFactory;
     private SimpleExoPlayer player;
@@ -168,8 +139,7 @@ public class PlayerActivity extends AppCompatActivity
             CookieHandler.setDefault(DEFAULT_COOKIE_MANAGER);
         }
 
-        setContentView(R.layout.player_activity);
-        debugRootView = findViewById(R.id.controls_root);
+        setContentView(R.layout.activity_player);
         debugTextView = findViewById(R.id.debug_text_view);
 
         playerView = findViewById(R.id.player_view);
@@ -299,7 +269,7 @@ public class PlayerActivity extends AppCompatActivity
 
     @Override
     public void onVisibilityChange(int visibility) {
-        debugRootView.setVisibility(visibility);
+        //debugRootView.setVisibility(visibility);
     }
 
     // Internal methods
@@ -360,11 +330,11 @@ public class PlayerActivity extends AppCompatActivity
 
     @Nullable
     private MediaSource createTopLevelMediaSource() {
-        Sample intentAsSample = Sample.createFromIntent(null);
-        Sample.UriSample[] samples = new Sample.UriSample[]{(Sample.UriSample) intentAsSample};
+        Sample intentAsSample = Sample.createFromIntent(getIntent());
+        Sample.HlsSample[] samples = new Sample.HlsSample[]{(Sample.HlsSample) intentAsSample};
 
         boolean seenAdsTagUri = false;
-        for (Sample.UriSample sample : samples) {
+        for (Sample.HlsSample sample : samples) {
             if (!Util.checkCleartextTrafficPermitted(sample.uri)) {
                 showToast("R.string.error_cleartext_not_permitted");
                 return null;
@@ -386,7 +356,7 @@ public class PlayerActivity extends AppCompatActivity
         return mediaSource;
     }
 
-    private MediaSource createLeafMediaSource(Sample.UriSample parameters) {
+    private MediaSource createLeafMediaSource(Sample.HlsSample parameters) {
         DrmSessionManager<ExoMediaCrypto> drmSessionManager = DrmSessionManager.getDummyDrmSessionManager();
 
         DownloadRequest downloadRequest =
@@ -542,7 +512,7 @@ public class PlayerActivity extends AppCompatActivity
     }
 
     private void showControls() {
-        debugRootView.setVisibility(View.VISIBLE);
+        //        debugRootView.setVisibility(View.VISIBLE);
     }
 
     private void showToast(int messageId) {
