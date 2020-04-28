@@ -82,21 +82,9 @@ public class DemoApplication extends Application {
     return new DefaultHttpDataSourceFactory(userAgent);
   }
 
-  /** Returns whether extension renderers should be used. */
-  public boolean useExtensionRenderers() {
-    return "withExtensions".equals(BuildConfig.FLAVOR);
-  }
-
-  public RenderersFactory buildRenderersFactory(boolean preferExtensionRenderer) {
-    @DefaultRenderersFactory.ExtensionRendererMode
-    int extensionRendererMode =
-        useExtensionRenderers()
-            ? (preferExtensionRenderer
-                ? DefaultRenderersFactory.EXTENSION_RENDERER_MODE_PREFER
-                : DefaultRenderersFactory.EXTENSION_RENDERER_MODE_ON)
-            : DefaultRenderersFactory.EXTENSION_RENDERER_MODE_OFF;
+  public RenderersFactory buildRenderersFactory() {
     return new DefaultRenderersFactory(/* context= */ this)
-        .setExtensionRendererMode(extensionRendererMode);
+        .setExtensionRendererMode(DefaultRenderersFactory.EXTENSION_RENDERER_MODE_OFF);
   }
 
   public DownloadNotificationHelper getDownloadNotificationHelper() {
