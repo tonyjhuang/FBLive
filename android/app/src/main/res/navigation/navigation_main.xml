@@ -3,19 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_watch_stream">
 
     <fragment
-        android:id="@+id/navigation_home"
+        android:id="@+id/navigation_watch_stream"
         android:name="com.tonyjhuang.fblive.ui.watchstream.WatchStreamFragment"
-        android:label="@string/title_home"
+        android:label="@string/title_watch_stream"
         tools:layout="@layout/fragment_watch_stream" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.tonyjhuang.fblive.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_broadcast"
+        android:name="com.tonyjhuang.fblive.ui.broadcast.BroadcastFragment"
+        android:label="@string/title_broadcast"
+        tools:layout="@layout/fragment_broadcast" />
 
     <fragment
         android:id="@+id/navigation_notifications"
