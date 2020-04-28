@@ -51,8 +51,7 @@ import java.net.CookiePolicy
 /**
  * An activity that plays media using [SimpleExoPlayer].
  */
-class PlayerActivity : AppCompatActivity(), PlaybackPreparer,
-    PlayerControlView.VisibilityListener {
+class PlayerActivity : AppCompatActivity(), PlaybackPreparer, PlayerControlView.VisibilityListener {
     companion object {
         // Player configuration extras.
         const val ABR_ALGORITHM_EXTRA = "abr_algorithm"

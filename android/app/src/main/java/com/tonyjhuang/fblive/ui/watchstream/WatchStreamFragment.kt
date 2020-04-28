@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.google.android.exoplayer2.C
 import com.google.android.exoplayer2.ExoPlayer
@@ -21,12 +22,12 @@ import com.mux.stats.sdk.core.model.CustomerPlayerData
 import com.mux.stats.sdk.core.model.CustomerVideoData
 import com.mux.stats.sdk.muxstats.MuxStatsExoPlayer
 import com.tonyjhuang.fblive.R
-import kotlinx.android.synthetic.main.fragment_home.view.*
+import kotlinx.android.synthetic.main.fragment_watch_stream.view.*
 
 
 class WatchStreamFragment : Fragment() {
 
-    private lateinit var homeViewModel: WatchStreamViewModel
+    private lateinit var viewModel: WatchStreamViewModel
     private lateinit var playerView: PlayerView
     private lateinit var muxPlayer: MuxStatsExoPlayer
 
@@ -35,9 +36,9 @@ class WatchStreamFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        homeViewModel =
-            ViewModelProviders.of(this).get(WatchStreamViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_home, container, false)
+        viewModel =
+            ViewModelProvider(this).get(WatchStreamViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_watch_stream, container, false)
         playerView = root.player_view
         return root
     }
