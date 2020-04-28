@@ -1,10 +1,10 @@
-package com.tonyjhuang.fblive.ui.home
+package com.tonyjhuang.fblive.ui.watchstream
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class HomeViewModel : ViewModel() {
+class WatchStreamViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
         value = "This is home Fragment"

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.tonyjhuang.fblive.ui.home.HomeFragment"
+        android:name="com.tonyjhuang.fblive.ui.watchstream.WatchStreamFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
