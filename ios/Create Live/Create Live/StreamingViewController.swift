@@ -7,12 +7,53 @@
 //
 
 import UIKit
+import StreamaxiaSDK
 
 class StreamingViewController: UIViewController {
 
+  var streamia: AXStreamaxiaSDK!
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     // createMUXStream()
+    
+    streamia = AXStreamaxiaSDK.sharedInstance()
+    
+    streamia.setupSDK { (success, error) in
+      self.streamia.debugPrintStatus()
+    }
+  }
+  
+  fileprivate func startRecording(with muxMetadata: MuxLiveStreamMetadata) {
+    let info = AXStreamInfo.init()
+    
+    info.useSecureConnection = false
+    info.serverAddress = "rtmp://global-live.mux.com:5222/app"
+    info.applicationName = "Create Live"
+    info.streamName = "Stream name"
+    info.username = muxMetadata.playbackId
+    info.password = muxMetadata.streamKey
+    
+    let recordSettings = AXRecorderSettings.init()
+    
+    if let recorder = AXRecorder.init(streamInfo: info, settings: recordSettings) {
+      recorder.setup(with: self.view)
+      recorder.prepareToRecord()
+      
+      var error: AXError?
+      
+      recorder.activateFeatureAdaptiveBitRateWithError(&error)
+      if error != nil {
+        print("LIVLIVLIV adaptive bitrate failed.")
+      }
+      
+      recorder.startStreaming { (success, error) in
+        if error != nil {
+          self.displayError(errorString: error!.debugDescription, tryAgainAction: nil)
+        }
+      }
+    }
+    self.displayError(errorString: "Something went wrong", tryAgainAction: nil)
   }
   
   fileprivate func createMUXStream() {
@@ -26,8 +67,7 @@ class StreamingViewController: UIViewController {
           assertionFailure()
           return
         }
-        // TODO: Do something with the metadata.
-        
+        self.startRecording(with: streamMetadata)
       }
     }
   }
