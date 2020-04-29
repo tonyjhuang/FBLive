@@ -23,7 +23,7 @@
 
 
         <action
-            android:id="@+id/action_login_to_broadcast"
+            android:id="@+id/action_home_to_broadcast"
             app:destination="@+id/navigation_broadcast" />
     </fragment>
 
