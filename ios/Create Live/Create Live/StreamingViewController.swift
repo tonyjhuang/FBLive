@@ -16,17 +16,18 @@ class StreamingViewController: UIViewController {
   }
   
   fileprivate func createMUXStream() {
-    MUXNetworkManager.createLiveStream { (error, streamKey) in
+    MUXNetworkManager.createLiveStream { (error, streamMetadata) in
       if error != nil {
         self.displayError(errorString: error!.localizedDescription) {
           self.createMUXStream()
         }
       } else {
-        guard let streamKey = streamKey else {
+        guard let streamMetadata = streamMetadata else {
           assertionFailure()
           return
         }
-        // TODO: Do something with the key.
+        // TODO: Do something with the metadata.
+        
       }
     }
   }

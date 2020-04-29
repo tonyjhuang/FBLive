@@ -8,6 +8,11 @@
 
 import UIKit
 
+struct MuxLiveStreamMetadata {
+  let playbackId: String
+  let streamKey: String
+}
+
 class MUXNetworkManager {
   class var authString: String {
     get {
@@ -24,8 +29,8 @@ class MUXNetworkManager {
     }
   }
   
-  /// Creates a livestream, returning playbackID or an error in the callback.
-  class func createLiveStream(completion: @escaping (Error?, String?) -> Void) {
+  /// Creates a livestream, returning playbackID/streamKey or an error in the callback.
+  class func createLiveStream(completion: @escaping (Error?, MuxLiveStreamMetadata?) -> Void) {
     let urlString = "https://api.mux.com/video/v1/live-streams"
     guard let url = URL(string: urlString) else {
       assertionFailure("Failed to create URL for MUX API")
@@ -63,7 +68,19 @@ class MUXNetworkManager {
             assertionFailure("Response for MUX create live stream didn't have a stream key")
             return
           }
-          completion(nil, streamKey)
+          
+          guard let playbackIds = dataDictionary["playback_ids"] as? [[String: String]],
+            playbackIds.count >= 1 else {
+            assertionFailure("Response for MUX create live stream didn't have playback ids")
+            return
+          }
+          
+          guard let firstId = playbackIds.first, let playbackId = firstId["id"] else {
+            assertionFailure("Playback id dictionary was malformed")
+            return
+          }
+          
+          completion(nil, MuxLiveStreamMetadata(playbackId: playbackId, streamKey: streamKey))
         } catch {
           completion(error, nil)
         }
