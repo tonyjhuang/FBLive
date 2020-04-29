@@ -18,7 +18,10 @@ import com.google.android.exoplayer2.source.BehindLiveWindowException
 import com.google.android.exoplayer2.source.MediaSource
 import com.google.android.exoplayer2.source.TrackGroupArray
 import com.google.android.exoplayer2.source.hls.HlsMediaSource
-import com.google.android.exoplayer2.trackselection.*
+import com.google.android.exoplayer2.trackselection.AdaptiveTrackSelection
+import com.google.android.exoplayer2.trackselection.DefaultTrackSelector
+import com.google.android.exoplayer2.trackselection.MappingTrackSelector
+import com.google.android.exoplayer2.trackselection.TrackSelectionArray
 import com.google.android.exoplayer2.ui.DebugTextViewHelper
 import com.google.android.exoplayer2.ui.PlayerControlView
 import com.google.android.exoplayer2.ui.PlayerView
@@ -32,7 +35,6 @@ import com.tonyjhuang.fblive.Sample
 import java.net.CookieHandler
 import java.net.CookieManager
 import java.net.CookiePolicy
-import kotlin.math.max
 
 
 class WatchStreamFragment : Fragment(), PlaybackPreparer, PlayerControlView.VisibilityListener {
@@ -42,30 +44,26 @@ class WatchStreamFragment : Fragment(), PlaybackPreparer, PlayerControlView.Visi
     private lateinit var playerView: PlayerView
     private lateinit var debugTextView: TextView
 
-    private val trackSelectionFactory = AdaptiveTrackSelection.Factory()
-    private lateinit var renderersFactory: RenderersFactory
-    private lateinit var dataSourceFactory: DataSource.Factory
-    private var player: SimpleExoPlayer? = null
-    private var mediaSource: MediaSource? = null
-    private lateinit var trackSelector: DefaultTrackSelector
-    private lateinit var trackSelectorParameters: DefaultTrackSelector.Parameters
+    //private val trackSelectionFactory = AdaptiveTrackSelection.Factory()
+    //private lateinit var renderersFactory: RenderersFactory
+    //private lateinit var dataSourceFactory: DataSource.Factory
+    //private var player: SimpleExoPlayer? = null
+    //private var mediaSource: MediaSource? = null
+    //private lateinit var trackSelector: DefaultTrackSelector
+    //private lateinit var trackSelectorParameters: DefaultTrackSelector.Parameters
     private lateinit var debugViewHelper: DebugTextViewHelper
-    private var lastSeenTrackGroupArray: TrackGroupArray? = null
-    private var startAutoPlay = false
-    private var startWindow = 0
-    private var startPosition: Long = 0
+    //private var lastSeenTrackGroupArray: TrackGroupArray? = null
 
-    var streamPlayer: StreamPlayer? = null
-    val streamPlayerListener = object : StreamPlayer.Listener() {
-        override fun onPlayerError(e: ExoPlaybackException) {
-            resetPlayer()
-        }
-    }
+    //var streamPlayer: StreamPlayer? = null
+
+    lateinit var playerManager: PlayerManager
+
+    //private val state = StreamPlayerState()
 
     private val application
         get() = requireActivity().application as App
 
-    private var streamUrl: String? = null
+    private lateinit var streamUrl: String
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -74,41 +72,39 @@ class WatchStreamFragment : Fragment(), PlaybackPreparer, PlayerControlView.Visi
     ): View? {
         viewModel = ViewModelProvider(this).get(WatchStreamViewModel::class.java)
         val view = inflater.inflate(R.layout.fragment_watch_stream, container, false)
-        dataSourceFactory = buildDataSourceFactory()
+        //dataSourceFactory = application.buildDataSourceFactory()
         CookieHandler.setDefault(DEFAULT_COOKIE_MANAGER)
-        streamUrl = arguments?.getString(URI_EXTRA)
+        streamUrl = arguments?.getString(URI_EXTRA) ?: DEFAULT_STREAM
 
-        streamPlayer = StreamPlayer(requireContext(), object : StreamPlayer.Listener() {
+        /*streamPlayer = StreamPlayer(requireContext(), object : StreamPlayer.Listener() {
             override fun onPlayerError(e: ExoPlaybackException) {
                 super.onPlayerError(e)
+            }
+        })*/
+
+        playerManager = PlayerManager(requireActivity(), requireContext(), streamUrl, object: StreamPlayer.Listener() {
+            override fun onPlayerError(e: ExoPlaybackException) {
+                initializePlayerManager()
             }
         })
 
         if (savedInstanceState != null) {
-            with(savedInstanceState) {
+            playerManager.restoreFromSavedInstanceState(savedInstanceState)
+            /*with(savedInstanceState) {
                 trackSelectorParameters = getParcelable(KEY_TRACK_SELECTOR_PARAMETERS)!!
-                startAutoPlay = getBoolean(KEY_AUTO_PLAY)
-                startWindow = getInt(KEY_WINDOW)
-                startPosition = getLong(KEY_POSITION)
-
             }
+            state.restoreFrom(savedInstanceState)*/
         } else {
-            val builder = DefaultTrackSelector.ParametersBuilder(requireContext())
-            trackSelectorParameters = builder.build()
-            clearStartPosition()
+            /*val builder = DefaultTrackSelector.ParametersBuilder(requireContext())
+            trackSelectorParameters = builder.build()*/
         }
 
-        renderersFactory = application.buildRenderersFactory()
+        /*renderersFactory = application.buildRenderersFactory()
         trackSelector = DefaultTrackSelector(requireContext(), trackSelectionFactory).apply {
             parameters = trackSelectorParameters
-        }
+        }*/
         setUpViews(view)
         return view
-    }
-
-    private fun resetPlayer() {
-        streamPlayer?.release()
-        streamPlayer = StreamPlayer(requireContext(), streamPlayerListener)
     }
 
     private fun setUpViews(view: View) {
@@ -123,14 +119,19 @@ class WatchStreamFragment : Fragment(), PlaybackPreparer, PlayerControlView.Visi
 
     override fun onStart() {
         super.onStart()
-        initializePlayer()
+        initializePlayerManager()
+        //initializePlayer()
         playerView.onResume()
     }
 
     override fun onResume() {
         super.onResume()
-        if (player == null) {
+        /*if (player == null) {
             initializePlayer()
+            playerView.onResume()
+        }*/
+        if (playerManager.player == null) {
+            initializePlayerManager()
             playerView.onResume()
         }
     }
@@ -138,7 +139,8 @@ class WatchStreamFragment : Fragment(), PlaybackPreparer, PlayerControlView.Visi
     override fun onStop() {
         super.onStop()
         playerView.onPause()
-        releasePlayer()
+        //releasePlayer()
+        releasePlayerManager()
     }
 
     override fun onRequestPermissionsResult(
@@ -151,7 +153,8 @@ class WatchStreamFragment : Fragment(), PlaybackPreparer, PlayerControlView.Visi
             return
         }
         if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            initializePlayer()
+            //initializePlayer()
+            initializePlayerManager()
         } else {
             showToast("Storage permission not granted")
             // TODO show error state
@@ -161,20 +164,19 @@ class WatchStreamFragment : Fragment(), PlaybackPreparer, PlayerControlView.Visi
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        updateTrackSelectorParameters()
+        /*updateTrackSelectorParameters()
         updateStartPosition()
         outState.putParcelable(
             KEY_TRACK_SELECTOR_PARAMETERS,
             trackSelectorParameters
         )
-        outState.putBoolean(KEY_AUTO_PLAY, startAutoPlay)
-        outState.putInt(KEY_WINDOW, startWindow)
-        outState.putLong(KEY_POSITION, startPosition)
+        state.saveTo(outState)*/
+        playerManager.onSaveInstanceState(outState)
     }
 
     // PlaybackControlView.PlaybackPreparer implementation
     override fun preparePlayback() {
-        player!!.retry()
+        //player!!.retry()
     }
 
     // PlaybackControlView.VisibilityListener implementation
@@ -183,9 +185,18 @@ class WatchStreamFragment : Fragment(), PlaybackPreparer, PlayerControlView.Visi
         //debugRootView.setVisibility(visibility);
     }
 
+    private fun initializePlayerManager() {
+        playerManager.initializePlayer {
+            playerView.player = it
+            playerView.setPlaybackPreparer(playerManager)
+            debugViewHelper = DebugTextViewHelper(it!!, debugTextView)
+            debugViewHelper.start()
+        }
+    }
+
     // Internal methods
-    private fun initializePlayer() {
-        if (player == null) {
+    //private fun initializePlayer() {
+        /*if (player == null) {
             mediaSource = createTopLevelMediaSource(streamUrl)
             if (mediaSource == null) {
                 return
@@ -199,7 +210,7 @@ class WatchStreamFragment : Fragment(), PlaybackPreparer, PlayerControlView.Visi
                         AudioAttributes.DEFAULT,
                         true
                     )
-                    playWhenReady = startAutoPlay
+                    playWhenReady = state.startAutoPlay
                     addAnalyticsListener(EventLogger(trackSelector))
                 }
             playerView.player = player
@@ -207,14 +218,16 @@ class WatchStreamFragment : Fragment(), PlaybackPreparer, PlayerControlView.Visi
             debugViewHelper = DebugTextViewHelper(player!!, debugTextView)
             debugViewHelper.start()
         }
-        val haveStartPosition = startWindow != C.INDEX_UNSET
-        if (haveStartPosition) {
-            player!!.seekTo(startWindow, startPosition)
-        }
-        player!!.prepare(mediaSource!!, !haveStartPosition, false)
-    }
+        if (mediaSource != null) {
+            val haveStartPosition = state.startWindow != C.INDEX_UNSET
+            if (haveStartPosition) {
+                player!!.seekTo(state.startWindow, state.startPosition)
+            }
+            player!!.prepare(mediaSource!!, !haveStartPosition, false)
+        }*/
+    //}
 
-    private fun createTopLevelMediaSource(stream: String?): MediaSource? {
+    /*private fun createTopLevelMediaSource(stream: String?): MediaSource? {
         val streamPath = stream ?: DEFAULT_STREAM
         val sample = Sample.HlsSample.createFromString(streamPath)
         if (!Util.checkCleartextTrafficPermitted(sample.uri)) {
@@ -228,14 +241,19 @@ class WatchStreamFragment : Fragment(), PlaybackPreparer, PlayerControlView.Visi
         ) { // The player will be reinitialized if the permission is granted.
             null
         } else createHlsMediaSource(sample)
-    }
+    }*/
 
-    private fun createHlsMediaSource(parameters: Sample.HlsSample): MediaSource {
-        return HlsMediaSource.Factory(dataSourceFactory!!)
+    /*private fun createHlsMediaSource(parameters: Sample.HlsSample): MediaSource {
+        return HlsMediaSource.Factory(dataSourceFactory)
             .createMediaSource(parameters.uri)
+    }*/
+
+    private fun releasePlayerManager() {
+        playerManager.releasePlayer()
+        debugViewHelper.stop()
     }
 
-    private fun releasePlayer() {
+    /*private fun releasePlayer() {
         if (player != null) {
             updateTrackSelectorParameters()
             updateStartPosition()
@@ -244,32 +262,17 @@ class WatchStreamFragment : Fragment(), PlaybackPreparer, PlayerControlView.Visi
             player = null
             mediaSource = null
         }
-    }
+    }*/
 
-    private fun updateTrackSelectorParameters() {
-            trackSelectorParameters = trackSelector.parameters
-    }
+    /*private fun updateTrackSelectorParameters() {
+        trackSelectorParameters = trackSelector.parameters
+    }*/
 
-    private fun updateStartPosition() {
-        if (player != null) {
-            startAutoPlay = player!!.playWhenReady
-            startWindow = player!!.currentWindowIndex
-            startPosition = max(0, player!!.contentPosition)
-        }
-    }
+    /*private fun updateStartPosition() {
+        val player = this.player ?: return
+        state.updateFromPlayer(player)
+    }*/
 
-    private fun clearStartPosition() {
-        startAutoPlay = true
-        startWindow = C.INDEX_UNSET
-        startPosition = C.TIME_UNSET
-    }
-
-    /**
-     * Returns a new DataSource factory.
-     */
-    private fun buildDataSourceFactory(): DataSource.Factory {
-        return application.buildDataSourceFactory()
-    }
 
     private fun showToast(messageId: Int) {
         showToast(getString(messageId))
@@ -279,12 +282,12 @@ class WatchStreamFragment : Fragment(), PlaybackPreparer, PlayerControlView.Visi
         Toast.makeText(requireContext(), message, Toast.LENGTH_LONG).show()
     }
 
-    private inner class PlayerEventListener : Player.EventListener {
+    /*private inner class PlayerEventListener : Player.EventListener {
 
         override fun onPlayerError(e: ExoPlaybackException) {
             if (isBehindLiveWindow(e)) {
-                clearStartPosition()
-                initializePlayer()
+                state.clearStartPosition()
+                //initializePlayer()
             } else {
                 //showControls()
                 showToast("player error: [$e]")
@@ -312,7 +315,7 @@ class WatchStreamFragment : Fragment(), PlaybackPreparer, PlayerControlView.Visi
                 lastSeenTrackGroupArray = trackGroups
             }
         }
-    }
+    }*/
 
     private class PlayerErrorMessageProvider :
         ErrorMessageProvider<ExoPlaybackException> {
