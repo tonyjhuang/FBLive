@@ -27,16 +27,16 @@ class ChatFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_chat, container, false)
+        return inflater.inflate(R.layout.fragment_chat, container, false)
+    }
 
-        // Set the adapter
-        if (view is RecyclerView) {
-            with(view) {
-                layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, true)
-                adapter = ChatRecyclerViewAdapter(DummyContent.ITEMS, listener)
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val recyclerView = view.findViewById<RecyclerView>(R.id.messages_list)
+        with(recyclerView) {
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, true)
+            adapter = ChatRecyclerViewAdapter(DummyContent.ITEMS, listener)
         }
-        return view
     }
 
     override fun onAttach(context: Context) {

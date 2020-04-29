@@ -1,6 +1,7 @@
 package com.tonyjhuang.fblive.ui.watchstream
 
 import android.content.pm.PackageManager
+import android.graphics.Point
 import android.os.Bundle
 import android.util.Pair
 import android.view.LayoutInflater
@@ -8,8 +9,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.Toast
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
 import com.google.android.exoplayer2.ExoPlaybackException
 import com.google.android.exoplayer2.mediacodec.MediaCodecRenderer
 import com.google.android.exoplayer2.mediacodec.MediaCodecUtil
@@ -18,6 +21,7 @@ import com.google.android.exoplayer2.ui.PlayerView
 import com.google.android.exoplayer2.util.ErrorMessageProvider
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.tonyjhuang.fblive.R
+import kotlinx.android.synthetic.main.fragment_watch_stream.view.*
 import java.net.CookieHandler
 import java.net.CookieManager
 import java.net.CookiePolicy
@@ -29,7 +33,7 @@ class WatchStreamFragment : Fragment(), PlayerControlView.VisibilityListener {
         setCookiePolicy(CookiePolicy.ACCEPT_ORIGINAL_SERVER)
     }
 
-    private lateinit var viewModel: WatchStreamViewModel
+    private val viewModel: WatchStreamViewModel by activityViewModels()
 
     private lateinit var playerView: PlayerView
 
@@ -42,7 +46,6 @@ class WatchStreamFragment : Fragment(), PlayerControlView.VisibilityListener {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewModel = ViewModelProvider(this).get(WatchStreamViewModel::class.java)
         val view = inflater.inflate(R.layout.fragment_watch_stream, container, false)
         CookieHandler.setDefault(defaultCookieManager)
         streamUrl = arguments?.getString(URI_EXTRA) ?: DEFAULT_STREAM
@@ -76,7 +79,11 @@ class WatchStreamFragment : Fragment(), PlayerControlView.VisibilityListener {
             setErrorMessageProvider(PlayerErrorMessageProvider())
             requestFocus()
         }
-        val bottomSheetContainer = view.findViewById<FrameLayout>(R.id.bottom_sheet_container)
+        val bottomSheetContainer = view.findViewById<FrameLayout>(R.id.chat_bottom_sheet_container)
+        setUpBottomSheet(bottomSheetContainer)
+    }
+
+    private fun setUpBottomSheet(bottomSheetContainer: FrameLayout) {
         val bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetContainer)
 
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
@@ -84,6 +91,28 @@ class WatchStreamFragment : Fragment(), PlayerControlView.VisibilityListener {
             .resources
             .getDimension(R.dimen.watch_chat_bottom_sheet_peek)
             .toInt()
+
+        val display = requireActivity().windowManager.defaultDisplay
+        val screenSize = Point()
+        display.getSize(screenSize)
+
+        val params = bottomSheetContainer.layoutParams as CoordinatorLayout.LayoutParams
+        params.height = screenSize.y / 2
+        bottomSheetContainer.layoutParams = params
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setUpViewModel(view)
+    }
+
+    private fun setUpViewModel(view: View) {
+        viewModel.streamName.observe(viewLifecycleOwner, Observer {
+            view.stream_name.text = it
+        })
+        viewModel.activeViewers.observe(viewLifecycleOwner, Observer {
+            view.active_viewers.text = it.toString()
+        })
     }
 
     override fun onStart() {

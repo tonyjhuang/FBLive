@@ -1,17 +1,19 @@
 package com.tonyjhuang.fblive.ui.watchstream
 
-import androidx.recyclerview.widget.RecyclerView
+
+import android.text.Spannable
+import android.text.SpannableStringBuilder
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.text.bold
+import androidx.recyclerview.widget.RecyclerView
 import com.tonyjhuang.fblive.R
-
-
 import com.tonyjhuang.fblive.ui.watchstream.ChatFragment.OnListFragmentInteractionListener
 import com.tonyjhuang.fblive.ui.watchstream.dummy.DummyContent.DummyItem
-
 import kotlinx.android.synthetic.main.list_item_message.view.*
+
 
 /**
  * [RecyclerView.Adapter] that can display a [DummyItem] and makes a call to the
@@ -19,8 +21,8 @@ import kotlinx.android.synthetic.main.list_item_message.view.*
  * TODO: Replace the implementation with code for your data type.
  */
 class ChatRecyclerViewAdapter(
-    private val mValues: List<DummyItem>,
-    private val mListener: OnListFragmentInteractionListener?
+    private val messages: List<DummyItem>,
+    private val listener: OnListFragmentInteractionListener?
 ) : RecyclerView.Adapter<ChatRecyclerViewAdapter.ViewHolder>() {
 
     private val mOnClickListener: View.OnClickListener
@@ -30,7 +32,7 @@ class ChatRecyclerViewAdapter(
             val item = v.tag as DummyItem
             // Notify the active callbacks interface (the activity, if the fragment is attached to
             // one) that an item has been selected.
-            mListener?.onListFragmentInteraction(item)
+            listener?.onListFragmentInteraction(item)
         }
     }
 
@@ -41,9 +43,8 @@ class ChatRecyclerViewAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = mValues[position]
-        holder.mIdView.text = item.id
-        holder.mContentView.text = item.content
+        val item = messages[position]
+        holder.content.text = getFormattedText(item.authorName, item.body)
 
         with(holder.mView) {
             tag = item
@@ -51,14 +52,19 @@ class ChatRecyclerViewAdapter(
         }
     }
 
-    override fun getItemCount(): Int = mValues.size
+    private fun getFormattedText(authorName: String, messageBody: String): Spannable {
+        return SpannableStringBuilder()
+            .bold { append("$authorName: ") }
+            .append(messageBody)
+    }
+
+    override fun getItemCount(): Int = messages.size
 
     inner class ViewHolder(val mView: View) : RecyclerView.ViewHolder(mView) {
-        val mIdView: TextView = mView.item_number
-        val mContentView: TextView = mView.content
+        val content: TextView = mView.content
 
         override fun toString(): String {
-            return super.toString() + " '" + mContentView.text + "'"
+            return super.toString() + " '" + content.text + "'"
         }
     }
 }

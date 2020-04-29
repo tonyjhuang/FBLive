@@ -1,31 +1,61 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:keepScreenOn="true">
 
-    <com.google.android.exoplayer2.ui.PlayerView
-        android:id="@+id/player_view"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:resize_mode="zoom" />
+        android:layout_height="match_parent">
 
-    <FrameLayout
-        android:id="@+id/bottom_sheet_container"
+        <com.google.android.exoplayer2.ui.PlayerView
+            android:id="@+id/player_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:resize_mode="zoom" />
+
+        <LinearLayout
+            android:padding="24dp"
+            android:background="@drawable/stream_top_bar_background"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/stream_name"
+                android:layout_width="0dp"
+                android:textSize="16sp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="#FFF"
+                android:textStyle="bold" />
+
+            <TextView
+                android:gravity="center_vertical"
+                android:textSize="16sp"
+                android:drawablePadding="16dp"
+                android:id="@+id/active_viewers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableEnd="@drawable/ic_account_circle_black_24dp"
+                android:textColor="#FFF"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/chat_bottom_sheet_container"
+        android:name="com.tonyjhuang.fblive.ui.watchstream.ChatFragment"
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
-
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/chat_bottom_sheet_container"
-            android:name="com.tonyjhuang.fblive.ui.watchstream.ChatFragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"></androidx.fragment.app.FragmentContainerView>
-
-    </FrameLayout>
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
