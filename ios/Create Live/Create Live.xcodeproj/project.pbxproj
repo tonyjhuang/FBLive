@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		25588AB8245A086800DC0897 /* license.dat in Resources */ = {isa = PBXBuildFile; fileRef = 25588AB7245A086800DC0897 /* license.dat */; };
+		25588ABF245A0A2900DC0897 /* StreamaxiaSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25588ABE245A0A2900DC0897 /* StreamaxiaSDK.framework */; };
+		25588AC0245A0A2900DC0897 /* StreamaxiaSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 25588ABE245A0A2900DC0897 /* StreamaxiaSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		257BAC622458B49E009F78A1 /* StreamingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257BAC612458B49E009F78A1 /* StreamingViewController.swift */; };
 		257BAC642458B6AB009F78A1 /* MUXNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257BAC632458B6AB009F78A1 /* MUXNetworkManager.swift */; };
 		25B26BF3245768DE00A7CEB3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B26BF2245768DE00A7CEB3 /* AppDelegate.swift */; };
@@ -21,10 +23,25 @@
 		858FE76C636AFB51498B8D17 /* Pods_Create_Live.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E33C79A5602DBD250D1B677A /* Pods_Create_Live.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		25588AC1245A0A2A00DC0897 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				25588AC0245A0A2900DC0897 /* StreamaxiaSDK.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		0742B7CE7CCDF966076A8014 /* Pods-Create Live.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Create Live.debug.xcconfig"; path = "Target Support Files/Pods-Create Live/Pods-Create Live.debug.xcconfig"; sourceTree = "<group>"; };
 		1CFFD729EF41C4BBC1D577F4 /* Pods-Create Live.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Create Live.release.xcconfig"; path = "Target Support Files/Pods-Create Live/Pods-Create Live.release.xcconfig"; sourceTree = "<group>"; };
 		25588AB7245A086800DC0897 /* license.dat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = license.dat; sourceTree = "<group>"; };
+		25588ABE245A0A2900DC0897 /* StreamaxiaSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StreamaxiaSDK.framework; path = "Create Live/Frameworks/StreamaxiaSDK.framework"; sourceTree = "<group>"; };
 		257BAC612458B49E009F78A1 /* StreamingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamingViewController.swift; sourceTree = "<group>"; };
 		257BAC632458B6AB009F78A1 /* MUXNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MUXNetworkManager.swift; sourceTree = "<group>"; };
 		25B26BEF245768DE00A7CEB3 /* Create Live.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Create Live.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -45,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25588ABF245A0A2900DC0897 /* StreamaxiaSDK.framework in Frameworks */,
 				858FE76C636AFB51498B8D17 /* Pods_Create_Live.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -55,6 +73,7 @@
 		22706D47026CB6E2D7F4A976 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				25588ABE245A0A2900DC0897 /* StreamaxiaSDK.framework */,
 				E33C79A5602DBD250D1B677A /* Pods_Create_Live.framework */,
 			);
 			name = Frameworks;
@@ -126,6 +145,7 @@
 				25B26BEC245768DE00A7CEB3 /* Frameworks */,
 				25B26BED245768DE00A7CEB3 /* Resources */,
 				E842BAB081BFF0709135C85B /* [CP] Embed Pods Frameworks */,
+				25588AC1245A0A2A00DC0897 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -384,6 +404,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 0.1;
 				DEVELOPMENT_TEAM = 965RJH2QM8;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Create\\ Live/Frameworks",
+				);
 				INFOPLIST_FILE = "Create Live/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -406,6 +430,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 0.1;
 				DEVELOPMENT_TEAM = 965RJH2QM8;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Create\\ Live/Frameworks",
+				);
 				INFOPLIST_FILE = "Create Live/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
