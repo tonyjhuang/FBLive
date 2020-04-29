@@ -7,5 +7,12 @@ target 'Create Live' do
 
   # Pods for Create Live
   pod 'Firebase/Analytics'
+  pod 'Firebase/Firestore'
+  pod 'FirebaseFirestoreSwift'
+  pod 'Firebase/Crashlytics'
+  pod 'Firebase/Performance'
+  pod 'Firebase/Auth'
+  pod 'GoogleSignIn'
+  
 
 end

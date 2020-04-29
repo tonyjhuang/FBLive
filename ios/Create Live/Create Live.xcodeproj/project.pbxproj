@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		257BAC662459D8C1009F78A1 /* JoinStreamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257BAC652459D8C1009F78A1 /* JoinStreamViewController.swift */; };
 		25B26BF3245768DE00A7CEB3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B26BF2245768DE00A7CEB3 /* AppDelegate.swift */; };
 		25B26BF5245768DE00A7CEB3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B26BF4245768DE00A7CEB3 /* SceneDelegate.swift */; };
 		25B26BF7245768DE00A7CEB3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B26BF6245768DE00A7CEB3 /* ViewController.swift */; };
@@ -21,6 +22,7 @@
 /* Begin PBXFileReference section */
 		0742B7CE7CCDF966076A8014 /* Pods-Create Live.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Create Live.debug.xcconfig"; path = "Target Support Files/Pods-Create Live/Pods-Create Live.debug.xcconfig"; sourceTree = "<group>"; };
 		1CFFD729EF41C4BBC1D577F4 /* Pods-Create Live.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Create Live.release.xcconfig"; path = "Target Support Files/Pods-Create Live/Pods-Create Live.release.xcconfig"; sourceTree = "<group>"; };
+		257BAC652459D8C1009F78A1 /* JoinStreamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinStreamViewController.swift; sourceTree = "<group>"; };
 		25B26BEF245768DE00A7CEB3 /* Create Live.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Create Live.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		25B26BF2245768DE00A7CEB3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		25B26BF4245768DE00A7CEB3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -30,7 +32,7 @@
 		25B26BFE245768DF00A7CEB3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		25B26C00245768DF00A7CEB3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25B26C06245769C200A7CEB3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		25B26C0824576BA800A7CEB3 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
+		25B26C0824576BA800A7CEB3 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		E33C79A5602DBD250D1B677A /* Pods_Create_Live.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Create_Live.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -84,6 +86,7 @@
 				25B26C0824576BA800A7CEB3 /* Podfile */,
 				25B26C00245768DF00A7CEB3 /* Info.plist */,
 				25B26C06245769C200A7CEB3 /* GoogleService-Info.plist */,
+				257BAC652459D8C1009F78A1 /* JoinStreamViewController.swift */,
 			);
 			path = "Create Live";
 			sourceTree = "<group>";
@@ -109,6 +112,8 @@
 				25B26BEC245768DE00A7CEB3 /* Frameworks */,
 				25B26BED245768DE00A7CEB3 /* Resources */,
 				E842BAB081BFF0709135C85B /* [CP] Embed Pods Frameworks */,
+				266B670A89BB11B17AA5FAB1 /* [CP] Copy Pods Resources */,
+				ED66A73C2459FFD000B3B029 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -168,6 +173,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		266B670A89BB11B17AA5FAB1 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Create Live/Pods-Create Live-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Create Live/Pods-Create Live-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Create Live/Pods-Create Live-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		6F9C7466972692A853A445EB /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -207,6 +229,23 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Create Live/Pods-Create Live-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		ED66A73C2459FFD000B3B029 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -214,6 +253,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				257BAC662459D8C1009F78A1 /* JoinStreamViewController.swift in Sources */,
 				25B26BF7245768DE00A7CEB3 /* ViewController.swift in Sources */,
 				25B26BF3245768DE00A7CEB3 /* AppDelegate.swift in Sources */,
 				25B26BF5245768DE00A7CEB3 /* SceneDelegate.swift in Sources */,
