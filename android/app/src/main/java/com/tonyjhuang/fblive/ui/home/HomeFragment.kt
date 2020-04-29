@@ -25,7 +25,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         view.start_broadcast.setOnClickListener {
-            findNavController().navigate(HomeFragmentDirections.actionHomeToBroadcast())
+            findNavController().navigate(HomeFragmentDirections.actionHomeToCreateBroadcast())
         }
         view.join_broadcast.setOnClickListener {
             findNavController().navigate(HomeFragmentDirections.actionHomeToWatchStream())

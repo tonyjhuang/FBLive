@@ -55,6 +55,7 @@ dependencies {
 
     implementation 'com.google.android.exoplayer:exoplayer:2.11.1'
     implementation "androidx.coordinatorlayout:coordinatorlayout:1.1.0"
+    implementation 'androidx.viewpager2:viewpager2:1.1.0-alpha01'
 
 
     implementation project(':mux-r2.11.1')

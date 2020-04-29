@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/CBFormContainer">
+
+    <TextView
+        style="@style/CBFormQuestion"
+        android:text="What's the name of your product?" />
+
+    <EditText
+        android:id="@+id/input"
+        style="@style/CBFormTextInput" />
+
+    <Button
+        android:id="@+id/start_broadcast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/colorAccent"
+        android:padding="16dp"
+        android:text="No, I'll set the price" />
+
+</LinearLayout>
