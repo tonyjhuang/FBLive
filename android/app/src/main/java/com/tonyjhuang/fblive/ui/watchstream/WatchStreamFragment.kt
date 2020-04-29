@@ -42,16 +42,25 @@ class WatchStreamFragment : Fragment(), PlaybackPreparer, PlayerControlView.Visi
     private lateinit var playerView: PlayerView
     private lateinit var debugTextView: TextView
 
-    private var dataSourceFactory: DataSource.Factory? = null
+    private val trackSelectionFactory = AdaptiveTrackSelection.Factory()
+    private lateinit var renderersFactory: RenderersFactory
+    private lateinit var dataSourceFactory: DataSource.Factory
     private var player: SimpleExoPlayer? = null
     private var mediaSource: MediaSource? = null
-    private var trackSelector: DefaultTrackSelector? = null
-    private var trackSelectorParameters: DefaultTrackSelector.Parameters? = null
-    private var debugViewHelper: DebugTextViewHelper? = null
+    private lateinit var trackSelector: DefaultTrackSelector
+    private lateinit var trackSelectorParameters: DefaultTrackSelector.Parameters
+    private lateinit var debugViewHelper: DebugTextViewHelper
     private var lastSeenTrackGroupArray: TrackGroupArray? = null
     private var startAutoPlay = false
     private var startWindow = 0
     private var startPosition: Long = 0
+
+    var streamPlayer: StreamPlayer? = null
+    val streamPlayerListener = object : StreamPlayer.Listener() {
+        override fun onPlayerError(e: ExoPlaybackException) {
+            resetPlayer()
+        }
+    }
 
     private val application
         get() = requireActivity().application as App
@@ -69,9 +78,15 @@ class WatchStreamFragment : Fragment(), PlaybackPreparer, PlayerControlView.Visi
         CookieHandler.setDefault(DEFAULT_COOKIE_MANAGER)
         streamUrl = arguments?.getString(URI_EXTRA)
 
+        streamPlayer = StreamPlayer(requireContext(), object : StreamPlayer.Listener() {
+            override fun onPlayerError(e: ExoPlaybackException) {
+                super.onPlayerError(e)
+            }
+        })
+
         if (savedInstanceState != null) {
             with(savedInstanceState) {
-                trackSelectorParameters = getParcelable(KEY_TRACK_SELECTOR_PARAMETERS)
+                trackSelectorParameters = getParcelable(KEY_TRACK_SELECTOR_PARAMETERS)!!
                 startAutoPlay = getBoolean(KEY_AUTO_PLAY)
                 startWindow = getInt(KEY_WINDOW)
                 startPosition = getLong(KEY_POSITION)
@@ -82,8 +97,18 @@ class WatchStreamFragment : Fragment(), PlaybackPreparer, PlayerControlView.Visi
             trackSelectorParameters = builder.build()
             clearStartPosition()
         }
+
+        renderersFactory = application.buildRenderersFactory()
+        trackSelector = DefaultTrackSelector(requireContext(), trackSelectionFactory).apply {
+            parameters = trackSelectorParameters
+        }
         setUpViews(view)
         return view
+    }
+
+    private fun resetPlayer() {
+        streamPlayer?.release()
+        streamPlayer = StreamPlayer(requireContext(), streamPlayerListener)
     }
 
     private fun setUpViews(view: View) {
@@ -165,26 +190,22 @@ class WatchStreamFragment : Fragment(), PlaybackPreparer, PlayerControlView.Visi
             if (mediaSource == null) {
                 return
             }
-            val trackSelectionFactory: TrackSelection.Factory
-            trackSelectionFactory = AdaptiveTrackSelection.Factory()
-            val renderersFactory = application.buildRenderersFactory()
-            trackSelector = DefaultTrackSelector(requireContext(), trackSelectionFactory)
-            trackSelector!!.parameters = trackSelectorParameters!!
             lastSeenTrackGroupArray = null
             player = SimpleExoPlayer.Builder(requireContext(), renderersFactory)
-                .setTrackSelector(trackSelector!!)
-                .build()
-            player!!.addListener(PlayerEventListener())
-            player!!.setAudioAttributes(
-                AudioAttributes.DEFAULT,
-                true
-            )
-            player!!.playWhenReady = startAutoPlay
-            player!!.addAnalyticsListener(EventLogger(trackSelector))
+                .setTrackSelector(trackSelector)
+                .build().apply {
+                    addListener(PlayerEventListener())
+                    setAudioAttributes(
+                        AudioAttributes.DEFAULT,
+                        true
+                    )
+                    playWhenReady = startAutoPlay
+                    addAnalyticsListener(EventLogger(trackSelector))
+                }
             playerView.player = player
             playerView.setPlaybackPreparer(this)
             debugViewHelper = DebugTextViewHelper(player!!, debugTextView)
-            debugViewHelper!!.start()
+            debugViewHelper.start()
         }
         val haveStartPosition = startWindow != C.INDEX_UNSET
         if (haveStartPosition) {
@@ -218,19 +239,15 @@ class WatchStreamFragment : Fragment(), PlaybackPreparer, PlayerControlView.Visi
         if (player != null) {
             updateTrackSelectorParameters()
             updateStartPosition()
-            debugViewHelper!!.stop()
-            debugViewHelper = null
+            debugViewHelper.stop()
             player!!.release()
             player = null
             mediaSource = null
-            trackSelector = null
         }
     }
 
     private fun updateTrackSelectorParameters() {
-        if (trackSelector != null) {
-            trackSelectorParameters = trackSelector!!.parameters
-        }
+            trackSelectorParameters = trackSelector.parameters
     }
 
     private fun updateStartPosition() {
