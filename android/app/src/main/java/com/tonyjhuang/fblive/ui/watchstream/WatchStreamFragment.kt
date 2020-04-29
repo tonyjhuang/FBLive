@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.google.android.exoplayer2.ExoPlaybackException
 import com.google.android.exoplayer2.mediacodec.MediaCodecRenderer
@@ -33,7 +34,7 @@ class WatchStreamFragment : Fragment(), PlayerControlView.VisibilityListener {
         setCookiePolicy(CookiePolicy.ACCEPT_ORIGINAL_SERVER)
     }
 
-    private val viewModel: WatchStreamViewModel by activityViewModels()
+    private val viewModel: WatchStreamViewModel by viewModels()
 
     private lateinit var playerView: PlayerView
 

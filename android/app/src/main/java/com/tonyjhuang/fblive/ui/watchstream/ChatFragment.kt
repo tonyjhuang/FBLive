@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import com.tonyjhuang.fblive.R
 
 import com.tonyjhuang.fblive.ui.watchstream.dummy.DummyContent
@@ -21,6 +22,7 @@ import com.tonyjhuang.fblive.ui.watchstream.dummy.DummyContent.DummyItem
  */
 class ChatFragment : Fragment() {
 
+    private val viewModel: ChatViewModel by viewModels()
     private var listener: OnListFragmentInteractionListener? = null
 
     override fun onCreateView(
@@ -37,10 +39,6 @@ class ChatFragment : Fragment() {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, true)
             adapter = ChatRecyclerViewAdapter(DummyContent.ITEMS, listener)
         }
-    }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
     }
 
     override fun onDetach() {
