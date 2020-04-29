@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		25588AB8245A086800DC0897 /* license.dat in Resources */ = {isa = PBXBuildFile; fileRef = 25588AB7245A086800DC0897 /* license.dat */; };
 		257BAC622458B49E009F78A1 /* StreamingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257BAC612458B49E009F78A1 /* StreamingViewController.swift */; };
 		257BAC642458B6AB009F78A1 /* MUXNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257BAC632458B6AB009F78A1 /* MUXNetworkManager.swift */; };
 		25B26BF3245768DE00A7CEB3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B26BF2245768DE00A7CEB3 /* AppDelegate.swift */; };
@@ -23,6 +24,7 @@
 /* Begin PBXFileReference section */
 		0742B7CE7CCDF966076A8014 /* Pods-Create Live.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Create Live.debug.xcconfig"; path = "Target Support Files/Pods-Create Live/Pods-Create Live.debug.xcconfig"; sourceTree = "<group>"; };
 		1CFFD729EF41C4BBC1D577F4 /* Pods-Create Live.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Create Live.release.xcconfig"; path = "Target Support Files/Pods-Create Live/Pods-Create Live.release.xcconfig"; sourceTree = "<group>"; };
+		25588AB7245A086800DC0897 /* license.dat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = license.dat; sourceTree = "<group>"; };
 		257BAC612458B49E009F78A1 /* StreamingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamingViewController.swift; sourceTree = "<group>"; };
 		257BAC632458B6AB009F78A1 /* MUXNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MUXNetworkManager.swift; sourceTree = "<group>"; };
 		25B26BEF245768DE00A7CEB3 /* Create Live.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Create Live.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -58,6 +60,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		25588AB6245A084800DC0897 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				25588AB7245A086800DC0897 /* license.dat */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		25B26BE6245768DE00A7CEB3 = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +89,7 @@
 		25B26BF1245768DE00A7CEB3 /* Create Live */ = {
 			isa = PBXGroup;
 			children = (
+				25588AB6245A084800DC0897 /* Resources */,
 				25B26BF2245768DE00A7CEB3 /* AppDelegate.swift */,
 				25B26BF4245768DE00A7CEB3 /* SceneDelegate.swift */,
 				25B26BF6245768DE00A7CEB3 /* ViewController.swift */,
@@ -166,6 +177,7 @@
 				25B26C0924576BA800A7CEB3 /* Podfile in Resources */,
 				25B26BFF245768DF00A7CEB3 /* LaunchScreen.storyboard in Resources */,
 				25B26C07245769C200A7CEB3 /* GoogleService-Info.plist in Resources */,
+				25588AB8245A086800DC0897 /* license.dat in Resources */,
 				25B26BFC245768DF00A7CEB3 /* Assets.xcassets in Resources */,
 				25B26BFA245768DE00A7CEB3 /* Main.storyboard in Resources */,
 			);
