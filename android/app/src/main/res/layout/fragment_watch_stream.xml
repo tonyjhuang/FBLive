@@ -1,5 +1,6 @@
 
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/root"
     android:layout_width="match_parent"
@@ -27,4 +28,14 @@
 
     </LinearLayout>
 
-</FrameLayout>
+    <FrameLayout
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+        android:id="@+id/bottom_sheet_container"
+        android:layout_width="match_parent"
+        android:background="#FFF"
+        android:layout_height="300dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

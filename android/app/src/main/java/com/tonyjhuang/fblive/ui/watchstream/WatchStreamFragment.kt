@@ -6,6 +6,7 @@ import android.util.Pair
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -17,6 +18,7 @@ import com.google.android.exoplayer2.ui.DebugTextViewHelper
 import com.google.android.exoplayer2.ui.PlayerControlView
 import com.google.android.exoplayer2.ui.PlayerView
 import com.google.android.exoplayer2.util.ErrorMessageProvider
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.tonyjhuang.fblive.R
 import java.net.CookieHandler
 import java.net.CookieManager
@@ -79,6 +81,14 @@ class WatchStreamFragment : Fragment(), PlayerControlView.VisibilityListener {
             setErrorMessageProvider(PlayerErrorMessageProvider())
             requestFocus()
         }
+        val bottomSheetContainer = view.findViewById<FrameLayout>(R.id.bottom_sheet_container)
+        val bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetContainer)
+
+        bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+        bottomSheetBehavior.peekHeight = requireContext()
+            .resources
+            .getDimension(R.dimen.watch_chat_bottom_sheet_peek)
+            .toInt()
     }
 
     override fun onStart() {
