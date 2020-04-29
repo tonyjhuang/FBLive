@@ -25,6 +25,10 @@ import java.net.CookiePolicy
 
 class WatchStreamFragment : Fragment(), PlayerControlView.VisibilityListener {
 
+    private val defaultCookieManager = CookieManager().apply {
+        setCookiePolicy(CookiePolicy.ACCEPT_ORIGINAL_SERVER)
+    }
+
     private lateinit var viewModel: WatchStreamViewModel
 
     private lateinit var playerView: PlayerView
@@ -42,21 +46,25 @@ class WatchStreamFragment : Fragment(), PlayerControlView.VisibilityListener {
     ): View? {
         viewModel = ViewModelProvider(this).get(WatchStreamViewModel::class.java)
         val view = inflater.inflate(R.layout.fragment_watch_stream, container, false)
-        CookieHandler.setDefault(DEFAULT_COOKIE_MANAGER)
+        CookieHandler.setDefault(defaultCookieManager)
         streamUrl = arguments?.getString(URI_EXTRA) ?: DEFAULT_STREAM
 
         playerManager = PlayerManager(
             requireActivity(),
             requireContext(),
             streamUrl,
-            object : StreamPlayer.Listener() {
+            object : PlayerManager.Listener() {
                 override fun onPlayerError(e: ExoPlaybackException) {
                     initializePlayerManager()
+                }
+
+                override fun onErrorString(errorMsg: String) {
+                    showToast(errorMsg)
                 }
             })
 
         if (savedInstanceState != null) {
-            playerManager.restoreFromSavedInstanceState(savedInstanceState)
+            playerManager.restoreFrom(savedInstanceState)
         }
 
         setUpViews(view)
@@ -113,13 +121,12 @@ class WatchStreamFragment : Fragment(), PlayerControlView.VisibilityListener {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        playerManager.onSaveInstanceState(outState)
+        playerManager.saveTo(outState)
     }
 
     // PlaybackControlView.VisibilityListener implementation
     override fun onVisibilityChange(visibility: Int) {
         playerView.hideController()
-        //debugRootView.setVisibility(visibility);
     }
 
     private fun initializePlayerManager() {
@@ -170,12 +177,7 @@ class WatchStreamFragment : Fragment(), PlayerControlView.VisibilityListener {
 
 
     companion object {
-        // Media item configuration extras.
         const val URI_EXTRA = "uri"
-        private val DEFAULT_COOKIE_MANAGER = CookieManager().apply {
-            setCookiePolicy(CookiePolicy.ACCEPT_ORIGINAL_SERVER)
-        }
-
         private const val DEFAULT_STREAM =
             "https://stream.mux.com/uQYPThOb9025tjrsMyiHisTe0257eS00kCpbw301sl00h47M.m3u8"
     }
