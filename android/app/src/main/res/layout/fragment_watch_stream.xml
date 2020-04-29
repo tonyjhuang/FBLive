@@ -1,4 +1,3 @@
-
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -10,32 +9,23 @@
     <com.google.android.exoplayer2.ui.PlayerView
         android:id="@+id/player_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#88000000"
-        android:orientation="vertical">
-
-        <TextView android:id="@+id/debug_text_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="4dp"
-            android:paddingRight="4dp"
-            android:textSize="10sp"
-            tools:ignore="SmallSp"/>
-
-    </LinearLayout>
+        android:layout_height="match_parent"
+        app:resize_mode="zoom" />
 
     <FrameLayout
-        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
         android:id="@+id/bottom_sheet_container"
         android:layout_width="match_parent"
-        android:background="#FFF"
         android:layout_height="300dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        />
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/chat_bottom_sheet_container"
+            android:name="com.tonyjhuang.fblive.ui.watchstream.ChatFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></androidx.fragment.app.FragmentContainerView>
+
+    </FrameLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

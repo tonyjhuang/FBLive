@@ -17,12 +17,9 @@ import com.tonyjhuang.fblive.ui.watchstream.dummy.DummyContent.DummyItem
 /**
  * A fragment representing a list of Items.
  * Activities containing this fragment MUST implement the
- * [ChatFragment.OnListFragmentInteractionListener] interface.
+ *
  */
 class ChatFragment : Fragment() {
-
-    // TODO: Customize parameters
-    private var columnCount = 1
 
     private var listener: OnListFragmentInteractionListener? = null
 
@@ -35,10 +32,7 @@ class ChatFragment : Fragment() {
         // Set the adapter
         if (view is RecyclerView) {
             with(view) {
-                layoutManager = when {
-                    columnCount <= 1 -> LinearLayoutManager(context)
-                    else -> GridLayoutManager(context, columnCount)
-                }
+                layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, true)
                 adapter = ChatRecyclerViewAdapter(DummyContent.ITEMS, listener)
             }
         }
@@ -47,11 +41,6 @@ class ChatFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        if (context is OnListFragmentInteractionListener) {
-            listener = context
-        } else {
-            throw RuntimeException(context.toString() + " must implement OnListFragmentInteractionListener")
-        }
     }
 
     override fun onDetach() {

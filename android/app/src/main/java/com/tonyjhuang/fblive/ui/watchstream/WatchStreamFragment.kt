@@ -7,14 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
-import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.exoplayer2.ExoPlaybackException
 import com.google.android.exoplayer2.mediacodec.MediaCodecRenderer
 import com.google.android.exoplayer2.mediacodec.MediaCodecUtil
-import com.google.android.exoplayer2.ui.DebugTextViewHelper
 import com.google.android.exoplayer2.ui.PlayerControlView
 import com.google.android.exoplayer2.ui.PlayerView
 import com.google.android.exoplayer2.util.ErrorMessageProvider
@@ -34,10 +32,8 @@ class WatchStreamFragment : Fragment(), PlayerControlView.VisibilityListener {
     private lateinit var viewModel: WatchStreamViewModel
 
     private lateinit var playerView: PlayerView
-    private lateinit var debugTextView: TextView
-    private lateinit var debugViewHelper: DebugTextViewHelper
 
-    lateinit var playerManager: PlayerManager
+    private lateinit var playerManager: PlayerManager
 
     private lateinit var streamUrl: String
 
@@ -74,7 +70,6 @@ class WatchStreamFragment : Fragment(), PlayerControlView.VisibilityListener {
     }
 
     private fun setUpViews(view: View) {
-        debugTextView = view.findViewById(R.id.debug_text_view)
         playerView = view.findViewById<PlayerView>(R.id.player_view).apply {
             hideController()
             setControllerVisibilityListener(this@WatchStreamFragment)
@@ -143,15 +138,12 @@ class WatchStreamFragment : Fragment(), PlayerControlView.VisibilityListener {
         playerManager.initializePlayer {
             playerView.player = it
             playerView.setPlaybackPreparer(playerManager)
-            debugViewHelper = DebugTextViewHelper(it, debugTextView)
-            debugViewHelper.start()
         }
     }
 
 
     private fun releasePlayerManager() {
         playerManager.releasePlayer()
-        debugViewHelper.stop()
     }
 
 
