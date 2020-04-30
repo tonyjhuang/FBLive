@@ -22,26 +22,18 @@
             android:layout_margin="72dp"
             android:orientation="horizontal">
 
-            <Button
+            <ImageButton
                 android:id="@+id/prev"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:background="?selectableItemBackgroundBorderless"
-                android:enabled="true"
-                android:text="&lt;" />
+                style="@style/LeftNavArrow" />
 
             <Space
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_weight="1" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/next"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:background="?selectableItemBackgroundBorderless"
-                android:enabled="true"
-                android:text="&gt;" />
+                style="@style/RightNavArrow"  />
         </LinearLayout>
 
         <TextView

@@ -48,4 +48,22 @@
         <item name="android:textSize">26sp</item>
     </style>
 
+    <style name="NavArrow">
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:adjustViewBounds">true</item>
+        <item name="android:layout_width">56dp</item>>
+        <item name="android:layout_height">56dp</item>
+        <item name="android:background">?selectableItemBackgroundBorderless</item>
+    </style>
+
+    <style name="LeftNavArrow" parent="NavArrow">
+        <item name="android:src">@drawable/arrow_left</item>
+
+    </style>
+
+    <style name="RightNavArrow" parent="NavArrow">
+        <item name="android:src">@drawable/arrow_right</item>
+
+    </style>
+
 </resources>
