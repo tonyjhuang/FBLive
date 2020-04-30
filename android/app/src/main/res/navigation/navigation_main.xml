@@ -10,6 +10,9 @@
         android:name="com.tonyjhuang.fblive.ui.login.LoginFragment">
         <action
             android:id="@+id/action_login_to_home"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/navigation_main"
+            app:popUpToInclusive="true"
             app:destination="@+id/navigation_home" />
     </fragment>
 
