@@ -12,6 +12,9 @@
 		258EC767245B4C1300142722 /* StreamingToMUXManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258EC766245B4C1300142722 /* StreamingToMUXManager.swift */; };
 		258EC769245B4CD700142722 /* StreamaxiaSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 258EC768245B4CD700142722 /* StreamaxiaSDK.framework */; };
 		258EC76A245B4CD700142722 /* StreamaxiaSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 258EC768245B4CD700142722 /* StreamaxiaSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		258EC76F245B686B00142722 /* ag-streamer-sdk.key in Resources */ = {isa = PBXBuildFile; fileRef = 258EC76C245B686B00142722 /* ag-streamer-sdk.key */; };
+		258EC770245B686B00142722 /* ag-streamer-sdk.txt in Resources */ = {isa = PBXBuildFile; fileRef = 258EC76D245B686B00142722 /* ag-streamer-sdk.txt */; };
+		258EC771245B686B00142722 /* ag-streamer-sdk.config in Resources */ = {isa = PBXBuildFile; fileRef = 258EC76E245B686B00142722 /* ag-streamer-sdk.config */; };
 		25B26BF3245768DE00A7CEB3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B26BF2245768DE00A7CEB3 /* AppDelegate.swift */; };
 		25B26BF5245768DE00A7CEB3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B26BF4245768DE00A7CEB3 /* SceneDelegate.swift */; };
 		25B26BF7245768DE00A7CEB3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B26BF6245768DE00A7CEB3 /* ViewController.swift */; };
@@ -44,6 +47,9 @@
 		258EC764245B4B4400142722 /* MUXNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MUXNetworkManager.swift; sourceTree = "<group>"; };
 		258EC766245B4C1300142722 /* StreamingToMUXManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamingToMUXManager.swift; sourceTree = "<group>"; };
 		258EC768245B4CD700142722 /* StreamaxiaSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StreamaxiaSDK.framework; path = "Create Live/Frameworks/StreamaxiaSDK.framework"; sourceTree = "<group>"; };
+		258EC76C245B686B00142722 /* ag-streamer-sdk.key */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "ag-streamer-sdk.key"; sourceTree = "<group>"; };
+		258EC76D245B686B00142722 /* ag-streamer-sdk.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "ag-streamer-sdk.txt"; sourceTree = "<group>"; };
+		258EC76E245B686B00142722 /* ag-streamer-sdk.config */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "ag-streamer-sdk.config"; sourceTree = "<group>"; };
 		25B26BEF245768DE00A7CEB3 /* Create Live.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Create Live.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		25B26BF2245768DE00A7CEB3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		25B26BF4245768DE00A7CEB3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -119,6 +125,9 @@
 				25B26C0824576BA800A7CEB3 /* Podfile */,
 				25B26C00245768DF00A7CEB3 /* Info.plist */,
 				25B26C06245769C200A7CEB3 /* GoogleService-Info.plist */,
+				258EC76E245B686B00142722 /* ag-streamer-sdk.config */,
+				258EC76C245B686B00142722 /* ag-streamer-sdk.key */,
+				258EC76D245B686B00142722 /* ag-streamer-sdk.txt */,
 				257BAC652459D8C1009F78A1 /* JoinStreamViewController.swift */,
 			);
 			path = "Create Live";
@@ -197,9 +206,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				25B26C0924576BA800A7CEB3 /* Podfile in Resources */,
+				258EC771245B686B00142722 /* ag-streamer-sdk.config in Resources */,
 				25B26BFF245768DF00A7CEB3 /* LaunchScreen.storyboard in Resources */,
 				25B26C07245769C200A7CEB3 /* GoogleService-Info.plist in Resources */,
+				258EC76F245B686B00142722 /* ag-streamer-sdk.key in Resources */,
 				25B26BFC245768DF00A7CEB3 /* Assets.xcassets in Resources */,
+				258EC770245B686B00142722 /* ag-streamer-sdk.txt in Resources */,
 				25B26BFA245768DE00A7CEB3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
