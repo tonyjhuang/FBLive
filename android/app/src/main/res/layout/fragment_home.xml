@@ -8,10 +8,19 @@
     android:orientation="vertical"
     tools:context=".ui.login.LoginFragment">
 
+    <TextView
+        android:textStyle="bold"
+        android:layout_marginTop="64dp"
+        android:text="Firebase Live"
+        android:textSize="24sp"
+        android:textColor="@color/colorAccent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
     <Space
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_weight="0.7" />
 
     <Button
         android:id="@+id/start_broadcast"
