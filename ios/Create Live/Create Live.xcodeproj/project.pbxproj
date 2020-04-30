@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		257BAC662459D8C1009F78A1 /* JoinStreamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257BAC652459D8C1009F78A1 /* JoinStreamViewController.swift */; };
+		258EC765245B4B4400142722 /* MUXNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258EC764245B4B4400142722 /* MUXNetworkManager.swift */; };
+		258EC767245B4C1300142722 /* StreamingToMUXManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258EC766245B4C1300142722 /* StreamingToMUXManager.swift */; };
 		25B26BF3245768DE00A7CEB3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B26BF2245768DE00A7CEB3 /* AppDelegate.swift */; };
 		25B26BF5245768DE00A7CEB3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B26BF4245768DE00A7CEB3 /* SceneDelegate.swift */; };
 		25B26BF7245768DE00A7CEB3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B26BF6245768DE00A7CEB3 /* ViewController.swift */; };
@@ -23,6 +25,8 @@
 		0742B7CE7CCDF966076A8014 /* Pods-Create Live.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Create Live.debug.xcconfig"; path = "Target Support Files/Pods-Create Live/Pods-Create Live.debug.xcconfig"; sourceTree = "<group>"; };
 		1CFFD729EF41C4BBC1D577F4 /* Pods-Create Live.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Create Live.release.xcconfig"; path = "Target Support Files/Pods-Create Live/Pods-Create Live.release.xcconfig"; sourceTree = "<group>"; };
 		257BAC652459D8C1009F78A1 /* JoinStreamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinStreamViewController.swift; sourceTree = "<group>"; };
+		258EC764245B4B4400142722 /* MUXNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MUXNetworkManager.swift; sourceTree = "<group>"; };
+		258EC766245B4C1300142722 /* StreamingToMUXManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamingToMUXManager.swift; sourceTree = "<group>"; };
 		25B26BEF245768DE00A7CEB3 /* Create Live.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Create Live.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		25B26BF2245768DE00A7CEB3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		25B26BF4245768DE00A7CEB3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -56,6 +60,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		258EC763245B4B0B00142722 /* LivestreamUtils */ = {
+			isa = PBXGroup;
+			children = (
+				258EC764245B4B4400142722 /* MUXNetworkManager.swift */,
+				258EC766245B4C1300142722 /* StreamingToMUXManager.swift */,
+			);
+			path = LivestreamUtils;
+			sourceTree = "<group>";
+		};
 		25B26BE6245768DE00A7CEB3 = {
 			isa = PBXGroup;
 			children = (
@@ -78,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				25B26BF2245768DE00A7CEB3 /* AppDelegate.swift */,
+				258EC763245B4B0B00142722 /* LivestreamUtils */,
 				25B26BF4245768DE00A7CEB3 /* SceneDelegate.swift */,
 				25B26BF6245768DE00A7CEB3 /* ViewController.swift */,
 				25B26BF8245768DE00A7CEB3 /* Main.storyboard */,
@@ -253,6 +267,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				258EC767245B4C1300142722 /* StreamingToMUXManager.swift in Sources */,
+				258EC765245B4B4400142722 /* MUXNetworkManager.swift in Sources */,
 				257BAC662459D8C1009F78A1 /* JoinStreamViewController.swift in Sources */,
 				25B26BF7245768DE00A7CEB3 /* ViewController.swift in Sources */,
 				25B26BF3245768DE00A7CEB3 /* AppDelegate.swift in Sources */,
