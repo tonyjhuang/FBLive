@@ -21,20 +21,16 @@
         android:orientation="vertical">
 
         <TextView
-            android:padding="4dp"
             android:layout_height="wrap_content"
             android:id="@+id/stream_name"
             android:layout_width="match_parent"
-            android:gravity="center_vertical"
-            android:textAppearance="?attr/textAppearanceListItem" />
+            android:gravity="center_vertical"/>
 
         <TextView
             android:layout_height="wrap_content"
-            android:padding="4dp"
             android:id="@+id/creator_name"
             android:layout_width="match_parent"
-            android:gravity="center_vertical"
-            android:textAppearance="?attr/textAppearanceListItem" />
+            android:gravity="center_vertical" />
     </LinearLayout>
 
     <View

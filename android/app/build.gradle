@@ -3,6 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.google.gms.google-services'
 apply plugin: "androidx.navigation.safeargs.kotlin"
+apply plugin: 'com.google.firebase.firebase-perf'
 
 android {
     compileSdkVersion 29
@@ -52,6 +53,8 @@ dependencies {
     implementation 'com.google.android.gms:play-services-auth:18.0.0'// Firebase Core
     implementation 'com.google.firebase:firebase-core:17.4.0'
     implementation 'com.google.firebase:firebase-firestore:21.4.3'
+    implementation 'com.google.firebase:firebase-perf:19.0.7'
+
 
     implementation 'com.google.android.exoplayer:exoplayer:2.11.1'
     implementation "androidx.coordinatorlayout:coordinatorlayout:1.1.0"
