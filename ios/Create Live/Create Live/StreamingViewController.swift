@@ -15,24 +15,20 @@ class StreamingViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    // createMUXStream()
+    createMUXStream()
     
-    streamia = AXStreamaxiaSDK.sharedInstance()
+    // streamia = AXStreamaxiaSDK.sharedInstance()
     
-    streamia.setupSDK { (success, error) in
-      self.streamia.debugPrintStatus()
-    }
+    // streamia.setupSDK { (success, error) in
+      // self.streamia.debugPrintStatus()
+    // }
   }
   
   fileprivate func startRecording(with muxMetadata: MuxLiveStreamMetadata) {
     let info = AXStreamInfo.init()
     
     info.useSecureConnection = false
-    info.serverAddress = "rtmp://global-live.mux.com:5222/app"
-    info.applicationName = "Create Live"
-    info.streamName = "Stream name"
-    info.username = muxMetadata.id
-    info.password = muxMetadata.streamKey
+    info.customStreamURLString = "rtmp://global-live.mux.com:5222/app/\(muxMetadata.streamKey)"
     
     let recordSettings = AXRecorderSettings.init()
     
@@ -67,7 +63,7 @@ class StreamingViewController: UIViewController {
           assertionFailure()
           return
         }
-        self.startRecording(with: streamMetadata)
+        // self.startRecording(with: streamMetadata)
       }
     }
   }
