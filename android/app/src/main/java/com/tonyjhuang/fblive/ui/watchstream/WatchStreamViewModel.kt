@@ -6,8 +6,6 @@ import androidx.lifecycle.ViewModel
 
 class WatchStreamViewModel : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
-    }
-    val text: LiveData<String> = _text
+    val streamName = MutableLiveData<String>("My awesome stream!!")
+    val activeViewers = MutableLiveData<Int>(32)
 }

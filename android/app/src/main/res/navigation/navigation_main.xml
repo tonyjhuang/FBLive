@@ -2,14 +2,44 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_watch_stream">
+    android:id="@+id/navigation_main"
+    app:startDestination="@+id/navigation_discovery">
 
     <fragment
-        android:id="@+id/navigation_watch_stream"
-        android:name="com.tonyjhuang.fblive.ui.watchstream.WatchStreamFragment"
-        android:label="@string/title_watch_stream"
-        tools:layout="@layout/fragment_watch_stream" />
+        android:id="@+id/navigation_login"
+        android:name="com.tonyjhuang.fblive.ui.login.LoginFragment">
+        <action
+            android:id="@+id/action_login_to_home"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/navigation_main"
+            app:popUpToInclusive="true"
+            app:destination="@+id/navigation_home" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.tonyjhuang.fblive.ui.home.HomeFragment">
+        <action
+            android:id="@+id/action_home_to_discovery"
+            app:destination="@+id/navigation_discovery" />
+
+        <action
+            android:id="@+id/action_home_to_create_broadcast"
+            app:destination="@+id/navigation_create_broadcast" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_create_broadcast"
+        android:name="com.tonyjhuang.fblive.ui.createbroadcast.CreateBroadcastFragment"
+        android:label="create_broadcast"
+        tools:layout="@layout/fragment_create_broadcast">
+
+
+        <action
+            android:id="@+id/action_create_broadcast_to_broadcast"
+            app:destination="@+id/navigation_broadcast"
+            app:popUpTo="@+id/navigation_home" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_broadcast"
@@ -17,9 +47,21 @@
         android:label="@string/title_broadcast"
         tools:layout="@layout/fragment_broadcast" />
 
+
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.tonyjhuang.fblive.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_discovery"
+        android:name="com.tonyjhuang.fblive.ui.discovery.DiscoveryFragment"
+        tools:layout="@layout/fragment_discovery">
+
+        <action
+            android:id="@+id/action_discovery_to_watch_stream"
+            app:popUpTo="@+id/navigation_home"
+            app:destination="@+id/navigation_watch_stream" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_watch_stream"
+        android:name="com.tonyjhuang.fblive.ui.watchstream.WatchStreamFragment"
+        android:label="@string/title_watch_stream"
+        tools:layout="@layout/fragment_watch_stream" />
 </navigation>

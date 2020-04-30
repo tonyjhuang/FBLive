@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/CBFormContainer">
+
+    <TextView
+        style="@style/CBFormQuestion"
+        android:text="What's the name of your product?" />
+
+    <EditText
+        android:id="@+id/input"
+        style="@style/CBFormTextInput" />
+
+</LinearLayout>
