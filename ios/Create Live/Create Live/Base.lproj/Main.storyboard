@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -200,28 +200,57 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BYI-5u-kDr">
-                                <rect key="frame" x="350" y="64" width="44" height="44"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="BYI-5u-kDr">
+                                <rect key="frame" x="358" y="64" width="36" height="36"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="44" id="3el-t3-cGS"/>
-                                    <constraint firstAttribute="height" constant="44" id="vlK-nJ-Mvz"/>
+                                    <constraint firstAttribute="width" constant="36" id="3el-t3-cGS"/>
+                                    <constraint firstAttribute="height" constant="36" id="vlK-nJ-Mvz"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qOS-i1-LyT">
-                                <rect key="frame" x="331" y="64" width="11" height="21"/>
+                                <rect key="frame" x="339" y="64" width="11" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stream user ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fUL-qQ-6b3">
+                                <rect key="frame" x="20" y="101" width="114" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SDY-Uh-gq8">
+                                <rect key="frame" x="358" y="108" width="36" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="YDp-DM-lSK"/>
+                                    <constraint firstAttribute="width" constant="36" id="jrW-bB-IQv"/>
+                                </constraints>
+                                <inset key="contentEdgeInsets" minX="6" minY="1" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Button" image="share"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="caz-Kf-CKO">
+                                <rect key="frame" x="175" y="798" width="64" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="DBj-eA-9vx"/>
+                                    <constraint firstAttribute="width" constant="64" id="ys5-C5-ETC"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="up_arrow"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="P2a-53-4Si" firstAttribute="trailing" secondItem="BYI-5u-kDr" secondAttribute="trailing" constant="20" id="1Jo-zy-eGp"/>
+                            <constraint firstItem="fUL-qQ-6b3" firstAttribute="leading" secondItem="P2a-53-4Si" secondAttribute="leading" constant="20" id="4We-vK-tVw"/>
+                            <constraint firstItem="caz-Kf-CKO" firstAttribute="bottom" secondItem="P2a-53-4Si" secondAttribute="bottom" id="8Y6-d6-4zJ"/>
                             <constraint firstItem="qOS-i1-LyT" firstAttribute="top" secondItem="P2a-53-4Si" secondAttribute="top" constant="20" id="GLA-uo-ceF"/>
                             <constraint firstItem="Jyo-2y-8xC" firstAttribute="leading" secondItem="P2a-53-4Si" secondAttribute="leading" constant="20" id="JW2-CF-DoB"/>
+                            <constraint firstItem="fUL-qQ-6b3" firstAttribute="top" secondItem="Jyo-2y-8xC" secondAttribute="bottom" constant="16" id="OoM-DZ-QGI"/>
                             <constraint firstItem="Jyo-2y-8xC" firstAttribute="top" secondItem="P2a-53-4Si" secondAttribute="top" constant="20" id="Y4o-sZ-9ff"/>
+                            <constraint firstItem="caz-Kf-CKO" firstAttribute="centerX" secondItem="g8L-xf-gwq" secondAttribute="centerX" id="cmX-r9-WhB"/>
                             <constraint firstItem="BYI-5u-kDr" firstAttribute="top" secondItem="P2a-53-4Si" secondAttribute="top" constant="20" id="l6l-Bh-Xsu"/>
                             <constraint firstItem="BYI-5u-kDr" firstAttribute="leading" secondItem="qOS-i1-LyT" secondAttribute="trailing" constant="8" id="lNF-Dl-awf"/>
+                            <constraint firstItem="SDY-Uh-gq8" firstAttribute="top" secondItem="BYI-5u-kDr" secondAttribute="bottom" constant="8" id="mWK-ka-Qvr"/>
+                            <constraint firstItem="P2a-53-4Si" firstAttribute="trailing" secondItem="SDY-Uh-gq8" secondAttribute="trailing" constant="20" id="plV-fr-1qd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="P2a-53-4Si"/>
                     </view>
@@ -234,10 +263,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ksg-r0-m4n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1316" y="914"/>
+            <point key="canvasLocation" x="1027.536231884058" y="618.75"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="paU-Oe-OOS"/>
     </inferredMetricsTieBreakers>
+    <resources>
+        <image name="profile" width="116.66666412353516" height="116.66666412353516"/>
+        <image name="share" width="116.66666412353516" height="98"/>
+        <image name="up_arrow" width="116.66666412353516" height="116.66666412353516"/>
+    </resources>
 </document>
