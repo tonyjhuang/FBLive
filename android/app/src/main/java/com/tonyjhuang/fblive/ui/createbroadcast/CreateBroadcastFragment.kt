@@ -76,5 +76,11 @@ class CreateBroadcastFragment : Fragment() {
         } else {
             view?.next?.visibility = View.VISIBLE
         }
+
+        if (newIndex == 0) {
+            view?.prev?.visibility = View.GONE
+        } else {
+            view?.prev?.visibility = View.VISIBLE
+        }
     }
 }

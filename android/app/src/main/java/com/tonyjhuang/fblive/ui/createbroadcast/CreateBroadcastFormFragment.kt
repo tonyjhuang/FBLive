@@ -107,7 +107,6 @@ class ProductInventoryFragment : SimpleTextFieldFormFragment() {
     }
 
     override fun handleNewText(text: String) {
-        if (text.isNullOrEmpty()) return
         viewModel.setProductInventory(if (text.isEmpty()) 0 else text.toInt())
     }
 }

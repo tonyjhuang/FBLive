@@ -78,11 +78,11 @@ class CreateBroadcastViewModel : ViewModel() {
     }
 
     data class FormValues(
-        var broadcastName: String = "3",
-        var productName: String = "3",
-        var isAuction: Boolean? = false,
-        var productPrice: Number = 01.0,
-        var productInventory: Int = 1
+        var broadcastName: String = "",
+        var productName: String = "",
+        var isAuction: Boolean? = null,
+        var productPrice: Number = 0.0,
+        var productInventory: Int = 0
     )
 
     enum class FormState {
