@@ -9,8 +9,9 @@
 import UIKit
 
 struct MuxLiveStreamMetadata {
-  let playbackId: String
+  let id: String
   let streamKey: String
+  let playbackId: String
 }
 
 class MUXNetworkManager {
@@ -64,7 +65,8 @@ class MUXNetworkManager {
           }
           
           guard let dataDictionary = result["data"] as? [String: AnyObject],
-               let streamKey = dataDictionary["stream_key"] as? String else {
+               let streamKey = dataDictionary["stream_key"] as? String,
+               let id = dataDictionary["id"] as? String else {
             assertionFailure("Response for MUX create live stream didn't have a stream key")
             return
           }
@@ -80,7 +82,9 @@ class MUXNetworkManager {
             return
           }
           
-          completion(nil, MuxLiveStreamMetadata(playbackId: playbackId, streamKey: streamKey))
+          completion(nil, MuxLiveStreamMetadata(id: id,
+                                                streamKey: streamKey,
+                                                playbackId: playbackId))
         } catch {
           completion(error, nil)
         }

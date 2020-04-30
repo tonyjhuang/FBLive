@@ -31,7 +31,7 @@ class StreamingViewController: UIViewController {
     info.serverAddress = "rtmp://global-live.mux.com:5222/app"
     info.applicationName = "Create Live"
     info.streamName = "Stream name"
-    info.username = muxMetadata.playbackId
+    info.username = muxMetadata.id
     info.password = muxMetadata.streamKey
     
     let recordSettings = AXRecorderSettings.init()
