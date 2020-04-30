@@ -54,7 +54,7 @@
         <!--Watching View Controller-->
         <scene sceneID="syN-uG-phO">
             <objects>
-                <viewController id="Rvh-ba-stH" userLabel="Watching View Controller" sceneMemberID="viewController">
+                <viewController id="Rvh-ba-stH" userLabel="Watching View Controller" customClass="WatchingViewController" customModule="Create_Live" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2Ek-WM-Fsq">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

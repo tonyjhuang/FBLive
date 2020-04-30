@@ -12,6 +12,7 @@
 		25588AC0245A0A2900DC0897 /* StreamaxiaSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 25588ABE245A0A2900DC0897 /* StreamaxiaSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		257BAC622458B49E009F78A1 /* StreamingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257BAC612458B49E009F78A1 /* StreamingViewController.swift */; };
 		257BAC642458B6AB009F78A1 /* MUXNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257BAC632458B6AB009F78A1 /* MUXNetworkManager.swift */; };
+		258EC762245B3BCD00142722 /* WatchingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258EC761245B3BCD00142722 /* WatchingViewController.swift */; };
 		25B26BF3245768DE00A7CEB3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B26BF2245768DE00A7CEB3 /* AppDelegate.swift */; };
 		25B26BF5245768DE00A7CEB3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B26BF4245768DE00A7CEB3 /* SceneDelegate.swift */; };
 		25B26BF7245768DE00A7CEB3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B26BF6245768DE00A7CEB3 /* ViewController.swift */; };
@@ -44,6 +45,7 @@
 		25588ABE245A0A2900DC0897 /* StreamaxiaSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StreamaxiaSDK.framework; path = "Create Live/Frameworks/StreamaxiaSDK.framework"; sourceTree = "<group>"; };
 		257BAC612458B49E009F78A1 /* StreamingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamingViewController.swift; sourceTree = "<group>"; };
 		257BAC632458B6AB009F78A1 /* MUXNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MUXNetworkManager.swift; sourceTree = "<group>"; };
+		258EC761245B3BCD00142722 /* WatchingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchingViewController.swift; sourceTree = "<group>"; };
 		25B26BEF245768DE00A7CEB3 /* Create Live.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Create Live.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		25B26BF2245768DE00A7CEB3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		25B26BF4245768DE00A7CEB3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				25B26C06245769C200A7CEB3 /* GoogleService-Info.plist */,
 				257BAC612458B49E009F78A1 /* StreamingViewController.swift */,
 				257BAC632458B6AB009F78A1 /* MUXNetworkManager.swift */,
+				258EC761245B3BCD00142722 /* WatchingViewController.swift */,
 			);
 			path = "Create Live";
 			sourceTree = "<group>";
@@ -257,6 +260,7 @@
 				257BAC622458B49E009F78A1 /* StreamingViewController.swift in Sources */,
 				25B26BF3245768DE00A7CEB3 /* AppDelegate.swift in Sources */,
 				25B26BF5245768DE00A7CEB3 /* SceneDelegate.swift in Sources */,
+				258EC762245B3BCD00142722 /* WatchingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
