@@ -5,12 +5,16 @@ import androidx.lifecycle.ViewModel
 
 class CreateBroadcastViewModel : ViewModel() {
 
+    private val formValues = FormValues()
+
     private var currentStateFormPosition = 0
-    set(value) {
-        field = value
-        currentState.postValue(STATE_ORDER[value])
-    }
+        set(value) {
+            field = value
+            currentState.postValue(STATE_ORDER[value])
+        }
     val currentState = MutableLiveData<FormState>(FormState.BROADCAST_NAME)
+
+    val isAuction = MutableLiveData<Boolean>()
 
     fun clear() {
 
@@ -29,6 +33,31 @@ class CreateBroadcastViewModel : ViewModel() {
             else -> currentStateFormPosition -= 1
         }
     }
+
+    fun setBroadcastName(input: String) {
+        formValues.broadcastName = input
+    }
+    fun setProductName(input: String) {
+        formValues.productName = input
+    }
+    fun setIsAuction(input: Boolean) {
+        formValues.isAuction = input
+        isAuction.postValue(input)
+    }
+    fun setProductPrice(input: Number) {
+        formValues.productPrice = input
+    }
+    fun setProductInventory(input: Int) {
+        formValues.productInventory = input
+    }
+
+    data class FormValues(
+        var broadcastName: String = "",
+        var productName: String = "",
+        var isAuction: Boolean = false,
+        var productPrice: Number = 0.0,
+        var productInventory: Int = 0
+    )
 
     enum class FormState {
         EXIT,

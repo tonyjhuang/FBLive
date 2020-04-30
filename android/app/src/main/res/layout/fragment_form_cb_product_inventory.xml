@@ -4,10 +4,11 @@
 
     <TextView
         style="@style/CBFormQuestion"
-        android:text="What's the name of your product?" />
+        android:text="How many are you selling?" />
 
     <EditText
         android:id="@+id/input"
+        android:inputType="number"
         style="@style/CBFormTextInput" />
 
     <Button

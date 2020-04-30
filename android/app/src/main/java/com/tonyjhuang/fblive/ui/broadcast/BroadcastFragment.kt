@@ -95,9 +95,11 @@ class BroadcastFragment : Fragment() {
     }
 
     private fun prepareToStream() {
-        publisher.onStart()
         cameraView.startCamera()
-        stopChronometer()
+        cameraView.post {
+            publisher.onStart()
+        }
+
     }
 
     override fun onStop() {
