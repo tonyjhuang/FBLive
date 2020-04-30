@@ -40,22 +40,16 @@
             app:destination="@+id/navigation_broadcast" />
     </fragment>
 
-
-    <fragment
-        android:id="@+id/navigation_watch_stream"
-        android:name="com.tonyjhuang.fblive.ui.watchstream.WatchStreamFragment"
-        android:label="@string/title_watch_stream"
-        tools:layout="@layout/fragment_watch_stream" />
-
     <fragment
         android:id="@+id/navigation_broadcast"
         android:name="com.tonyjhuang.fblive.ui.broadcast.BroadcastFragment"
         android:label="@string/title_broadcast"
         tools:layout="@layout/fragment_broadcast" />
 
+
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.tonyjhuang.fblive.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_watch_stream"
+        android:name="com.tonyjhuang.fblive.ui.watchstream.WatchStreamFragment"
+        android:label="@string/title_watch_stream"
+        tools:layout="@layout/fragment_watch_stream" />
 </navigation>
