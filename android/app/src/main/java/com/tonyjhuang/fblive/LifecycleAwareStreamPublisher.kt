@@ -16,7 +16,7 @@ import java.lang.ref.WeakReference
 class LifecycleAwareStreamPublisher(
     private val context: WeakReference<Context>,
     private val listener: Listener
-) : LifecycleEventObserver {
+) {
 
     private val rtmpListener: RtmpHandler.RtmpListener = RtmpListener()
     private val recordListener: RecordHandler.RecordListener =
@@ -26,20 +26,13 @@ class LifecycleAwareStreamPublisher(
 
     private lateinit var publisher: StreamaxiaPublisher
 
-    override fun onStateChanged(source: LifecycleOwner, event: Lifecycle.Event) {
-        when (event) {
-            Lifecycle.Event.ON_START -> {
-                setStreamerDefaultValues()
-            }
-            Lifecycle.Event.ON_STOP -> {
-                stopPublish()
-            }
-            else -> {/* intentionally left blank */
-            }
-        }
-
+    fun onStart() {
+        setStreamerDefaultValues()
     }
 
+    fun onStop() {
+        stopPublish()
+    }
 
     private fun setStreamerDefaultValues() {
         val context = this.context.get() ?: return

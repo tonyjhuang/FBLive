@@ -6,6 +6,64 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorButtonNormal">@null</item>
+
+    </style>
+
+    <style name="ChatEmoji">
+        <item name="android:layout_width">48dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:background">?selectableItemBackgroundBorderless</item>
+    </style>
+
+    <style name="CBFormContainer">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:padding">56dp</item>
+    </style>
+
+    <style name="CBFormQuestion">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="CBFormTextInput">
+        <item name="android:paddingTop">32dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">top|center_horizontal</item>
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:background">@null</item>
+        <item name="android:textSize">26sp</item>
+    </style>
+
+    <style name="NavArrow">
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:adjustViewBounds">true</item>
+        <item name="android:layout_width">56dp</item>>
+        <item name="android:layout_height">56dp</item>
+        <item name="android:background">?selectableItemBackgroundBorderless</item>
+    </style>
+
+    <style name="LeftNavArrow" parent="NavArrow">
+        <item name="android:src">@drawable/arrow_left</item>
+
+    </style>
+
+    <style name="RightNavArrow" parent="NavArrow">
+        <item name="android:src">@drawable/arrow_right</item>
+
     </style>
 
 </resources>

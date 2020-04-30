@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/CBFormContainer">
+
+    <TextView
+        style="@style/CBFormQuestion"
+        android:text="Do you want to sell this product through an auction?" />
+
+    <Button
+        android:id="@+id/is_auction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:padding="16dp"
+        android:text="Yes, I'm selling one item" />
+
+    <Button
+        android:id="@+id/is_not_auction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:padding="16dp"
+        android:text="No, I'll set the price" />
+
+</LinearLayout>

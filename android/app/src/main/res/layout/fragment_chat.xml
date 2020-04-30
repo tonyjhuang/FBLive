@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/emoji_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/emoji_heart"
+            style="@style/ChatEmoji"
+            android:text="❤️" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/emoji_fire"
+            style="@style/ChatEmoji"
+            android:text="🔥" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/emoji_laugh"
+            style="@style/ChatEmoji"
+            android:text="😂" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/emoji_thumbs_up"
+            style="@style/ChatEmoji"
+            android:text="️👍" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/chat_background"
+        android:layout_marginBottom="4dp"
+        android:elevation="3dp"
+        android:outlineProvider="bounds"
+        android:padding="3dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/messages_list"
+            android:layout_marginTop="8dp"
+            android:name="com.tonyjhuang.fblive.ui.watchstream.ChatFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/input_container"
+            app:layoutManager="LinearLayoutManager"
+            android:layout_marginBottom="4dp"
+            tools:context=".ui.watchstream.ChatFragment"
+            tools:listitem="@layout/list_item_message" />
+
+        <LinearLayout
+            android:id="@+id/input_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:gravity="center_vertical"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/new_message_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/chat_new_message_background"
+                android:hint="Say something nice" />
+
+            <Button
+                android:id="@+id/send_new_message"
+                android:textSize="16sp"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="?selectableItemBackgroundBorderless"
+                android:text=">" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="16dp" />
+</LinearLayout>

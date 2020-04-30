@@ -74,33 +74,37 @@ class BroadcastFragment : Fragment() {
             StreamListener()
         ).apply {
             bindTo(cameraView)
-            lifecycle.addObserver(this)
         }
     }
 
     private fun getPermissions() {
         simplePermissionsChecker.getPermissions(
             REQUIRED_PERMISSIONS,
-            { /* intentionally left blank */ },
-            {
-                showToast("Please grant permissions")
-                // TODO show error
-            }
+            { prepareToStream() },
+            { showToast("Please grant permissions") }
         )
     }
 
     override fun onStart() {
         super.onStart()
         if (simplePermissionsChecker.hasPermissions(REQUIRED_PERMISSIONS)) {
-            cameraView.startCamera()
-            stopChronometer()
+            prepareToStream()
         } else {
             getPermissions()
         }
     }
 
+    private fun prepareToStream() {
+        cameraView.startCamera()
+        cameraView.post {
+            publisher.onStart()
+        }
+
+    }
+
     override fun onStop() {
         super.onStop()
+        publisher.onStop()
         cameraView.stopCamera()
         isStreaming = false
     }
