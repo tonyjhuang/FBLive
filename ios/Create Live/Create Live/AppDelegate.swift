@@ -11,19 +11,16 @@ import Firebase
 import FirebaseFirestore
 import GoogleSignIn
 import FirebaseAuth
+import FirebaseCrashlytics
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
-    
+class AppDelegate: UIResponder, UIApplicationDelegate {
+
     
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
-        let db = Firestore.firestore()
-        print(db)
-        // Set up Google sign in.
-        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
-        GIDSignIn.sharedInstance().delegate = self
+        
         return true
     }
     
@@ -47,34 +44,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
-    
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
-        if let error = error {
-            print("Sign in failure: ",error)
-            return
-        }
-        // Get credentials from Google
-        guard let authentication = user.authentication else { return }
-        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
-                                                       accessToken: authentication.accessToken)
-        // Use Google credential to authenticate with Firebase
-        Auth.auth().signIn(with: credential) { (authResult, error) in
-            if let error = error {
-                print(error.localizedDescription)
-                return
-            }
-            print("Signed in")
-            return
-            
-        }
-        
-    }
-    
-    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
-        // Perform any operations when the user disconnects from app here.
-        // ...
-    }
-    
-    
 }
 

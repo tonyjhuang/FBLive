@@ -17,6 +17,11 @@
 		25B26C07245769C200A7CEB3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 25B26C06245769C200A7CEB3 /* GoogleService-Info.plist */; };
 		25B26C0924576BA800A7CEB3 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 25B26C0824576BA800A7CEB3 /* Podfile */; };
 		858FE76C636AFB51498B8D17 /* Pods_Create_Live.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E33C79A5602DBD250D1B677A /* Pods_Create_Live.framework */; };
+		EDA51E94245A4B9000D6E43F /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA51E93245A4B9000D6E43F /* WelcomeViewController.swift */; };
+		EDA51E96245A7E2600D6E43F /* CreateStreamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA51E95245A7E2600D6E43F /* CreateStreamViewController.swift */; };
+		EDA51E98245A7FA400D6E43F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA51E97245A7FA400D6E43F /* User.swift */; };
+		EDA51E9A245A876900D6E43F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA51E99245A876900D6E43F /* ProfileViewController.swift */; };
+		EDA51E9C245B2C7900D6E43F /* ItemViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA51E9B245B2C7900D6E43F /* ItemViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +39,11 @@
 		25B26C06245769C200A7CEB3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		25B26C0824576BA800A7CEB3 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		E33C79A5602DBD250D1B677A /* Pods_Create_Live.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Create_Live.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDA51E93245A4B9000D6E43F /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		EDA51E95245A7E2600D6E43F /* CreateStreamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateStreamViewController.swift; sourceTree = "<group>"; };
+		EDA51E97245A7FA400D6E43F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		EDA51E99245A876900D6E43F /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		EDA51E9B245B2C7900D6E43F /* ItemViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,9 +88,14 @@
 			isa = PBXGroup;
 			children = (
 				25B26BF2245768DE00A7CEB3 /* AppDelegate.swift */,
+				EDA51E97245A7FA400D6E43F /* User.swift */,
 				25B26BF4245768DE00A7CEB3 /* SceneDelegate.swift */,
 				25B26BF6245768DE00A7CEB3 /* ViewController.swift */,
+				EDA51E99245A876900D6E43F /* ProfileViewController.swift */,
+				EDA51E93245A4B9000D6E43F /* WelcomeViewController.swift */,
+				EDA51E9B245B2C7900D6E43F /* ItemViewCell.swift */,
 				25B26BF8245768DE00A7CEB3 /* Main.storyboard */,
+				EDA51E95245A7E2600D6E43F /* CreateStreamViewController.swift */,
 				25B26BFB245768DF00A7CEB3 /* Assets.xcassets */,
 				25B26BFD245768DF00A7CEB3 /* LaunchScreen.storyboard */,
 				25B26C0824576BA800A7CEB3 /* Podfile */,
@@ -253,10 +268,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDA51E9C245B2C7900D6E43F /* ItemViewCell.swift in Sources */,
 				257BAC662459D8C1009F78A1 /* JoinStreamViewController.swift in Sources */,
 				25B26BF7245768DE00A7CEB3 /* ViewController.swift in Sources */,
+				EDA51E96245A7E2600D6E43F /* CreateStreamViewController.swift in Sources */,
 				25B26BF3245768DE00A7CEB3 /* AppDelegate.swift in Sources */,
+				EDA51E94245A4B9000D6E43F /* WelcomeViewController.swift in Sources */,
 				25B26BF5245768DE00A7CEB3 /* SceneDelegate.swift in Sources */,
+				EDA51E9A245A876900D6E43F /* ProfileViewController.swift in Sources */,
+				EDA51E98245A7FA400D6E43F /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

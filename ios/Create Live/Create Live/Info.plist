@@ -64,6 +64,10 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>Firebase Live requires access to your camera for creating a live stream.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Firebase Live requires access to your microphone for creating a live stream.</string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
