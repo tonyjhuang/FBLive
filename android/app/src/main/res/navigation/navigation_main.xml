@@ -35,6 +35,7 @@
 
 
         <action
+            app:popUpTo="@+id/navigation_home"
             android:id="@+id/action_create_broadcast_to_broadcast"
             app:destination="@+id/navigation_broadcast" />
     </fragment>

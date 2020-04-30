@@ -31,9 +31,15 @@ class CreateBroadcastViewModel : ViewModel() {
 
     fun next() {
         when (currentStateFormPosition) {
-            STATE_ORDER.size - 1 -> currentState.postValue(FormState.SUCCESS)
+            STATE_ORDER.size - 1 -> createBroadcast()
             else -> if (canProceed.value == true) currentStateFormPosition += 1
         }
+    }
+
+    private fun createBroadcast() {
+        canProceed.postValue(false)
+        _currentState = FormState.SUCCESS
+        // TODO create broadcast
     }
 
     fun prev() {
