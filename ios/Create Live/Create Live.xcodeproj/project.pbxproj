@@ -93,15 +93,15 @@
 				25B26BF6245768DE00A7CEB3 /* ViewController.swift */,
 				EDA51E99245A876900D6E43F /* ProfileViewController.swift */,
 				EDA51E93245A4B9000D6E43F /* WelcomeViewController.swift */,
-				EDA51E9B245B2C7900D6E43F /* ItemViewCell.swift */,
-				25B26BF8245768DE00A7CEB3 /* Main.storyboard */,
 				EDA51E95245A7E2600D6E43F /* CreateStreamViewController.swift */,
+				EDA51E9B245B2C7900D6E43F /* ItemViewCell.swift */,
+				257BAC652459D8C1009F78A1 /* JoinStreamViewController.swift */,
+				25B26BF8245768DE00A7CEB3 /* Main.storyboard */,
 				25B26BFB245768DF00A7CEB3 /* Assets.xcassets */,
 				25B26BFD245768DF00A7CEB3 /* LaunchScreen.storyboard */,
 				25B26C0824576BA800A7CEB3 /* Podfile */,
 				25B26C00245768DF00A7CEB3 /* Info.plist */,
 				25B26C06245769C200A7CEB3 /* GoogleService-Info.plist */,
-				257BAC652459D8C1009F78A1 /* JoinStreamViewController.swift */,
 			);
 			path = "Create Live";
 			sourceTree = "<group>";

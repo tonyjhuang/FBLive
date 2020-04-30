@@ -8,6 +8,16 @@
 
 import UIKit
 import FirebaseFirestore
+import CodableFirebase
+
+public  struct OrderModel {
+    let price: Float
+    let user: String
+    let itemName: String
+    let item_photo_url: String
+    let purchaseTime: Date
+    
+}
 
 public extension UIImageView {
     func downloaded(from url: URL, contentMode mode: UIView.ContentMode = .scaleAspectFit) {  // for swift 4.2 syntax just use ===> mode: UIView.ContentMode
@@ -30,54 +40,51 @@ public extension UIImageView {
     }
 }
 class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        <#code#>
-    }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
-    }
     
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var itemsBoughtTable: UITableView!
     @IBOutlet weak var itemsSoldTable: UITableView!
-    let db = Firestore.firestore()
     
+    let db = Firestore.firestore()
+    var itemsBought: [OrderModel] = []
+    var itemsSold: [OrderModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         profileImage.downloaded(from: UserDefaults.standard.string(forKey: "photo_url")!)
         userNameLabel.text = UserDefaults.standard.string(forKey: "name")
+        fetchOrders("buyer")
         // Do any additional setup after loading the view.
     }
     
+    // field is either buyer or seller depending on which table to populate
     func fetchOrders(_ field: String) {
-        db.collection("orders").whereField(field, isEqualTo: UserDefaults.standard.string(forKey:"uid"))
-             .getDocuments() { (querySnapshot, err) in
-                 if let err = err {
-                     print("HERE \(err)")
-                 } else {
-                     if querySnapshot!.documents.count == 0 {
-                        }
-                     } else {
+        db.collection("orders").whereField(field, isEqualTo: UserDefaults.standard.string(forKey:"uid")!)
+            .getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("HERE \(err)")
+                } else {
+                    
+                    for order in querySnapshot!.documents {
+                        print(order.data())
                     }
-                 }git 
-             
-             
-         }
+                    
+                    
+                    
+                }
+        }
+        
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
     }
-    */
-
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = itemsBoughtTable.dequeueReusableCell(withIdentifier: "ItemBoughtCell")
+        cell?.textLabel?.text = "HI"
+        return cell!
+    }
 }
-

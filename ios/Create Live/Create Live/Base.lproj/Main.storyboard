@@ -17,6 +17,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <segue destination="lla-cf-USh" kind="show" identifier="ToWelcomeScreenSegue" id="paU-Oe-OOS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -63,6 +66,7 @@
                         <accessibility key="accessibilityConfiguration" identifier="CompleteInfoViewController"/>
                         <viewLayoutGuide key="safeArea" id="n6n-wW-IrH"/>
                     </view>
+                    <navigationItem key="navigationItem" id="CdS-cA-BQU"/>
                     <connections>
                         <outlet property="greetLabel" destination="pl3-Jr-Xd8" id="CZB-m6-zBn"/>
                     </connections>
@@ -134,8 +138,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="gv4-zl-Tcu"/>
                     <connections>
-                        <outlet property="itemBoughtTable" destination="UJb-Gi-bmS" id="E6r-hk-kJy"/>
-                        <outlet property="itemSoldTable" destination="Yk8-rD-Vi1" id="mGQ-bU-IiE"/>
                         <outlet property="itemsBoughtTable" destination="UJb-Gi-bmS" id="GF2-oy-lT9"/>
                         <outlet property="itemsSoldTable" destination="Yk8-rD-Vi1" id="7M3-4W-w1f"/>
                         <outlet property="profileImage" destination="uVZ-vX-eH0" id="G1W-TB-nwo"/>
@@ -149,7 +151,7 @@
         <!--Create Stream View Controller-->
         <scene sceneID="dbg-5f-e87">
             <objects>
-                <viewController id="Hlt-Kl-QDv" customClass="CreateStreamViewController" customModule="Create_Live" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CreateStreamViewController" id="Hlt-Kl-QDv" customClass="CreateStreamViewController" customModule="Create_Live" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2RN-aK-q6e">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -235,4 +237,7 @@
             <point key="canvasLocation" x="1316" y="914"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="paU-Oe-OOS"/>
+    </inferredMetricsTieBreakers>
 </document>

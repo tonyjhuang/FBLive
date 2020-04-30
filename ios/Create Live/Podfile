@@ -13,6 +13,6 @@ target 'Create Live' do
   pod 'Firebase/Performance'
   pod 'Firebase/Auth'
   pod 'GoogleSignIn'
-  
+  pod 'CodableFirebase'
 
 end

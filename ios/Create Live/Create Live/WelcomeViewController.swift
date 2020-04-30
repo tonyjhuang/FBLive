@@ -62,8 +62,8 @@ class WelcomeViewController: UIViewController {
     
     func toStartStream() {
           let storyboard = UIStoryboard(name:"Main", bundle:nil)
-          let startStreamVC = storyboard.instantiateViewController(identifier: "StartStreamViewController")
-          startStreamVC.modalPresentationStyle = .overCurrentContext
+          let startStreamVC = storyboard.instantiateViewController(identifier: "CreateStreamViewController")
+          startStreamVC.modalPresentationStyle = .fullScreen
           self.present(startStreamVC, animated: true, completion: nil)
     }
     

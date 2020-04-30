@@ -17,6 +17,7 @@ import FirebaseCrashlytics
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     
+    var navigationController: UINavigationController?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
