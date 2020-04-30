@@ -73,7 +73,7 @@ class JoinStreamViewController: UIViewController {
                 if querySnapshot?.count == 0 {
                     print("Stream not found")
                 } else {
-                    self.stream = try! FirestoreDecoder().decode(Stream.self, from:querySnapshot?.documents[0].data() ?? <#default value#>)
+                  self.stream = try! FirestoreDecoder().decode(Stream.self, from:querySnapshot?.documents[0].data() ?? [String: Any]())
                     
                 }
             }
