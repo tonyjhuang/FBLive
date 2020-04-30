@@ -49,6 +49,9 @@ class CreateBroadcastFragment : Fragment() {
         viewModel.currentState.observe(viewLifecycleOwner, Observer { newState ->
             handleNewState(newState)
         })
+        viewModel.canProceed.observe(viewLifecycleOwner, Observer { canProceed ->
+            view.next.isEnabled = canProceed
+        })
     }
 
     private fun handleNewState(newState: CreateBroadcastViewModel.FormState) {
@@ -67,5 +70,11 @@ class CreateBroadcastFragment : Fragment() {
             .first { it.value == newState}
             .index
         pager.currentItem = newIndex
+
+        if (newIndex == CreateBroadcastViewModel.STATE_ORDER.size - 1) {
+            view?.next?.visibility = View.GONE
+        } else {
+            view?.next?.visibility = View.VISIBLE
+        }
     }
 }

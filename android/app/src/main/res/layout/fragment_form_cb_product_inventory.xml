@@ -9,6 +9,7 @@
     <EditText
         android:id="@+id/input"
         android:inputType="number"
+        android:layout_height="wrap_content"
         style="@style/CBFormTextInput" />
 
     <Button
@@ -16,8 +17,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:enabled="false"
         android:backgroundTint="@color/colorAccent"
         android:padding="16dp"
-        android:text="No, I'll set the price" />
+        android:text="Start livestream!" />
 
 </LinearLayout>

@@ -14,6 +14,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import com.tonyjhuang.fblive.R
 import kotlinx.android.synthetic.main.fragment_form_cb_is_auction.view.*
+import kotlinx.android.synthetic.main.fragment_form_cb_product_inventory.view.*
 
 sealed class CreateBroadcastFormFragment : Fragment() {
 
@@ -84,25 +85,30 @@ class IsAuctionFragment : CreateBroadcastFormFragment() {
             viewModel.setIsAuction(false)
         }
     }
-
-    private fun setActive(button: Button) {
-
-    }
 }
 
 class ProductPriceFragment : SimpleTextFieldFormFragment() {
     override fun getContentLayoutId() = R.layout.fragment_form_cb_product_price
 
     override fun handleNewText(text: String) {
-        viewModel.setProductPrice(text.toDouble())
+        viewModel.setProductPrice(if (text.isEmpty()) 0 else text.toDouble())
     }
 }
 
 class ProductInventoryFragment : SimpleTextFieldFormFragment() {
     override fun getContentLayoutId() = R.layout.fragment_form_cb_product_inventory
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        view.start_broadcast.setOnClickListener { viewModel.next() }
+        viewModel.canProceed.observe(viewLifecycleOwner, Observer {
+            view.start_broadcast.isEnabled = it
+        })
+    }
+
     override fun handleNewText(text: String) {
-        viewModel.setProductInventory(text.toInt())
+        if (text.isNullOrEmpty()) return
+        viewModel.setProductInventory(if (text.isEmpty()) 0 else text.toInt())
     }
 }
 
