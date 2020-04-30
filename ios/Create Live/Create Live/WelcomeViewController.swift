@@ -15,12 +15,12 @@ class WelcomeViewController: UIViewController {
     @IBAction func startLiveStream(_ sender: UIButton) {
         switch AVCaptureDevice.authorizationStatus(for: .video) {
             case .authorized: // The user has previously granted access to the camera.
-                self.getMicrophonePermission()
+                return self.getMicrophonePermission()
             
             case .notDetermined: // The user has not yet been asked for camera access.
                 AVCaptureDevice.requestAccess(for: .video) { granted in
                     if granted {
-                        self.getMicrophonePermission()
+                        return self.getMicrophonePermission()
                     }
                 }
             
@@ -42,12 +42,12 @@ class WelcomeViewController: UIViewController {
     func getMicrophonePermission() {
         switch AVCaptureDevice.authorizationStatus(for: .audio) {
             case .authorized: // The user has previously granted access to the camera.
-                toStartStream()
+                return toStartStream()
             
             case .notDetermined: // The user has not yet been asked for camera access.
                 AVCaptureDevice.requestAccess(for: .video) { granted in
                     if granted {
-                        self.toStartStream()
+                    return self.toStartStream()
                     }
                 }
             
@@ -64,7 +64,7 @@ class WelcomeViewController: UIViewController {
           let storyboard = UIStoryboard(name:"Main", bundle:nil)
           let startStreamVC = storyboard.instantiateViewController(identifier: "CreateStreamViewController")
           startStreamVC.modalPresentationStyle = .fullScreen
-          self.present(startStreamVC, animated: true, completion: nil)
+          self.present(startStreamVC, animated: false, completion: nil)
     }
     
 

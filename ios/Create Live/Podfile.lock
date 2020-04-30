@@ -357,8 +357,11 @@ DEPENDENCIES:
   - GoogleSignIn
 
 SPEC REPOS:
+  "git@github.com:firebase/SpecsStaging.git":
+    - nanopb
   https://cdn.cocoapods.org/:
     - abseil
+    - AppAuth
     - BoringSSL-GRPC
     - CodableFirebase
     - Firebase
@@ -379,21 +382,20 @@ SPEC REPOS:
     - GoogleDataTransportCCTSupport
     - GoogleSignIn
     - GoogleToolboxForMac
+    - GoogleUtilities
     - "gRPC-C++"
     - gRPC-Core
     - GTMAppAuth
+    - GTMSessionFetcher
     - leveldb-library
     - nanopb
     - PromisesObjC
   https://github.com/CocoaPods/Specs.git:
-    - AppAuth
     - FirebaseAnalyticsInterop
-    - GTMSessionFetcher
     - Protobuf
   sso://cpdc-internal/firebase:
     - FirebaseCore
     - FirebaseFirestore
-    - GoogleUtilities
 
 SPEC CHECKSUMS:
   abseil: 18063d773f5366ff8736a050fe035a28f635fd27

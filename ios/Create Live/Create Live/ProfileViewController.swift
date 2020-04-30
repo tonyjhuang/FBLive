@@ -10,13 +10,24 @@ import UIKit
 import FirebaseFirestore
 import CodableFirebase
 
-public  struct OrderModel {
+extension Timestamp: TimestampType {}
+extension DocumentReference: DocumentReferenceType {}
+
+public  struct OrderModel: Decodable{
     let price: Float
-    let user: String
-    let itemName: String
-    let item_photo_url: String
-    let purchaseTime: Date
+    let buyer: DocumentReference
+    let seller_name: String
+    let product: DocumentReference
+//    let itemName: String
+//    let item_photo_url: String
+    let created_at: Timestamp
     
+}
+
+public struct OrderDisplayModel{
+    let order: OrderModel
+    let item_name: String
+    let item_photo_url: String
 }
 
 public extension UIImageView {
@@ -48,7 +59,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var itemsSoldTable: UITableView!
     
     let db = Firestore.firestore()
-    var itemsBought: [OrderModel] = []
+    var itemsBought: [OrderDisplayModel] = []
     var itemsSold: [OrderModel] = []
     
     override func viewDidLoad() {
@@ -62,14 +73,27 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     // field is either buyer or seller depending on which table to populate
     func fetchOrders(_ field: String) {
-        db.collection("orders").whereField(field, isEqualTo: UserDefaults.standard.string(forKey:"uid")!)
+        let userRef = Firestore.firestore().collection("users").document(UserDefaults.standard.string(forKey:"uid")!)
+        db.collection("orders").whereField(field, isEqualTo: userRef)
             .getDocuments() { (querySnapshot, err) in
                 if let err = err {
                     print("HERE \(err)")
                 } else {
-                    
                     for order in querySnapshot!.documents {
-                        print(order.data())
+                        let model:OrderModel = try! FirestoreDecoder().decode(OrderModel.self, from:order.data())
+                        model.product.getDocument() { (querySnapshot, err) in
+                            if let err = err {
+                                
+                            } else {
+                                let item_name:String = querySnapshot?.get("name") as! String
+                                let item_url:String = querySnapshot?.get("photo_url") as! String
+                                var orderDisplayModel: OrderDisplayModel = OrderDisplayModel(order:model,item_name:item_name ,item_photo_url:item_url)
+                                self.itemsBought.append(orderDisplayModel)
+                                print(orderDisplayModel)
+                            }
+                            
+                        }
+                        
                     }
                     
                     

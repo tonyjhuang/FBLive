@@ -131,10 +131,10 @@
 				25B26BF4245768DE00A7CEB3 /* SceneDelegate.swift */,
 				25B26BF6245768DE00A7CEB3 /* ViewController.swift */,
 				EDA51E99245A876900D6E43F /* ProfileViewController.swift */,
+				257BAC652459D8C1009F78A1 /* JoinStreamViewController.swift */,
 				EDA51E93245A4B9000D6E43F /* WelcomeViewController.swift */,
 				EDA51E95245A7E2600D6E43F /* CreateStreamViewController.swift */,
 				EDA51E9B245B2C7900D6E43F /* ItemViewCell.swift */,
-				257BAC652459D8C1009F78A1 /* JoinStreamViewController.swift */,
 				25B26BF8245768DE00A7CEB3 /* Main.storyboard */,
 				25B26BFB245768DF00A7CEB3 /* Assets.xcassets */,
 				25B26BFD245768DF00A7CEB3 /* LaunchScreen.storyboard */,
@@ -144,7 +144,6 @@
 				258EC76E245B686B00142722 /* ag-streamer-sdk.config */,
 				258EC76C245B686B00142722 /* ag-streamer-sdk.key */,
 				258EC76D245B686B00142722 /* ag-streamer-sdk.txt */,
-				257BAC652459D8C1009F78A1 /* JoinStreamViewController.swift */,
 			);
 			path = "Create Live";
 			sourceTree = "<group>";
