@@ -1,18 +1,16 @@
 package com.tonyjhuang.fblive.ui.discovery
 
-import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.tonyjhuang.fblive.R
-
 import com.tonyjhuang.fblive.ui.discovery.dummy.DummyContent
 import com.tonyjhuang.fblive.ui.discovery.dummy.DummyContent.DummyItem
+import kotlinx.android.synthetic.main.fragment_livestream_list.view.*
 
 /**
  * A fragment representing a list of Items.
@@ -39,16 +37,13 @@ class LivestreamListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_livestream_list, container, false)
-
         // Set the adapter
-        if (view is RecyclerView) {
-            with(view) {
-                layoutManager = when {
-                    columnCount <= 1 -> LinearLayoutManager(context)
-                    else -> GridLayoutManager(context, columnCount)
-                }
-                adapter = LivestreamRecyclerViewAdapter(DummyContent.ITEMS, listener)
+        with(view.list) {
+            layoutManager = when {
+                columnCount <= 1 -> LinearLayoutManager(context)
+                else -> GridLayoutManager(context, columnCount)
             }
+            adapter = LivestreamRecyclerViewAdapter(DummyContent.ITEMS, listener)
         }
         return view
     }

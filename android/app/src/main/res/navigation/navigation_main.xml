@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_main"
-    app:startDestination="@+id/navigation_login">
+    app:startDestination="@+id/navigation_discovery">
 
     <fragment
         android:id="@+id/navigation_login"
@@ -16,11 +16,9 @@
     <fragment
         android:id="@+id/navigation_home"
         android:name="com.tonyjhuang.fblive.ui.home.HomeFragment">
-
         <action
-            android:id="@+id/action_home_to_watch_stream"
-            app:destination="@+id/navigation_watch_stream" />
-
+            android:id="@+id/action_home_to_discovery"
+            app:destination="@+id/navigation_discovery" />
 
         <action
             android:id="@+id/action_home_to_create_broadcast"
@@ -35,9 +33,9 @@
 
 
         <action
-            app:popUpTo="@+id/navigation_home"
             android:id="@+id/action_create_broadcast_to_broadcast"
-            app:destination="@+id/navigation_broadcast" />
+            app:destination="@+id/navigation_broadcast"
+            app:popUpTo="@+id/navigation_home" />
     </fragment>
 
     <fragment
@@ -46,6 +44,17 @@
         android:label="@string/title_broadcast"
         tools:layout="@layout/fragment_broadcast" />
 
+
+    <fragment
+        android:id="@+id/navigation_discovery"
+        android:name="com.tonyjhuang.fblive.ui.discovery.DiscoveryFragment"
+        tools:layout="@layout/fragment_discovery">
+
+        <action
+            android:id="@+id/action_discovery_to_watch_stream"
+            app:popUpTo="@+id/navigation_home"
+            app:destination="@+id/navigation_watch_stream" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_watch_stream"

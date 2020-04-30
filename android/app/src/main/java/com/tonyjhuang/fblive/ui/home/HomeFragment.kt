@@ -28,7 +28,7 @@ class HomeFragment : Fragment() {
             findNavController().navigate(HomeFragmentDirections.actionHomeToCreateBroadcast())
         }
         view.join_broadcast.setOnClickListener {
-            findNavController().navigate(HomeFragmentDirections.actionHomeToWatchStream())
+            findNavController().navigate(HomeFragmentDirections.actionHomeToDiscovery())
         }
     }
 }

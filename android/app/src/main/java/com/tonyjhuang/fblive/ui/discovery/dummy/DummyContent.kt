@@ -21,7 +21,7 @@ object DummyContent {
      */
     val ITEM_MAP: MutableMap<String, DummyItem> = HashMap()
 
-    private val COUNT = 25
+    private val COUNT = 5
 
     init {
         // Add some sample items.
@@ -36,22 +36,16 @@ object DummyContent {
     }
 
     private fun createDummyItem(position: Int): DummyItem {
-        return DummyItem(position.toString(), "Item " + position, makeDetails(position))
+        return DummyItem(
+            position.toString(),
+            "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/116078775/original/518584d3f43543d933d1ea38af932500dcff941f/design-a-awesome-thumbnail-for-you-youtube-stream.png",
+            "the bestest stream 🔥",
+            "chauncy the rapper")
     }
 
-    private fun makeDetails(position: Int): String {
-        val builder = StringBuilder()
-        builder.append("Details about Item: ").append(position)
-        for (i in 0..position - 1) {
-            builder.append("\nMore details information here.")
-        }
-        return builder.toString()
-    }
 
     /**
      * A dummy item representing a piece of content.
      */
-    data class DummyItem(val id: String, val content: String, val details: String) {
-        override fun toString(): String = content
-    }
+    data class DummyItem(val id: String, val thumbnail: String, val streamName: String, val creatorName: String)
 }
