@@ -102,11 +102,10 @@ class ViewController: UIViewController , GIDSignInDelegate{
      }
      
      func toWelcomePage() {
-//        let storyboard = UIStoryboard(name:"Main", bundle:nil)
-//        let welcomeVC = storyboard.instantiateViewController(identifier: "WelcomeViewController")
-//        welcomeVC.modalPresentationStyle = .fullScreen
-//        self.present(welcomeVC, animated: true, completion: nil)
-        performSegue(withIdentifier: "ToWelcomeScreenSegue", sender: self)
+        let storyboard = UIStoryboard(name:"Main", bundle:nil)
+        let welcomeVC = storyboard.instantiateViewController(identifier: "WelcomeViewController")
+//        let navigationContonroller = UINavigationController(rootViewController: welcomeVC)
+        self.view.window!.rootViewController = welcomeVC
      }
     
     
