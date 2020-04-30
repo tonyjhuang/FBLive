@@ -10,10 +10,7 @@ import UIKit
 import FirebaseFirestore
 import CodableFirebase
 
-extension Timestamp: TimestampType {}
-extension DocumentReference: DocumentReferenceType {}
-
-public  struct OrderModel: Decodable{
+public  struct OrderModel: Codable{
     let price: Float
     let buyer: DocumentReference
     let seller_name: String
