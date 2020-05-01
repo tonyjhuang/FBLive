@@ -14,8 +14,7 @@ import FirebaseFirestore
 extension Timestamp: TimestampType {}
 extension DocumentReference: DocumentReferenceType {}
 
-
-
+/*
 public struct Stream: Decodable{
     let chat: DocumentReference?
     let created_at: Timestamp
@@ -23,8 +22,18 @@ public struct Stream: Decodable{
     let creator_name: String
     let name: String
     let stream_url: String
+    var stream_id: String?
 }
 
+public struct Product: Decodable{
+    let name: String
+    let photo_url: String
+    let price: Float
+    let quantity: Int
+    let remaining: Int
+    var product_id: String?
+}
+*/
 
 func fetchStream() {
     
@@ -133,8 +142,26 @@ class JoinStreamViewController: UIViewController {
       self.view.bringSubviewToFront(view)
     }
   }
+/*
+    fileprivate func fetchAllStreams() {
+        db.collection("streams").getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("ERROR: \(err)")
+            } else {
+                if querySnapshot?.count == 0 {
+                    print("Stream not found")
+                } else {
+                    for stream in querySnapshot!.documents {
+                        var s:Stream = try! FirestoreDecoder().decode(Stream.self, from:(stream.data()))
+                        s.stream_id = querySnapshot?.documents[0].documentID
+                        print(self.stream)
+                        self.allStreams.append(s)
+                    }
+                }
+            }
+        }
+    }
 
-    /*
     fileprivate func fetchStream(_ name:String) {
         db.collection("streams").whereField("name", isEqualTo: name).getDocuments() { (querySnapshot, err) in
             if let err = err {
@@ -143,11 +170,41 @@ class JoinStreamViewController: UIViewController {
                 if querySnapshot?.count == 0 {
                     print("Stream not found")
                 } else {
-                  self.stream = try! FirestoreDecoder().decode(Stream.self, from:querySnapshot?.documents[0].data() ?? [String: Any]())
-                    
+                    self.stream = try! FirestoreDecoder().decode(Stream.self, from:(querySnapshot?.documents[0].data())!)
+                    self.stream?.stream_id = querySnapshot?.documents[0].documentID
+                    print(self.stream)
+                    self.fetchProduct()
                 }
             }
         }
-    }*/
+    }
+    
+    //
+    fileprivate func fetchProduct() {
+        db.collection("streams").document((stream?.stream_id)!).collection("products").getDocuments() {(querySnapshot, err) in
+            if let err = err {
+                print("ERROR: \(err)")
+            } else {
+                self.productRef = querySnapshot?.documents[0].reference
+                self.product = try! FirestoreDecoder().decode(Product.self, from:(querySnapshot?.documents[0].data())!)
+                self.product?.product_id = querySnapshot?.documents[0].documentID
+            }
+            
+        }
+    }
+    
+    fileprivate func createOrder() {
+        let userRef = Firestore.firestore().collection("users").document(UserDefaults.standard.string(forKey:"uid")!)
+        let order: OrderModel = OrderModel(price:(product?.price)!, buyer:userRef,seller_name:stream!.creator_name,product:productRef!,created_at: Timestamp.init())
+        let docData = try! FirestoreEncoder().encode(order)
+        Firestore.firestore().collection("orders").addDocument(data: docData) { err in
+            if let err = err {
+                print("ERROR: \(err)")
+            } else {
+                print("Create order success.")
+            }
+        }
 
+    }
+ */
 }
