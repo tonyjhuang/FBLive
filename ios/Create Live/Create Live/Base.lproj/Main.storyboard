@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FWk-Zb-Sg0">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -150,6 +150,86 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fcY-zr-ife" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2611.594202898551" y="-371.65178571428572"/>
+        </scene>
+        <!--Order Confirmation View Controller-->
+        <scene sceneID="reV-hI-Q0p">
+            <objects>
+                <viewController id="0Sr-tk-gWA" customClass="OrderConfirmationViewController" customModule="Create_Live" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nB6-Qn-yHt">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Order Summary" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QFe-qY-ZbW">
+                                <rect key="frame" x="93" y="194" width="228" height="41"/>
+                                <fontDescription key="fontDescription" name="NotoSansKannada-Bold" family="Noto Sans Kannada" pointSize="30"/>
+                                <color key="textColor" red="0.38431372549019605" green="0.38431372549019605" blue="0.38431372549019605" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PRODUCT" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RU0-x7-y9X">
+                                <rect key="frame" x="45" y="335" width="84.5" height="23"/>
+                                <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="17"/>
+                                <color key="textColor" red="0.38431372549999998" green="0.38431372549999998" blue="0.38431372549999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="$10.58" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="POB-tv-hHA">
+                                <rect key="frame" x="300" y="335" width="53" height="23"/>
+                                <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="17"/>
+                                <color key="textColor" red="0.38431372549999998" green="0.38431372549999998" blue="0.38431372549999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ccO-hJ-x3B">
+                                <rect key="frame" x="57" y="465" width="300" height="70"/>
+                                <color key="backgroundColor" red="0.18431372549019609" green="0.72941176470588232" blue="0.62745098039215685" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="7V5-BJ-bjj"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="70" id="gCQ-7R-qGe"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="NotoSansKannada-Bold" family="Noto Sans Kannada" pointSize="20"/>
+                                <state key="normal" title="Buy">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="buyButtonOnPress:" destination="0Sr-tk-gWA" eventType="touchUpInside" id="lWi-uj-fbw"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MkZ-Ba-cyl">
+                                <rect key="frame" x="57" y="561" width="300" height="70"/>
+                                <color key="backgroundColor" red="0.8666666666666667" green="0.8666666666666667" blue="0.8666666666666667" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="70" id="2ZE-JK-JCB"/>
+                                    <constraint firstAttribute="width" constant="300" id="yEL-zl-BbX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="NotoSansKannada-Bold" family="Noto Sans Kannada" pointSize="20"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelButtonOnPress:" destination="0Sr-tk-gWA" eventType="touchUpInside" id="U9W-Dn-rDd"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="RU0-x7-y9X" firstAttribute="leading" secondItem="Evz-OV-0n9" secondAttribute="leading" constant="45" id="Gel-Ug-6Rs"/>
+                            <constraint firstItem="QFe-qY-ZbW" firstAttribute="top" secondItem="Evz-OV-0n9" secondAttribute="top" constant="150" id="IXH-Nw-o3i"/>
+                            <constraint firstItem="POB-tv-hHA" firstAttribute="top" secondItem="QFe-qY-ZbW" secondAttribute="bottom" constant="100" id="KG6-zV-g72"/>
+                            <constraint firstItem="RU0-x7-y9X" firstAttribute="leading" secondItem="Evz-OV-0n9" secondAttribute="leading" constant="45" id="OS5-OX-fGD"/>
+                            <constraint firstItem="ccO-hJ-x3B" firstAttribute="centerX" secondItem="nB6-Qn-yHt" secondAttribute="centerX" id="U1W-Xr-h0s"/>
+                            <constraint firstItem="RU0-x7-y9X" firstAttribute="top" secondItem="QFe-qY-ZbW" secondAttribute="bottom" constant="100" id="UaQ-bQ-1E7"/>
+                            <constraint firstItem="QFe-qY-ZbW" firstAttribute="centerX" secondItem="nB6-Qn-yHt" secondAttribute="centerX" id="nZJ-eH-OwA"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Evz-OV-0n9"/>
+                    </view>
+                    <connections>
+                        <outlet property="buyButton" destination="ccO-hJ-x3B" id="Kp4-dP-q2D"/>
+                        <outlet property="cancelButton" destination="MkZ-Ba-cyl" id="pZ8-YJ-oYZ"/>
+                        <outlet property="productNameLabel" destination="RU0-x7-y9X" id="K82-Za-jbL"/>
+                        <outlet property="productPriceLabel" destination="POB-tv-hHA" id="Zch-SU-5I7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wft-Qe-gs7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1895.6521739130437" y="892.63392857142856"/>
         </scene>
         <!--Create Stream View Controller-->
         <scene sceneID="dbg-5f-e87">
