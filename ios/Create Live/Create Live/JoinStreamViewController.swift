@@ -32,22 +32,44 @@ func fetchStream() {
 
 class JoinStreamViewController: UIViewController {
 
+/*
   var streamPlaybackURL: URL?
   let db = Firestore.firestore()
   var stream:Stream?
+*/
+  
+  var stream = DataProvider.aStream()
+  
   @IBOutlet weak var streamTitleLabe: UILabel!
+  @IBOutlet weak var streamUserIDLabel: UILabel!
   @IBOutlet weak var numberOfViewersLabel: UILabel!
   @IBOutlet weak var thumbnailImage: UIImageView!
+  
+  @IBAction func shareButtonTapped(_ sender: Any) {}
+  
+  @IBAction func chatSlideUpButtonTapped(_ sender: Any) {
+    // TODO: show chat
+  }
+  
+  @IBAction func emojiButtonTapped(_ sender: UIButton) {
+    guard let emoji = sender.title(for: .normal) else {
+      return
+    }
+    
+    // TODO: Emoji parade
+  }
+  
   
     override func viewDidLoad() {
         super.viewDidLoad()
         
-      streamTitleLabe.text = "My stream"
+      streamTitleLabe.text = stream.name
+      // TODO: Fill out other labels
     }
   
   /// Adds the livestream view on this entire screen and starts the livestream
   fileprivate func playLiveStream() {
-    guard let url = streamPlaybackURL else {
+    guard let url = URL(string: stream.url) else {
       assertionFailure()
       return
     }
@@ -64,7 +86,7 @@ class JoinStreamViewController: UIViewController {
     player.play()
   }
 
-    
+    /*
     fileprivate func fetchStream(_ name:String) {
         db.collection("streams").whereField("name", isEqualTo: name).getDocuments() { (querySnapshot, err) in
             if let err = err {
@@ -78,6 +100,6 @@ class JoinStreamViewController: UIViewController {
                 }
             }
         }
-    }
+    }*/
 
 }
