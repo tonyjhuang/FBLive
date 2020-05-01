@@ -45,6 +45,9 @@ class JoinStreamViewController: UIViewController {
   @IBOutlet weak var numberOfViewersLabel: UILabel!
   @IBOutlet weak var thumbnailImage: UIImageView!
   
+  @IBOutlet weak var productNameLabel: UILabel!
+  @IBOutlet weak var productPriceLabel: UILabel!
+  
   @IBOutlet var streamControls: [UIView]!
   
   @IBAction func shareButtonTapped(_ sender: Any) {}
@@ -61,17 +64,30 @@ class JoinStreamViewController: UIViewController {
     // TODO: Emoji parade
   }
   
-  
-    override func viewDidLoad() {
-        super.viewDidLoad()
+  override func viewDidLoad() {
+      super.viewDidLoad()
       
-      streamTitleLabe.text = stream.name
-      streamUserIDLabel.text = stream.creator.name
-      thumbnailImage.layer.cornerRadius = 18
-        
+      configureStreamControls()
       addGradient()
       playLiveStream()
     }
+  
+  fileprivate func configureStreamControls() {
+    streamTitleLabe.text = stream.name
+    streamUserIDLabel.text = stream.creator.name
+    thumbnailImage.layer.cornerRadius = 18
+    
+    if let product = stream.products.first {
+      
+      let nf = NumberFormatter()
+      nf.maximumFractionDigits = 2
+      guard let priceString = nf.string(from: product.price) else {
+        return
+      }
+      productNameLabel.text = product.name
+      productPriceLabel.text = priceString
+    }
+  }
   
   fileprivate func addGradient() {
     let topGradient = CAGradientLayer()

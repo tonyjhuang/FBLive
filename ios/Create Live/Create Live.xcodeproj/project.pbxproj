@@ -15,6 +15,7 @@
 		258EC76F245B686B00142722 /* ag-streamer-sdk.key in Resources */ = {isa = PBXBuildFile; fileRef = 258EC76C245B686B00142722 /* ag-streamer-sdk.key */; };
 		258EC770245B686B00142722 /* ag-streamer-sdk.txt in Resources */ = {isa = PBXBuildFile; fileRef = 258EC76D245B686B00142722 /* ag-streamer-sdk.txt */; };
 		258EC771245B686B00142722 /* ag-streamer-sdk.config in Resources */ = {isa = PBXBuildFile; fileRef = 258EC76E245B686B00142722 /* ag-streamer-sdk.config */; };
+		258EC773245B721700142722 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258EC772245B721700142722 /* Data.swift */; };
 		25B26BF3245768DE00A7CEB3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B26BF2245768DE00A7CEB3 /* AppDelegate.swift */; };
 		25B26BF5245768DE00A7CEB3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B26BF4245768DE00A7CEB3 /* SceneDelegate.swift */; };
 		25B26BF7245768DE00A7CEB3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B26BF6245768DE00A7CEB3 /* ViewController.swift */; };
@@ -55,6 +56,7 @@
 		258EC76C245B686B00142722 /* ag-streamer-sdk.key */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "ag-streamer-sdk.key"; sourceTree = "<group>"; };
 		258EC76D245B686B00142722 /* ag-streamer-sdk.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "ag-streamer-sdk.txt"; sourceTree = "<group>"; };
 		258EC76E245B686B00142722 /* ag-streamer-sdk.config */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "ag-streamer-sdk.config"; sourceTree = "<group>"; };
+		258EC772245B721700142722 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		25B26BEF245768DE00A7CEB3 /* Create Live.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Create Live.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		25B26BF2245768DE00A7CEB3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		25B26BF4245768DE00A7CEB3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -125,9 +127,9 @@
 		25B26BF1245768DE00A7CEB3 /* Create Live */ = {
 			isa = PBXGroup;
 			children = (
+				258EC763245B4B0B00142722 /* LivestreamUtils */,
 				25B26BF2245768DE00A7CEB3 /* AppDelegate.swift */,
 				EDA51E97245A7FA400D6E43F /* User.swift */,
-				258EC763245B4B0B00142722 /* LivestreamUtils */,
 				25B26BF4245768DE00A7CEB3 /* SceneDelegate.swift */,
 				25B26BF6245768DE00A7CEB3 /* ViewController.swift */,
 				EDA51E99245A876900D6E43F /* ProfileViewController.swift */,
@@ -144,6 +146,7 @@
 				258EC76E245B686B00142722 /* ag-streamer-sdk.config */,
 				258EC76C245B686B00142722 /* ag-streamer-sdk.key */,
 				258EC76D245B686B00142722 /* ag-streamer-sdk.txt */,
+				258EC772245B721700142722 /* Data.swift */,
 			);
 			path = "Create Live";
 			sourceTree = "<group>";
@@ -321,6 +324,7 @@
 				25B26BF7245768DE00A7CEB3 /* ViewController.swift in Sources */,
 				EDA51E96245A7E2600D6E43F /* CreateStreamViewController.swift in Sources */,
 				25B26BF3245768DE00A7CEB3 /* AppDelegate.swift in Sources */,
+				258EC773245B721700142722 /* Data.swift in Sources */,
 				EDA51E94245A4B9000D6E43F /* WelcomeViewController.swift in Sources */,
 				25B26BF5245768DE00A7CEB3 /* SceneDelegate.swift in Sources */,
 				EDA51E9A245A876900D6E43F /* ProfileViewController.swift in Sources */,
