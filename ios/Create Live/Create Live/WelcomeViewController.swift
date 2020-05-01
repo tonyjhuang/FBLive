@@ -11,6 +11,9 @@ import AVFoundation
 
 class WelcomeViewController: UIViewController {
     @IBOutlet weak var greetLabel: UILabel!
+    @IBOutlet weak var startStreamButton: UIButton!
+    @IBOutlet weak var joinStreamButton: UIButton!
+    
     
     @IBAction func startLiveStream(_ sender: UIButton) {
         switch AVCaptureDevice.authorizationStatus(for: .video) {
