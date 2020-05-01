@@ -18,8 +18,23 @@ class ViewController: UIViewController , GIDSignInDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        let GREEN = UIColor(red:47/255, green:186/255, blue: 160/255, alpha: 1.0)
+        
+        let title = UILabel(frame: CGRect(x:10, y:45, width:300, height:100))
+        title.center = self.view.center
+        title.center.y = 400
+        title.text = "Firebase Live"
+        title.textColor = GREEN
+
+        title.font = UIFont(name:"NotoSansKannada-Bold", size:CGFloat(35))
+        title.textAlignment = .center
+//        title.sizeToFit()
+        view.addSubview(title)
+        
         let signInButton = GIDSignInButton()
-        signInButton.frame = CGRect(x: 20, y: 50, width: 100, height: 30)
+        signInButton.center.x = self.view.center.x
+        signInButton.center.y = 500
         view.addSubview(signInButton)
         // Set up Google sign in.
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID

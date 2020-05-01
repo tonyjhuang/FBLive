@@ -47,15 +47,15 @@ class JoinStreamViewController: UIViewController {
   var stream:Stream?
   var product:Product?
   var productRef:DocumentReference?
-    
+  var allStreams:[Stream] = []
   @IBOutlet weak var streamTitleLabe: UILabel!
   @IBOutlet weak var numberOfViewersLabel: UILabel!
   @IBOutlet weak var thumbnailImage: UIImageView!
   
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchStream("fb live")
       streamTitleLabe.text = "My stream"
+      fetchAllStreams()
     }
   
   /// Adds the livestream view on this entire screen and starts the livestream
@@ -77,7 +77,24 @@ class JoinStreamViewController: UIViewController {
     player.play()
   }
 
-    
+    fileprivate func fetchAllStreams() {
+        db.collection("streams").getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("ERROR: \(err)")
+            } else {
+                if querySnapshot?.count == 0 {
+                    print("Stream not found")
+                } else {
+                    for stream in querySnapshot!.documents {
+                        var s:Stream = try! FirestoreDecoder().decode(Stream.self, from:(stream.data()))
+                        s.stream_id = querySnapshot?.documents[0].documentID
+                        print(self.stream)
+                        self.allStreams.append(s)
+                    }
+                }
+            }
+        }
+    }
     fileprivate func fetchStream(_ name:String) {
         db.collection("streams").whereField("name", isEqualTo: name).getDocuments() { (querySnapshot, err) in
             if let err = err {

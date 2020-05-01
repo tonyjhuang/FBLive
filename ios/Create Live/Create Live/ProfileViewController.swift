@@ -54,17 +54,31 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var itemsBoughtTable: UITableView!
     @IBOutlet weak var itemsSoldTable: UITableView!
+    @IBOutlet weak var itemNameLabel: UILabel!
+    
+    let green = UIColor(red:47/255, green:186/255, blue: 160/255, alpha: 1.0)
+    let grey = UIColor(red:98/255, green:98/255, blue: 98/255, alpha: 1.0)
+    let light_grey = UIColor(red:221/255, green:221/255, blue: 221/255, alpha: 1.0)
     
     let db = Firestore.firestore()
     var itemsBought: [OrderDisplayModel] = []
     var itemsSold: [OrderModel] = []
     
     override func viewDidLoad() {
+        fetchOrders("buyer")
         super.viewDidLoad()
-        
+        itemsBoughtTable.separatorStyle = .none
+        itemsSoldTable.separatorStyle = .none
+        profileImage.layer.borderWidth = 4
+        profileImage.layer.masksToBounds = false
+        profileImage.layer.borderColor = green.cgColor
+        profileImage.layer.cornerRadius = profileImage.frame.height/2
+        profileImage.clipsToBounds = true
         profileImage.downloaded(from: UserDefaults.standard.string(forKey: "photo_url")!)
         userNameLabel.text = UserDefaults.standard.string(forKey: "name")
-        fetchOrders("buyer")
+        userNameLabel.textColor = grey
+        userNameLabel.font = UIFont(name:"NotoSansKannada-Bold", size:CGFloat(25))
+        
         // Do any additional setup after loading the view.
     }
     
@@ -87,6 +101,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                                 var orderDisplayModel: OrderDisplayModel = OrderDisplayModel(order:model,item_name:item_name ,item_photo_url:item_url)
                                 self.itemsBought.append(orderDisplayModel)
                                 print(orderDisplayModel)
+                                self.itemsBoughtTable.reloadData()
                             }
                             
                         }
@@ -100,12 +115,49 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return itemsBought.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 150;//Choose your custom row height
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm"
         let cell = itemsBoughtTable.dequeueReusableCell(withIdentifier: "ItemBoughtCell")
-        cell?.textLabel?.text = "HI"
+        
+        
+        let label = UILabel(frame: CGRect(x:10, y:10, width:200, height:40))
+        label.text = itemsBought[indexPath.row].item_name
+        label.textColor = green
+        label.font = UIFont(name:"NotoSansKannada-Bold", size:CGFloat(20))
+        
+        let image = UIImageView(frame:CGRect(x:250, y:0, width:100, height:100))
+        image.downloaded(from: itemsBought[indexPath.row].item_photo_url)
+        
+        let price = UILabel(frame: CGRect(x:10, y:45, width:100, height:20))
+        price.text = "Price: $" + String(itemsBought[indexPath.row].order.price)
+        price.textColor = grey
+        price.font = UIFont(name:"NotoSansKannada-Light", size:CGFloat(16))
+        
+        let seller = UILabel(frame: CGRect(x:10, y:80, width:200, height:20))
+        seller.text = "From: " + String(itemsBought[indexPath.row].order.seller_name)
+        seller.textColor = grey
+        seller.font = UIFont(name:"NotoSansKannada-Light", size:CGFloat(14))
+        
+        let purchase_time = UILabel(frame: CGRect(x:10, y:100, width:200, height:20))
+        purchase_time.text = formatter.string(from: itemsBought[indexPath.row].order.created_at.dateValue())
+        purchase_time.textColor = light_grey
+        purchase_time.font = UIFont(name:"NotoSansKannada-Light", size:CGFloat(14))
+        
+        cell?.addSubview(label)
+        cell?.addSubview(image)
+        cell?.addSubview(price)
+        cell?.addSubview(seller)
+        cell?.addSubview(purchase_time)
         return cell!
     }
 }
