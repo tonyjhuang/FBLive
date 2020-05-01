@@ -102,7 +102,7 @@ class JoinStreamViewController: UIViewController, ChatViewControllerDelegate, Or
     guard let emoji = sender.title(for: .normal) else {
       return
     }
-    emojiParade(emoji: emoji)
+    emojiParade(emoji: emoji, maxDuration: 1.8)
     // TODO: Emoji parade
   }
   
@@ -130,7 +130,33 @@ class JoinStreamViewController: UIViewController, ChatViewControllerDelegate, Or
   }
   
   func didBuy(_ product: Product) {
-    emojiParade(emoji: "🎉")
+    emojiParade(emoji: "🎉", maxDuration: 2.5)
+    showMoneyBag()
+  }
+  
+  func showMoneyBag() {
+    let moneybagLabel = UILabel(frame: .zero)
+    moneybagLabel.text = "🤑"
+    moneybagLabel.font = UIFont.systemFont(ofSize: 120)
+    moneybagLabel.sizeToFit()
+    moneybagLabel.alpha = 0
+    
+    moneybagLabel.frame = CGRect(x: (view.bounds.size.width - moneybagLabel.bounds.size.width) / 2.0,
+                                 y: (view.bounds.size.height - moneybagLabel.bounds.size.height) / 2.0,
+                                 width: moneybagLabel.bounds.size.width,
+                                 height: moneybagLabel.bounds.size.height)
+    
+    view.addSubview(moneybagLabel)
+    
+    UIView.animate(withDuration: 1.0, delay: 0, options: .curveEaseInOut, animations: {
+        moneybagLabel.alpha = 1
+    }) { (success) in
+      UIView.animate(withDuration: 1.0, delay: 0.5, options: .curveEaseInOut, animations: {
+          moneybagLabel.alpha = 0
+      }) { (success) in
+        moneybagLabel.removeFromSuperview()
+      }
+    }
   }
   
   fileprivate func configureStreamControls() {
@@ -167,7 +193,7 @@ class JoinStreamViewController: UIViewController, ChatViewControllerDelegate, Or
     bringStreamControlsToFront()
   }
   
-  func emojiParade(emoji: String) {
+  func emojiParade(emoji: String, maxDuration: CGFloat) {
     let sizingLabel = UILabel(frame: .zero)
     sizingLabel.font = UIFont.systemFont(ofSize: 42)
     sizingLabel.text = emoji
@@ -184,7 +210,7 @@ class JoinStreamViewController: UIViewController, ChatViewControllerDelegate, Or
       animatedLabel.font = UIFont.systemFont(ofSize: 42)
       view.addSubview(animatedLabel)
       
-      UIView.animate(withDuration: TimeInterval(CGFloat.random(in: 0.8...1.8)), animations: {
+      UIView.animate(withDuration: TimeInterval(CGFloat.random(in: 0.8...maxDuration)), animations: {
         animatedLabel.frame = CGRect(x: CGFloat(n) * (sizingLabel.bounds.width + 8), y: self.view.bounds.height / 3, width: sizingLabel.bounds.size.width, height: sizingLabel.bounds.size.height)
       }) { (success) in
         animatedLabel.removeFromSuperview()
