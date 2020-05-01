@@ -38,6 +38,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
   var chatId: String?
   var messages = [Message]()
   
+  var pollTimer: Timer?
+  
   weak var delegate: ChatViewControllerDelegate?
   
   func numberOfSections(in tableView: UITableView) -> Int {
@@ -61,6 +63,16 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
       tableView.delegate = self
       tableView.dataSource = self
       fetchChat(chatId: chatId!)
+      
+      pollTimer = Timer(timeInterval: 1.0, repeats: true, block: { (timer) in
+        self.fetchChat(chatId: self.chatId!)
+      })
+  }
+  
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+    pollTimer?.invalidate()
+    pollTimer = nil
   }
   
   class func attributedString(with color: UIColor, for message: Message) -> NSAttributedString {
