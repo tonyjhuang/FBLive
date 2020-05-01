@@ -195,7 +195,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stream title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jyo-2y-8xC">
-                                <rect key="frame" x="20" y="64" width="88" height="21"/>
+                                <rect key="frame" x="20" y="64" width="88" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -208,13 +208,13 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qOS-i1-LyT">
-                                <rect key="frame" x="339" y="64" width="11" height="21"/>
+                                <rect key="frame" x="339.5" y="64" width="10.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stream user ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fUL-qQ-6b3">
-                                <rect key="frame" x="20" y="101" width="114" height="21"/>
+                                <rect key="frame" x="20" y="100.5" width="113.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -227,6 +227,9 @@
                                 </constraints>
                                 <inset key="contentEdgeInsets" minX="6" minY="1" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="Button" image="share"/>
+                                <connections>
+                                    <action selector="shareButtonTapped:" destination="FWk-Zb-Sg0" eventType="touchUpInside" id="LAM-qd-NIJ"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="caz-Kf-CKO">
                                 <rect key="frame" x="175" y="798" width="64" height="64"/>
@@ -235,7 +238,67 @@
                                     <constraint firstAttribute="width" constant="64" id="ys5-C5-ETC"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="up_arrow"/>
+                                <connections>
+                                    <action selector="chatSlideUpButtonTapped:" destination="FWk-Zb-Sg0" eventType="touchUpInside" id="uc4-7M-mf8"/>
+                                </connections>
                             </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="vUt-UM-eYe">
+                                <rect key="frame" x="49" y="710" width="316" height="64"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gxt-gt-VWf">
+                                        <rect key="frame" x="0.0" y="0.0" width="64" height="64"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="64" id="MQI-Mg-ILO"/>
+                                            <constraint firstAttribute="height" constant="64" id="u8X-kz-I8r"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                        <state key="normal" title="❤️"/>
+                                        <connections>
+                                            <action selector="chatSlideUpButtonTapped:" destination="FWk-Zb-Sg0" eventType="touchUpInside" id="quP-VI-vSO"/>
+                                            <action selector="emojiButtonTapped:" destination="FWk-Zb-Sg0" eventType="touchUpInside" id="N8L-CF-FMT"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wdz-cu-JjU">
+                                        <rect key="frame" x="84" y="0.0" width="64" height="64"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="64" id="FP2-30-q2v"/>
+                                            <constraint firstAttribute="height" constant="64" id="wfI-fH-FRI"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                        <state key="normal" title="🔥"/>
+                                        <connections>
+                                            <action selector="chatSlideUpButtonTapped:" destination="FWk-Zb-Sg0" eventType="touchUpInside" id="rrY-9g-ZFQ"/>
+                                            <action selector="emojiButtonTapped:" destination="FWk-Zb-Sg0" eventType="touchUpInside" id="nre-qA-yLs"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gUU-c7-nKW">
+                                        <rect key="frame" x="168" y="0.0" width="64" height="64"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="64" id="eu4-74-xVO"/>
+                                            <constraint firstAttribute="width" constant="64" id="icM-6T-DVh"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                        <state key="normal" title="😂"/>
+                                        <connections>
+                                            <action selector="chatSlideUpButtonTapped:" destination="FWk-Zb-Sg0" eventType="touchUpInside" id="gH0-RO-UUn"/>
+                                            <action selector="emojiButtonTapped:" destination="FWk-Zb-Sg0" eventType="touchUpInside" id="n1L-hz-SXp"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DBu-eP-enk">
+                                        <rect key="frame" x="252" y="0.0" width="64" height="64"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="64" id="XNl-s5-I2l"/>
+                                            <constraint firstAttribute="height" constant="64" id="xXB-9Q-8F3"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                        <state key="normal" title="👍"/>
+                                        <connections>
+                                            <action selector="chatSlideUpButtonTapped:" destination="FWk-Zb-Sg0" eventType="touchUpInside" id="K9W-um-GSJ"/>
+                                            <action selector="emojiButtonTapped:" destination="FWk-Zb-Sg0" eventType="touchUpInside" id="cQs-wv-hzA"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -244,9 +307,11 @@
                             <constraint firstItem="caz-Kf-CKO" firstAttribute="bottom" secondItem="P2a-53-4Si" secondAttribute="bottom" id="8Y6-d6-4zJ"/>
                             <constraint firstItem="qOS-i1-LyT" firstAttribute="top" secondItem="P2a-53-4Si" secondAttribute="top" constant="20" id="GLA-uo-ceF"/>
                             <constraint firstItem="Jyo-2y-8xC" firstAttribute="leading" secondItem="P2a-53-4Si" secondAttribute="leading" constant="20" id="JW2-CF-DoB"/>
+                            <constraint firstItem="caz-Kf-CKO" firstAttribute="top" secondItem="vUt-UM-eYe" secondAttribute="bottom" constant="24" id="Ju7-sb-kH7"/>
                             <constraint firstItem="fUL-qQ-6b3" firstAttribute="top" secondItem="Jyo-2y-8xC" secondAttribute="bottom" constant="16" id="OoM-DZ-QGI"/>
                             <constraint firstItem="Jyo-2y-8xC" firstAttribute="top" secondItem="P2a-53-4Si" secondAttribute="top" constant="20" id="Y4o-sZ-9ff"/>
                             <constraint firstItem="caz-Kf-CKO" firstAttribute="centerX" secondItem="g8L-xf-gwq" secondAttribute="centerX" id="cmX-r9-WhB"/>
+                            <constraint firstItem="vUt-UM-eYe" firstAttribute="centerX" secondItem="g8L-xf-gwq" secondAttribute="centerX" id="hYY-Ik-9bf"/>
                             <constraint firstItem="BYI-5u-kDr" firstAttribute="top" secondItem="P2a-53-4Si" secondAttribute="top" constant="20" id="l6l-Bh-Xsu"/>
                             <constraint firstItem="BYI-5u-kDr" firstAttribute="leading" secondItem="qOS-i1-LyT" secondAttribute="trailing" constant="8" id="lNF-Dl-awf"/>
                             <constraint firstItem="SDY-Uh-gq8" firstAttribute="top" secondItem="BYI-5u-kDr" secondAttribute="bottom" constant="8" id="mWK-ka-Qvr"/>
@@ -258,6 +323,7 @@
                     <connections>
                         <outlet property="numberOfViewersLabel" destination="qOS-i1-LyT" id="eaf-n3-s4C"/>
                         <outlet property="streamTitleLabe" destination="Jyo-2y-8xC" id="GjY-9J-Xx9"/>
+                        <outlet property="streamUserIDLabel" destination="fUL-qQ-6b3" id="51M-aM-W5q"/>
                         <outlet property="thumbnailImage" destination="BYI-5u-kDr" id="sEf-E9-huS"/>
                     </connections>
                 </viewController>
