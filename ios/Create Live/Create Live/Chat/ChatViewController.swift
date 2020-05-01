@@ -10,6 +10,7 @@ import UIKit
 import FirebaseFirestore
 import CodableFirebase
 
+
 protocol ChatViewControllerDelegate: NSObject {
   func didAddMessage(message: String)
 }
@@ -93,7 +94,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
   }
   
   fileprivate func fetchChat(chatId:String) {
-     db.collection("chats").document(chatId).collection("messages").getDocuments() { querySnapShot, err in
+    db.collection("chats").document(chatId).collection("messages").order(by:"created_at",descending: false).getDocuments() { querySnapShot, err in
          if let err = err {
              print("ERROR: \(err)")
          } else {
@@ -101,6 +102,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
           for message in querySnapShot!.documents {
             let message: Message = try! FirestoreDecoder().decode(Message.self, from:(message.data()))
             self.messages.append(message)
+            print("HERE "+message.body)
           }
           
           DispatchQueue.main.async {
@@ -113,7 +115,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
   }
   
   fileprivate func addMessage(body: String) {
-    let message = Message(author_name: UserDefaults.standard.string(forKey: "name")!, author_photo_url: "", body: body)
+    let message = Message(author_name: UserDefaults.standard.string(forKey: "name")!, author_photo_url: "", body: body,created_at: Timestamp.init())
     let docData = try! FirestoreEncoder().encode(message)
     db.collection("chats").document(self.chatId!).collection("messages").addDocument(data: docData) { (error) in
       if let error = error {

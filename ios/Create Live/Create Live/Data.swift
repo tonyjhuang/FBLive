@@ -7,7 +7,8 @@
 //
 
 import UIKit
-
+import CodableFirebase
+import FirebaseFirestore
 struct FakeStream {
   let id: String
   let createdAt: Date
@@ -35,6 +36,7 @@ struct Message: Codable {
   let author_name: String
   let author_photo_url: String
   let body: String
+  let created_at: Timestamp
 }
 
 struct Product {
@@ -64,9 +66,9 @@ class DataProvider {
   
   class func aChat() -> Chat {
     return Chat(id: "fake_d", messages: [
-      Message(author_name: "fake_id", author_photo_url: "fake_url", body: "OK"),
-      Message(author_name: "fake_id", author_photo_url: "fake_url", body: "OK"),
-      Message(author_name: "fake_id", author_photo_url: "fake_url", body: "OK")
+        Message(author_name: "fake_id", author_photo_url: "fake_url", body: "OK",created_at: Timestamp.init()),
+      Message(author_name: "fake_id", author_photo_url: "fake_url", body: "OK",created_at: Timestamp.init()),
+      Message(author_name: "fake_id", author_photo_url: "fake_url", body: "OK",created_at: Timestamp.init())
     ])
   }
   
