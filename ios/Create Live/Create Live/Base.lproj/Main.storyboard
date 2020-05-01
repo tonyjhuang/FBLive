@@ -34,44 +34,60 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iQi-so-pxp">
-                                <rect key="frame" x="147" y="383" width="120" height="30"/>
+                                <rect key="frame" x="114" y="351" width="185" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Start a livestream"/>
+                                <fontDescription key="fontDescription" name="NotoSansKannada-Bold" family="Noto Sans Kannada" pointSize="17"/>
+                                <state key="normal" title="Start a livestream">
+                                    <color key="titleColor" red="0.38431372549999998" green="0.38431372549999998" blue="0.38431372549999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
                                 <connections>
                                     <action selector="startLiveStream:" destination="lla-cf-USh" eventType="touchUpInside" id="Eo4-P5-vYj"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gaV-M4-5Z9">
-                                <rect key="frame" x="149" y="483" width="115" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Join a livestream"/>
-                                <connections>
-                                    <segue destination="FWk-Zb-Sg0" kind="show" id="RLT-XO-hhC"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hi &lt;name&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pl3-Jr-Xd8">
-                                <rect key="frame" x="50" y="66" width="84" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi &lt;name&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pl3-Jr-Xd8">
+                                <rect key="frame" x="71" y="87" width="101" height="27"/>
+                                <fontDescription key="fontDescription" name="NotoSansKannada-Bold" family="Noto Sans Kannada" pointSize="20"/>
+                                <color key="textColor" red="0.38431372549999998" green="0.38431372549999998" blue="0.38431372549999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ycE-jg-oQf">
-                                <rect key="frame" x="309" y="61" width="44" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Profile"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ycE-jg-oQf">
+                                <rect key="frame" x="299" y="65" width="45" height="43"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="43" id="c52-fp-uzB"/>
+                                    <constraint firstAttribute="width" constant="45" id="tly-Pf-AlR"/>
+                                </constraints>
+                                <state key="normal" title="Profile" image="profile"/>
                                 <connections>
                                     <segue destination="PuZ-8q-UGR" kind="show" id="4Q1-bu-Eiu"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gaV-M4-5Z9">
+                                <rect key="frame" x="114" y="444" width="185" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="NotoSansKannada-Bold" family="Noto Sans Kannada" pointSize="17"/>
+                                <state key="normal" title="Join a livestream">
+                                    <color key="titleColor" red="0.38431372549999998" green="0.38431372549999998" blue="0.38431372549999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <segue destination="FWk-Zb-Sg0" kind="show" id="RLT-XO-hhC"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <accessibility key="accessibilityConfiguration" identifier="CompleteInfoViewController"/>
+                        <constraints>
+                            <constraint firstItem="pl3-Jr-Xd8" firstAttribute="top" secondItem="n6n-wW-IrH" secondAttribute="top" constant="87" id="5n4-OW-zZ1"/>
+                            <constraint firstItem="ycE-jg-oQf" firstAttribute="top" secondItem="n6n-wW-IrH" secondAttribute="top" constant="65" id="Nlg-no-YXB"/>
+                            <constraint firstItem="n6n-wW-IrH" firstAttribute="trailing" secondItem="ycE-jg-oQf" secondAttribute="trailing" constant="70" id="YmL-WQ-dz6"/>
+                            <constraint firstItem="pl3-Jr-Xd8" firstAttribute="leading" secondItem="n6n-wW-IrH" secondAttribute="leading" constant="71" id="cfB-EB-xr9"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="n6n-wW-IrH"/>
                     </view>
                     <navigationItem key="navigationItem" id="CdS-cA-BQU"/>
                     <connections>
                         <outlet property="greetLabel" destination="pl3-Jr-Xd8" id="CZB-m6-zBn"/>
+                        <outlet property="joinStreamButton" destination="gaV-M4-5Z9" id="JRK-fl-vy6"/>
+                        <outlet property="startStreamButton" destination="iQi-so-pxp" id="F7P-58-ALf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nAU-UL-4AB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -94,13 +110,6 @@
                                 <rect key="frame" x="249" y="138" width="125" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="I've bought:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TJA-k0-tMc">
-                                <rect key="frame" x="20" y="325" width="122" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -128,11 +137,18 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="I've sold:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fvc-34-gJf">
-                                <rect key="frame" x="20" y="586" width="91" height="29"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="I've sold" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fvc-34-gJf">
+                                <rect key="frame" x="20" y="586" width="89" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="24"/>
+                                <color key="textColor" red="0.38431372549999998" green="0.38431372549999998" blue="0.38431372549999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="I've bought" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TJA-k0-tMc">
+                                <rect key="frame" x="20" y="319" width="118" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="24"/>
+                                <color key="textColor" red="0.38431372549999998" green="0.38431372549999998" blue="0.38431372549999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -500,9 +516,10 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="zJH-kQ-caM"/>
+        <segue reference="paU-Oe-OOS"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="profile" width="116.66666412353516" height="116.66666412353516"/>
         <image name="share" width="116.66666412353516" height="98"/>
         <image name="tony" width="70.666664123535156" height="70.666664123535156"/>
         <image name="up_arrow" width="116.66666412353516" height="116.66666412353516"/>
