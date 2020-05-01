@@ -64,21 +64,19 @@ class JoinStreamViewController: UIViewController {
   
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-      addGradient()
-      // playLiveStream()
       
       streamTitleLabe.text = stream.name
       streamUserIDLabel.text = stream.creator.name
       thumbnailImage.layer.cornerRadius = 18
-      
-      // TODO: Fill out other labels
+        
+      addGradient()
+      playLiveStream()
     }
   
   fileprivate func addGradient() {
     let topGradient = CAGradientLayer()
     topGradient.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: 140)
-    topGradient.colors = [UIColor.black.cgColor, UIColor.white.cgColor]
+    topGradient.colors = [UIColor.black.withAlphaComponent(0.35).cgColor, UIColor.white.withAlphaComponent(0.35).cgColor]
     view.layer.addSublayer(topGradient)
     
     let bottomGradient = CAGradientLayer()
@@ -86,7 +84,7 @@ class JoinStreamViewController: UIViewController {
                                   y: view.bounds.height - 170,
                                   width: view.bounds.width,
                                   height: 170)
-    bottomGradient.colors = [UIColor.white.cgColor, UIColor.black.cgColor]
+    bottomGradient.colors = [UIColor.white.withAlphaComponent(0.35).cgColor, UIColor.black.withAlphaComponent(0.35).cgColor]
     view.layer.addSublayer(bottomGradient)
     
     bringStreamControlsToFront()
@@ -106,8 +104,9 @@ class JoinStreamViewController: UIViewController {
     let playerLayer = AVPlayerLayer(player: player)
     playerLayer.frame = view.bounds
     playerLayer.videoGravity = .resizeAspectFill
-    
-    view.layer.addSublayer(playerLayer)
+
+    view.layer.insertSublayer(playerLayer, at: 0)
+
     player.play()
     
     bringStreamControlsToFront()
