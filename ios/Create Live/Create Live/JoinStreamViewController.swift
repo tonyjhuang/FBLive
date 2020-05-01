@@ -45,6 +45,8 @@ class JoinStreamViewController: UIViewController {
   @IBOutlet weak var numberOfViewersLabel: UILabel!
   @IBOutlet weak var thumbnailImage: UIImageView!
   
+  @IBOutlet var streamControls: [UIView]!
+  
   @IBAction func shareButtonTapped(_ sender: Any) {}
   
   @IBAction func chatSlideUpButtonTapped(_ sender: Any) {
@@ -63,9 +65,32 @@ class JoinStreamViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+      addGradient()
+      // playLiveStream()
+      
       streamTitleLabe.text = stream.name
+      streamUserIDLabel.text = stream.creator.name
+      thumbnailImage.layer.cornerRadius = 18
+      
       // TODO: Fill out other labels
     }
+  
+  fileprivate func addGradient() {
+    let topGradient = CAGradientLayer()
+    topGradient.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: 140)
+    topGradient.colors = [UIColor.black.cgColor, UIColor.white.cgColor]
+    view.layer.addSublayer(topGradient)
+    
+    let bottomGradient = CAGradientLayer()
+    bottomGradient.frame = CGRect(x: 0,
+                                  y: view.bounds.height - 170,
+                                  width: view.bounds.width,
+                                  height: 170)
+    bottomGradient.colors = [UIColor.white.cgColor, UIColor.black.cgColor]
+    view.layer.addSublayer(bottomGradient)
+    
+    bringStreamControlsToFront()
+  }
   
   /// Adds the livestream view on this entire screen and starts the livestream
   fileprivate func playLiveStream() {
@@ -84,6 +109,14 @@ class JoinStreamViewController: UIViewController {
     
     view.layer.addSublayer(playerLayer)
     player.play()
+    
+    bringStreamControlsToFront()
+  }
+  
+  func bringStreamControlsToFront() {
+    for view in streamControls {
+      self.view.bringSubviewToFront(view)
+    }
   }
 
     /*

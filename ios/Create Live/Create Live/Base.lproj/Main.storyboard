@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FWk-Zb-Sg0">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
@@ -45,6 +45,9 @@
                                 <rect key="frame" x="149" y="483" width="115" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Join a livestream"/>
+                                <connections>
+                                    <segue destination="FWk-Zb-Sg0" kind="show" id="RLT-XO-hhC"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hi &lt;name&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pl3-Jr-Xd8">
                                 <rect key="frame" x="50" y="66" width="84" height="21"/>
@@ -191,36 +194,36 @@
             <objects>
                 <viewController id="FWk-Zb-Sg0" customClass="JoinStreamViewController" customModule="Create_Live" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="g8L-xf-gwq">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stream title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jyo-2y-8xC">
-                                <rect key="frame" x="20" y="64" width="88" height="20.5"/>
+                                <rect key="frame" x="20" y="20" width="88" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="BYI-5u-kDr">
-                                <rect key="frame" x="358" y="64" width="36" height="36"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tony" translatesAutoresizingMaskIntoConstraints="NO" id="BYI-5u-kDr">
+                                <rect key="frame" x="358" y="20" width="36" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="36" id="3el-t3-cGS"/>
                                     <constraint firstAttribute="height" constant="36" id="vlK-nJ-Mvz"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qOS-i1-LyT">
-                                <rect key="frame" x="339.5" y="64" width="10.5" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qOS-i1-LyT">
+                                <rect key="frame" x="340" y="20" width="10" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stream user ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fUL-qQ-6b3">
-                                <rect key="frame" x="20" y="100.5" width="113.5" height="20.5"/>
+                                <rect key="frame" x="20" y="56.5" width="113.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SDY-Uh-gq8">
-                                <rect key="frame" x="358" y="108" width="36" height="36"/>
+                                <rect key="frame" x="358" y="64" width="36" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="YDp-DM-lSK"/>
                                     <constraint firstAttribute="width" constant="36" id="jrW-bB-IQv"/>
@@ -232,7 +235,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="caz-Kf-CKO">
-                                <rect key="frame" x="175" y="798" width="64" height="64"/>
+                                <rect key="frame" x="175" y="744" width="64" height="64"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="DBj-eA-9vx"/>
                                     <constraint firstAttribute="width" constant="64" id="ys5-C5-ETC"/>
@@ -243,7 +246,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="vUt-UM-eYe">
-                                <rect key="frame" x="49" y="710" width="316" height="64"/>
+                                <rect key="frame" x="49" y="656" width="316" height="64"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gxt-gt-VWf">
                                         <rect key="frame" x="0.0" y="0.0" width="64" height="64"/>
@@ -325,6 +328,14 @@
                         <outlet property="streamTitleLabe" destination="Jyo-2y-8xC" id="GjY-9J-Xx9"/>
                         <outlet property="streamUserIDLabel" destination="fUL-qQ-6b3" id="51M-aM-W5q"/>
                         <outlet property="thumbnailImage" destination="BYI-5u-kDr" id="sEf-E9-huS"/>
+                        <outletCollection property="streamControls" destination="Jyo-2y-8xC" collectionClass="NSMutableArray" id="aIa-N0-bOE"/>
+                        <outletCollection property="streamControls" destination="BYI-5u-kDr" collectionClass="NSMutableArray" id="iQm-WS-PDM"/>
+                        <outletCollection property="streamControls" destination="BYI-5u-kDr" collectionClass="NSMutableArray" id="1lH-CF-gtC"/>
+                        <outletCollection property="streamControls" destination="qOS-i1-LyT" collectionClass="NSMutableArray" id="KfK-hy-5iM"/>
+                        <outletCollection property="streamControls" destination="fUL-qQ-6b3" collectionClass="NSMutableArray" id="hRh-pt-YOD"/>
+                        <outletCollection property="streamControls" destination="SDY-Uh-gq8" collectionClass="NSMutableArray" id="MQ2-qS-3HD"/>
+                        <outletCollection property="streamControls" destination="caz-Kf-CKO" collectionClass="NSMutableArray" id="SgC-cw-cwb"/>
+                        <outletCollection property="streamControls" destination="vUt-UM-eYe" collectionClass="NSMutableArray" id="Qpi-cs-llC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ksg-r0-m4n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -333,11 +344,11 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="paU-Oe-OOS"/>
+        <segue reference="zJH-kQ-caM"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="profile" width="116.66666412353516" height="116.66666412353516"/>
         <image name="share" width="116.66666412353516" height="98"/>
+        <image name="tony" width="70.666664123535156" height="70.666664123535156"/>
         <image name="up_arrow" width="116.66666412353516" height="116.66666412353516"/>
     </resources>
 </document>
