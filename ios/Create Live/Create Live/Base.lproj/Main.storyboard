@@ -422,7 +422,6 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                         <state key="normal" title="❤️"/>
                                         <connections>
-                                            <action selector="chatSlideUpButtonTapped:" destination="FWk-Zb-Sg0" eventType="touchUpInside" id="quP-VI-vSO"/>
                                             <action selector="emojiButtonTapped:" destination="FWk-Zb-Sg0" eventType="touchUpInside" id="N8L-CF-FMT"/>
                                         </connections>
                                     </button>
@@ -435,7 +434,6 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                         <state key="normal" title="🔥"/>
                                         <connections>
-                                            <action selector="chatSlideUpButtonTapped:" destination="FWk-Zb-Sg0" eventType="touchUpInside" id="rrY-9g-ZFQ"/>
                                             <action selector="emojiButtonTapped:" destination="FWk-Zb-Sg0" eventType="touchUpInside" id="nre-qA-yLs"/>
                                         </connections>
                                     </button>
@@ -448,7 +446,6 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                         <state key="normal" title="😂"/>
                                         <connections>
-                                            <action selector="chatSlideUpButtonTapped:" destination="FWk-Zb-Sg0" eventType="touchUpInside" id="gH0-RO-UUn"/>
                                             <action selector="emojiButtonTapped:" destination="FWk-Zb-Sg0" eventType="touchUpInside" id="n1L-hz-SXp"/>
                                         </connections>
                                     </button>
@@ -461,7 +458,6 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                         <state key="normal" title="👍"/>
                                         <connections>
-                                            <action selector="chatSlideUpButtonTapped:" destination="FWk-Zb-Sg0" eventType="touchUpInside" id="K9W-um-GSJ"/>
                                             <action selector="emojiButtonTapped:" destination="FWk-Zb-Sg0" eventType="touchUpInside" id="cQs-wv-hzA"/>
                                         </connections>
                                     </button>

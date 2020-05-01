@@ -29,7 +29,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     UIColor(red: 47.0/255.0, green: 186.0/255.0, blue: 160.0/255.0, alpha: 1.0),
   ]
   
-  var chat = DataProvider.aChat()
+  var chat: Chat?
   var delegate: ChatViewControllerDelegate?
   
   func numberOfSections(in tableView: UITableView) -> Int {
@@ -37,10 +37,17 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    chat.messages.count
+    guard let chat = chat else {
+      return 0
+    }
+    return chat.messages.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    guard let chat = chat else {
+      return UITableViewCell()
+    }
+    
     let message = chat.messages[indexPath.row]
     let cell = tableView.dequeueReusableCell(withIdentifier: "message", for: indexPath)
     let color = colors[indexPath.row % 3]
@@ -49,7 +56,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
   }
 
     override func viewDidLoad() {
-      super.viewDidLoad()
+        super.viewDidLoad()
       tableView.reloadData()
   }
   
