@@ -31,11 +31,10 @@ struct Chat {
   let messages: [Message]
 }
 
-struct Message {
-  let id: String
-  let user: FakeUser
+struct Message: Codable {
+  let author_name: String
+  let author_photo_url: String
   let body: String
-  let createdAt: Date
 }
 
 struct Product {
@@ -65,18 +64,9 @@ class DataProvider {
   
   class func aChat() -> Chat {
     return Chat(id: "fake_d", messages: [
-      Message(id: "fake_id",
-              user: aUser(),
-              body: "Hey there I'm chris",
-              createdAt: Date()),
-      Message(id: "fake_is",
-              user: bUser(),
-              body: "Hey there I'm alexis",
-              createdAt: Date()),
-      Message(id: "fake_it",
-              user: aUser(),
-              body: "Hey there I'm tired",
-              createdAt: Date()),
+      Message(author_name: "fake_id", author_photo_url: "fake_url", body: "OK"),
+      Message(author_name: "fake_id", author_photo_url: "fake_url", body: "OK"),
+      Message(author_name: "fake_id", author_photo_url: "fake_url", body: "OK")
     ])
   }
   
@@ -94,7 +84,7 @@ class DataProvider {
   
   class func cUser() -> FakeUser {
     return FakeUser(id: "fake_id",
-                    name: "Tina Streamsy Urchin",
+                    name: "Tony Huang",
                     imageURL: "https://www.rd.com/wp-content/uploads/2017/09/01-shutterstock_476340928-Irina-Bg.jpg")
   }
   
@@ -102,10 +92,10 @@ class DataProvider {
     return FakeStream(id: "fake_id",
                   createdAt: Date(),
                   creator: cUser(),
-                  creatorName: "Jay-Z",
+                  creatorName: "Tony Huang",
                   endedAt: Date().addingTimeInterval(600),
-                  name: "Jay-Z stream",
-                  url: "https://file-examples.com/wp-content/uploads/2017/04/file_example_MP4_480_1_5MG.mp4",
+                  name: "Bad Guy (cover)",
+                  url: "https://stream.mux.com/v1TbvVV23L7ygUay3OtSCq02PScCzn7spXyzI94hAx6Q.m3u8",
                   chat: aChat(),
                   products: someProducts())
   }

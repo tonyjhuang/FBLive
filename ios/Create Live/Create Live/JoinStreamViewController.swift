@@ -39,8 +39,7 @@ func fetchStream() {
     
 }
 
-class JoinStreamViewController: UIViewController {
-
+class JoinStreamViewController: UIViewController, ChatViewControllerDelegate, OrderConfirmationViewControllerDelegate {
 /*
   var streamPlaybackURL: URL?
   let db = Firestore.firestore()
@@ -57,12 +56,46 @@ class JoinStreamViewController: UIViewController {
   @IBOutlet weak var productNameLabel: UILabel!
   @IBOutlet weak var productPriceLabel: UILabel!
   
+  @IBOutlet weak var showChatButton: UIButton!
+  @IBOutlet weak var chatView: UIView!
+  
   @IBOutlet var streamControls: [UIView]!
+  
+  @IBOutlet weak var buttonsViewBottomAlignedWithChatWindow: NSLayoutConstraint!
+  
+  @IBOutlet weak var buttonsViewBottomAlignedWithShowChatButton: NSLayoutConstraint!
   
   @IBAction func shareButtonTapped(_ sender: Any) {}
   
   @IBAction func chatSlideUpButtonTapped(_ sender: Any) {
-    // TODO: show chat
+    showChat()
+  }
+  
+  func updateLayoutWithAnimation() {
+    let options: UIView.AnimationOptions = [.curveEaseInOut]
+    
+    UIView.animate(withDuration: 0.7,
+                   delay: 0,
+                   options: options,
+                   animations: { [weak self] in
+                    self?.view.setNeedsLayout()
+    }, completion: nil)
+  }
+  
+  fileprivate func showChat() {
+    buttonsViewBottomAlignedWithChatWindow.isActive = true
+    buttonsViewBottomAlignedWithShowChatButton.isActive = false
+    showChatButton.isHidden = true
+    chatView.isHidden = false
+    updateLayoutWithAnimation()
+  }
+  
+  fileprivate func hideChat() {
+    buttonsViewBottomAlignedWithChatWindow.isActive = false
+    buttonsViewBottomAlignedWithShowChatButton.isActive = true
+    showChatButton.isHidden = false
+    chatView.isHidden = true
+    updateLayoutWithAnimation()
   }
   
   @IBAction func emojiButtonTapped(_ sender: UIButton) {
@@ -80,6 +113,26 @@ class JoinStreamViewController: UIViewController {
       addGradient()
       playLiveStream()
     }
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == "embedChatView",
+      let destination = segue.destination as? ChatViewController {
+      destination.chatId = "O2TFvXlolO9ILtoDKJlN"
+      destination.delegate = self
+    } else if segue.identifier == "showOrderConfirmation", let destination = segue.destination as? OrderConfirmationViewController {
+      destination.product = stream.products.first!
+      destination.delegate = self
+    }
+  }
+  
+  func didAddMessage(message: String) {
+    // TODO add message
+    hideChat()
+  }
+  
+  func didBuy(_ product: Product) {
+    // TODO emoji parade
+  }
   
   fileprivate func configureStreamControls() {
     streamTitleLabe.text = stream.name

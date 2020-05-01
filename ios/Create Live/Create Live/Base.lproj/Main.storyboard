@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FWk-Zb-Sg0">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -172,70 +172,79 @@
             <objects>
                 <viewController id="0Sr-tk-gWA" customClass="OrderConfirmationViewController" customModule="Create_Live" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nB6-Qn-yHt">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Order Summary" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QFe-qY-ZbW">
-                                <rect key="frame" x="93" y="194" width="228" height="41"/>
+                                <rect key="frame" x="93.5" y="147.5" width="227.5" height="40.5"/>
                                 <fontDescription key="fontDescription" name="NotoSansKannada-Bold" family="Noto Sans Kannada" pointSize="30"/>
                                 <color key="textColor" red="0.38431372549019605" green="0.38431372549019605" blue="0.38431372549019605" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PRODUCT" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RU0-x7-y9X">
-                                <rect key="frame" x="45" y="335" width="84.5" height="23"/>
-                                <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="17"/>
-                                <color key="textColor" red="0.38431372549999998" green="0.38431372549999998" blue="0.38431372549999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="$10.58" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="POB-tv-hHA">
-                                <rect key="frame" x="300" y="335" width="53" height="23"/>
-                                <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="17"/>
-                                <color key="textColor" red="0.38431372549999998" green="0.38431372549999998" blue="0.38431372549999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ccO-hJ-x3B">
-                                <rect key="frame" x="57" y="465" width="300" height="70"/>
-                                <color key="backgroundColor" red="0.18431372549019609" green="0.72941176470588232" blue="0.62745098039215685" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="7V5-BJ-bjj"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="70" id="gCQ-7R-qGe"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="NotoSansKannada-Bold" family="Noto Sans Kannada" pointSize="20"/>
-                                <state key="normal" title="Buy">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="buyButtonOnPress:" destination="0Sr-tk-gWA" eventType="touchUpInside" id="lWi-uj-fbw"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MkZ-Ba-cyl">
-                                <rect key="frame" x="57" y="561" width="300" height="70"/>
-                                <color key="backgroundColor" red="0.8666666666666667" green="0.8666666666666667" blue="0.8666666666666667" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="70" id="2ZE-JK-JCB"/>
-                                    <constraint firstAttribute="width" constant="300" id="yEL-zl-BbX"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="NotoSansKannada-Bold" family="Noto Sans Kannada" pointSize="20"/>
-                                <state key="normal" title="Cancel">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="cancelButtonOnPress:" destination="0Sr-tk-gWA" eventType="touchUpInside" id="U9W-Dn-rDd"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="170" translatesAutoresizingMaskIntoConstraints="NO" id="kzr-FL-AtD">
+                                <rect key="frame" x="28" y="288" width="358" height="26"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PRODUCT" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RU0-x7-y9X">
+                                        <rect key="frame" x="0.0" y="0.0" width="94" height="26"/>
+                                        <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="19"/>
+                                        <color key="textColor" red="0.38431372549999998" green="0.38431372549999998" blue="0.38431372549999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$10.58" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="POB-tv-hHA">
+                                        <rect key="frame" x="264" y="0.0" width="94" height="26"/>
+                                        <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="19"/>
+                                        <color key="textColor" red="0.38431372549999998" green="0.38431372549999998" blue="0.38431372549999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="26" translatesAutoresizingMaskIntoConstraints="NO" id="gck-Jn-wqV">
+                                <rect key="frame" x="57" y="423" width="300" height="166"/>
+                                <subviews>
+                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ccO-hJ-x3B">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="70"/>
+                                        <color key="backgroundColor" red="0.18431372549019609" green="0.72941176470588232" blue="0.62745098039215685" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="2fJ-NJ-wdA"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="NotoSansKannada-Bold" family="Noto Sans Kannada" pointSize="20"/>
+                                        <state key="normal" title="Buy">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="buyButtonOnPress:" destination="0Sr-tk-gWA" eventType="touchUpInside" id="lWi-uj-fbw"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MkZ-Ba-cyl">
+                                        <rect key="frame" x="0.0" y="96" width="300" height="70"/>
+                                        <color key="backgroundColor" red="0.8666666666666667" green="0.8666666666666667" blue="0.8666666666666667" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="300" id="1NM-i9-rtm"/>
+                                            <constraint firstAttribute="height" constant="70" id="eVt-Jl-ylj"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="NotoSansKannada-Bold" family="Noto Sans Kannada" pointSize="20"/>
+                                        <state key="normal" title="Cancel">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="cancelButtonOnPress:" destination="0Sr-tk-gWA" eventType="touchUpInside" id="U9W-Dn-rDd"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="RU0-x7-y9X" firstAttribute="leading" secondItem="Evz-OV-0n9" secondAttribute="leading" constant="45" id="Gel-Ug-6Rs"/>
-                            <constraint firstItem="QFe-qY-ZbW" firstAttribute="top" secondItem="Evz-OV-0n9" secondAttribute="top" constant="150" id="IXH-Nw-o3i"/>
-                            <constraint firstItem="POB-tv-hHA" firstAttribute="top" secondItem="QFe-qY-ZbW" secondAttribute="bottom" constant="100" id="KG6-zV-g72"/>
-                            <constraint firstItem="RU0-x7-y9X" firstAttribute="leading" secondItem="Evz-OV-0n9" secondAttribute="leading" constant="45" id="OS5-OX-fGD"/>
-                            <constraint firstItem="ccO-hJ-x3B" firstAttribute="centerX" secondItem="nB6-Qn-yHt" secondAttribute="centerX" id="U1W-Xr-h0s"/>
-                            <constraint firstItem="RU0-x7-y9X" firstAttribute="top" secondItem="QFe-qY-ZbW" secondAttribute="bottom" constant="100" id="UaQ-bQ-1E7"/>
-                            <constraint firstItem="QFe-qY-ZbW" firstAttribute="centerX" secondItem="nB6-Qn-yHt" secondAttribute="centerX" id="nZJ-eH-OwA"/>
+                            <constraint firstItem="kzr-FL-AtD" firstAttribute="top" secondItem="QFe-qY-ZbW" secondAttribute="bottom" constant="100" id="E0b-HZ-2eY"/>
+                            <constraint firstItem="QFe-qY-ZbW" firstAttribute="centerX" secondItem="nB6-Qn-yHt" secondAttribute="centerX" id="F4x-KW-hRt"/>
+                            <constraint firstItem="gck-Jn-wqV" firstAttribute="centerY" secondItem="nB6-Qn-yHt" secondAttribute="centerY" constant="85" id="Mpz-jl-otT"/>
+                            <constraint firstItem="gck-Jn-wqV" firstAttribute="centerX" secondItem="nB6-Qn-yHt" secondAttribute="centerX" id="asp-Gq-azJ"/>
+                            <constraint firstItem="ccO-hJ-x3B" firstAttribute="top" secondItem="kzr-FL-AtD" secondAttribute="bottom" constant="109" id="bZe-Yh-CRl"/>
+                            <constraint firstItem="kzr-FL-AtD" firstAttribute="centerX" secondItem="nB6-Qn-yHt" secondAttribute="centerX" id="xYP-ot-OPL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Evz-OV-0n9"/>
                     </view>
+                    <navigationItem key="navigationItem" id="dPI-Tt-fBi"/>
                     <connections>
                         <outlet property="buyButton" destination="ccO-hJ-x3B" id="Kp4-dP-q2D"/>
                         <outlet property="cancelButton" destination="MkZ-Ba-cyl" id="pZ8-YJ-oYZ"/>
@@ -285,6 +294,78 @@
             </objects>
             <point key="canvasLocation" x="2612" y="658"/>
         </scene>
+        <!--Chat View Controller-->
+        <scene sceneID="Z3s-hK-6v3">
+            <objects>
+                <viewController id="Tqv-UI-lWy" customClass="ChatViewController" customModule="Create_Live" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="o2V-IL-3VG">
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="800"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XaN-hs-Elh">
+                                <rect key="frame" x="336" y="736" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="qv4-G4-AcD"/>
+                                    <constraint firstAttribute="width" constant="44" id="sIW-zM-d2e"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="send_arrow"/>
+                                <connections>
+                                    <action selector="sendMessageButtonTapped:" destination="Tqv-UI-lWy" eventType="touchUpInside" id="KGY-fl-Obh"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rWb-e0-UYY">
+                                <rect key="frame" x="20" y="20" width="360" height="708"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="message" textLabel="MYS-hv-S5c" style="IBUITableViewCellStyleDefault" id="z9d-Vv-OtX">
+                                        <rect key="frame" x="0.0" y="28" width="360" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="z9d-Vv-OtX" id="AMX-aD-CdT">
+                                            <rect key="frame" x="0.0" y="0.0" width="360" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="MYS-hv-S5c">
+                                                    <rect key="frame" x="20" y="0.0" width="320" height="44"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A01-qN-MvP">
+                                <rect key="frame" x="20" y="741" width="308" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="rWb-e0-UYY" firstAttribute="leading" secondItem="nKp-qa-Aak" secondAttribute="leading" constant="20" id="11f-7C-uJM"/>
+                            <constraint firstItem="nKp-qa-Aak" firstAttribute="trailing" secondItem="rWb-e0-UYY" secondAttribute="trailing" constant="20" id="Bim-mL-jUb"/>
+                            <constraint firstItem="nKp-qa-Aak" firstAttribute="bottom" secondItem="XaN-hs-Elh" secondAttribute="bottom" constant="20" id="FDh-Ni-6p7"/>
+                            <constraint firstItem="XaN-hs-Elh" firstAttribute="centerY" secondItem="A01-qN-MvP" secondAttribute="centerY" id="HB6-ae-X0S"/>
+                            <constraint firstItem="XaN-hs-Elh" firstAttribute="leading" secondItem="A01-qN-MvP" secondAttribute="trailing" constant="8" id="Q3g-7F-1pM"/>
+                            <constraint firstItem="nKp-qa-Aak" firstAttribute="trailing" secondItem="XaN-hs-Elh" secondAttribute="trailing" constant="20" id="Ukd-fg-BAQ"/>
+                            <constraint firstItem="XaN-hs-Elh" firstAttribute="top" secondItem="rWb-e0-UYY" secondAttribute="bottom" constant="8" id="bwG-Wq-4qA"/>
+                            <constraint firstItem="A01-qN-MvP" firstAttribute="leading" secondItem="nKp-qa-Aak" secondAttribute="leading" constant="20" id="e2w-ip-nQ6"/>
+                            <constraint firstItem="rWb-e0-UYY" firstAttribute="top" secondItem="o2V-IL-3VG" secondAttribute="top" constant="20" id="gvf-Wp-iUR"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="nKp-qa-Aak"/>
+                    </view>
+                    <size key="freeformSize" width="400" height="800"/>
+                    <connections>
+                        <outlet property="tableView" destination="rWb-e0-UYY" id="YbT-4m-3Ka"/>
+                        <outlet property="textField" destination="A01-qN-MvP" id="nBd-ZD-zb2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pnb-A3-fwH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-10.144927536231885" y="833.70535714285711"/>
+        </scene>
         <!--Join Stream View Controller-->
         <scene sceneID="n6q-Y4-v83">
             <objects>
@@ -294,8 +375,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stream title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jyo-2y-8xC">
-                                <rect key="frame" x="20" y="20" width="88" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="20" y="20" width="86.5" height="23"/>
+                                <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -313,8 +394,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stream user ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fUL-qQ-6b3">
-                                <rect key="frame" x="20" y="56.5" width="113.5" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="20" y="59" width="115" height="23"/>
+                                <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -341,78 +422,21 @@
                                     <action selector="chatSlideUpButtonTapped:" destination="FWk-Zb-Sg0" eventType="touchUpInside" id="uc4-7M-mf8"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="vUt-UM-eYe">
-                                <rect key="frame" x="49" y="656" width="316" height="64"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gxt-gt-VWf">
-                                        <rect key="frame" x="0.0" y="0.0" width="64" height="64"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="64" id="MQI-Mg-ILO"/>
-                                            <constraint firstAttribute="height" constant="64" id="u8X-kz-I8r"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="50"/>
-                                        <state key="normal" title="❤️"/>
-                                        <connections>
-                                            <action selector="chatSlideUpButtonTapped:" destination="FWk-Zb-Sg0" eventType="touchUpInside" id="quP-VI-vSO"/>
-                                            <action selector="emojiButtonTapped:" destination="FWk-Zb-Sg0" eventType="touchUpInside" id="N8L-CF-FMT"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wdz-cu-JjU">
-                                        <rect key="frame" x="84" y="0.0" width="64" height="64"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="64" id="FP2-30-q2v"/>
-                                            <constraint firstAttribute="height" constant="64" id="wfI-fH-FRI"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="50"/>
-                                        <state key="normal" title="🔥"/>
-                                        <connections>
-                                            <action selector="chatSlideUpButtonTapped:" destination="FWk-Zb-Sg0" eventType="touchUpInside" id="rrY-9g-ZFQ"/>
-                                            <action selector="emojiButtonTapped:" destination="FWk-Zb-Sg0" eventType="touchUpInside" id="nre-qA-yLs"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gUU-c7-nKW">
-                                        <rect key="frame" x="168" y="0.0" width="64" height="64"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="64" id="eu4-74-xVO"/>
-                                            <constraint firstAttribute="width" constant="64" id="icM-6T-DVh"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="50"/>
-                                        <state key="normal" title="😂"/>
-                                        <connections>
-                                            <action selector="chatSlideUpButtonTapped:" destination="FWk-Zb-Sg0" eventType="touchUpInside" id="gH0-RO-UUn"/>
-                                            <action selector="emojiButtonTapped:" destination="FWk-Zb-Sg0" eventType="touchUpInside" id="n1L-hz-SXp"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DBu-eP-enk">
-                                        <rect key="frame" x="252" y="0.0" width="64" height="64"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="64" id="XNl-s5-I2l"/>
-                                            <constraint firstAttribute="height" constant="64" id="xXB-9Q-8F3"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="50"/>
-                                        <state key="normal" title="👍"/>
-                                        <connections>
-                                            <action selector="chatSlideUpButtonTapped:" destination="FWk-Zb-Sg0" eventType="touchUpInside" id="K9W-um-GSJ"/>
-                                            <action selector="emojiButtonTapped:" destination="FWk-Zb-Sg0" eventType="touchUpInside" id="cQs-wv-hzA"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tzF-Rg-j2i">
-                                <rect key="frame" x="20" y="505" width="240" height="129"/>
+                                <rect key="frame" x="20" y="503" width="240" height="129"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="hNp-WS-VRp">
-                                        <rect key="frame" x="86" y="29.5" width="68" height="70.5"/>
+                                        <rect key="frame" x="86" y="31.5" width="68" height="66.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ucV-vV-7Lb">
-                                                <rect key="frame" x="0.0" y="0.0" width="68" height="31.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="68" height="23"/>
+                                                <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wyy-0S-j7r">
-                                                <rect key="frame" x="0.0" y="39.5" width="68" height="31"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="26"/>
+                                                <rect key="frame" x="0.0" y="31" width="68" height="35.5"/>
+                                                <fontDescription key="fontDescription" name="NotoSansKannada-Bold" family="Noto Sans Kannada" pointSize="26"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -442,13 +466,13 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LU0-ET-7CJ">
-                                <rect key="frame" x="272" y="539.5" width="120" height="60"/>
+                                <rect key="frame" x="272" y="537.5" width="120" height="60"/>
                                 <color key="backgroundColor" red="0.18431372549019609" green="0.72941176470588232" blue="0.62745098039215685" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="842-PS-ADi"/>
                                     <constraint firstAttribute="height" constant="60" id="MdP-7K-K0l"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="17"/>
                                 <state key="normal" title="Buy">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -467,36 +491,128 @@
                                         <real key="value" value="0.5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="0Sr-tk-gWA" kind="show" identifier="showOrderConfirmation" id="myX-51-kC0"/>
+                                </connections>
                             </button>
+                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="66h-gd-Kil" userLabel="Chat view">
+                                <rect key="frame" x="20" y="458" width="374" height="350"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="350" id="JpL-xo-AQW"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                        <real key="value" value="0.40000000000000002"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                        <size key="value" width="2" height="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="Tqv-UI-lWy" kind="embed" identifier="embedChatView" id="Ytr-il-zVO"/>
+                                </connections>
+                            </containerView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="vUt-UM-eYe">
+                                <rect key="frame" x="49" y="656" width="316" height="64"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gxt-gt-VWf">
+                                        <rect key="frame" x="0.0" y="0.0" width="64" height="64"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="64" id="MQI-Mg-ILO"/>
+                                            <constraint firstAttribute="height" constant="64" id="u8X-kz-I8r"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                        <state key="normal" title="❤️"/>
+                                        <connections>
+                                            <action selector="emojiButtonTapped:" destination="FWk-Zb-Sg0" eventType="touchUpInside" id="N8L-CF-FMT"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wdz-cu-JjU">
+                                        <rect key="frame" x="84" y="0.0" width="64" height="64"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="64" id="FP2-30-q2v"/>
+                                            <constraint firstAttribute="height" constant="64" id="wfI-fH-FRI"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                        <state key="normal" title="🔥"/>
+                                        <connections>
+                                            <action selector="emojiButtonTapped:" destination="FWk-Zb-Sg0" eventType="touchUpInside" id="nre-qA-yLs"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gUU-c7-nKW">
+                                        <rect key="frame" x="168" y="0.0" width="64" height="64"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="64" id="eu4-74-xVO"/>
+                                            <constraint firstAttribute="width" constant="64" id="icM-6T-DVh"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                        <state key="normal" title="😂"/>
+                                        <connections>
+                                            <action selector="emojiButtonTapped:" destination="FWk-Zb-Sg0" eventType="touchUpInside" id="n1L-hz-SXp"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DBu-eP-enk">
+                                        <rect key="frame" x="252" y="0.0" width="64" height="64"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="64" id="XNl-s5-I2l"/>
+                                            <constraint firstAttribute="height" constant="64" id="xXB-9Q-8F3"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                        <state key="normal" title="👍"/>
+                                        <connections>
+                                            <action selector="emojiButtonTapped:" destination="FWk-Zb-Sg0" eventType="touchUpInside" id="cQs-wv-hzA"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="P2a-53-4Si" firstAttribute="trailing" secondItem="BYI-5u-kDr" secondAttribute="trailing" constant="20" id="1Jo-zy-eGp"/>
                             <constraint firstItem="LU0-ET-7CJ" firstAttribute="centerY" secondItem="tzF-Rg-j2i" secondAttribute="centerY" id="2bB-aT-roH"/>
+                            <constraint firstItem="66h-gd-Kil" firstAttribute="leading" secondItem="P2a-53-4Si" secondAttribute="leading" constant="20" id="37i-5B-g68"/>
                             <constraint firstItem="fUL-qQ-6b3" firstAttribute="leading" secondItem="P2a-53-4Si" secondAttribute="leading" constant="20" id="4We-vK-tVw"/>
                             <constraint firstItem="caz-Kf-CKO" firstAttribute="bottom" secondItem="P2a-53-4Si" secondAttribute="bottom" id="8Y6-d6-4zJ"/>
+                            <constraint firstItem="66h-gd-Kil" firstAttribute="top" secondItem="vUt-UM-eYe" secondAttribute="bottom" constant="24" id="D0G-Vg-FKk"/>
                             <constraint firstItem="qOS-i1-LyT" firstAttribute="top" secondItem="P2a-53-4Si" secondAttribute="top" constant="20" id="GLA-uo-ceF"/>
                             <constraint firstItem="Jyo-2y-8xC" firstAttribute="leading" secondItem="P2a-53-4Si" secondAttribute="leading" constant="20" id="JW2-CF-DoB"/>
-                            <constraint firstItem="caz-Kf-CKO" firstAttribute="top" secondItem="vUt-UM-eYe" secondAttribute="bottom" constant="24" id="Ju7-sb-kH7"/>
+                            <constraint firstItem="caz-Kf-CKO" firstAttribute="top" secondItem="vUt-UM-eYe" secondAttribute="bottom" constant="24" id="Ju7-sb-kH7" userLabel="Buttons view (bottom) show chat button"/>
                             <constraint firstItem="LU0-ET-7CJ" firstAttribute="leading" secondItem="tzF-Rg-j2i" secondAttribute="trailing" constant="12" id="OZr-oG-fyH"/>
                             <constraint firstItem="fUL-qQ-6b3" firstAttribute="top" secondItem="Jyo-2y-8xC" secondAttribute="bottom" constant="16" id="OoM-DZ-QGI"/>
-                            <constraint firstItem="vUt-UM-eYe" firstAttribute="top" secondItem="tzF-Rg-j2i" secondAttribute="bottom" constant="22" id="Sdg-v6-oqs"/>
+                            <constraint firstItem="P2a-53-4Si" firstAttribute="trailing" secondItem="66h-gd-Kil" secondAttribute="trailing" constant="20" id="Rhj-et-nam"/>
+                            <constraint firstItem="vUt-UM-eYe" firstAttribute="top" secondItem="tzF-Rg-j2i" secondAttribute="bottom" constant="24" id="Sdg-v6-oqs"/>
                             <constraint firstItem="Jyo-2y-8xC" firstAttribute="top" secondItem="P2a-53-4Si" secondAttribute="top" constant="20" id="Y4o-sZ-9ff"/>
                             <constraint firstItem="caz-Kf-CKO" firstAttribute="centerX" secondItem="g8L-xf-gwq" secondAttribute="centerX" id="cmX-r9-WhB"/>
                             <constraint firstItem="tzF-Rg-j2i" firstAttribute="leading" secondItem="P2a-53-4Si" secondAttribute="leading" constant="20" id="dLG-Ll-gt9"/>
                             <constraint firstItem="vUt-UM-eYe" firstAttribute="centerX" secondItem="g8L-xf-gwq" secondAttribute="centerX" id="hYY-Ik-9bf"/>
+                            <constraint firstItem="66h-gd-Kil" firstAttribute="bottom" secondItem="P2a-53-4Si" secondAttribute="bottom" id="kRs-6k-MNC"/>
                             <constraint firstItem="BYI-5u-kDr" firstAttribute="top" secondItem="P2a-53-4Si" secondAttribute="top" constant="20" id="l6l-Bh-Xsu"/>
                             <constraint firstItem="BYI-5u-kDr" firstAttribute="leading" secondItem="qOS-i1-LyT" secondAttribute="trailing" constant="8" id="lNF-Dl-awf"/>
                             <constraint firstItem="SDY-Uh-gq8" firstAttribute="top" secondItem="BYI-5u-kDr" secondAttribute="bottom" constant="8" id="mWK-ka-Qvr"/>
                             <constraint firstItem="P2a-53-4Si" firstAttribute="trailing" secondItem="SDY-Uh-gq8" secondAttribute="trailing" constant="20" id="plV-fr-1qd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="P2a-53-4Si"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="D0G-Vg-FKk"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="6FQ-Ga-Xiu"/>
                     <connections>
+                        <outlet property="buttonsViewBottomAlignedWithChatWindow" destination="D0G-Vg-FKk" id="hFg-Nv-EeW"/>
+                        <outlet property="buttonsViewBottomAlignedWithShowChatButton" destination="Ju7-sb-kH7" id="hrL-0b-nPa"/>
+                        <outlet property="chatView" destination="66h-gd-Kil" id="rqX-jt-TSC"/>
                         <outlet property="numberOfViewersLabel" destination="qOS-i1-LyT" id="eaf-n3-s4C"/>
                         <outlet property="productNameLabel" destination="ucV-vV-7Lb" id="kcm-TB-SXl"/>
                         <outlet property="productPriceLabel" destination="Wyy-0S-j7r" id="1G7-kb-iYR"/>
+                        <outlet property="showChatButton" destination="caz-Kf-CKO" id="rRc-8P-f7Q"/>
                         <outlet property="streamTitleLabe" destination="Jyo-2y-8xC" id="GjY-9J-Xx9"/>
                         <outlet property="streamUserIDLabel" destination="fUL-qQ-6b3" id="51M-aM-W5q"/>
                         <outlet property="thumbnailImage" destination="BYI-5u-kDr" id="sEf-E9-huS"/>
@@ -520,6 +636,7 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="profile" width="116.66666412353516" height="116.66666412353516"/>
+        <image name="send_arrow" width="116.66666412353516" height="116.66666412353516"/>
         <image name="share" width="116.66666412353516" height="98"/>
         <image name="tony" width="70.666664123535156" height="70.666664123535156"/>
         <image name="up_arrow" width="116.66666412353516" height="116.66666412353516"/>
