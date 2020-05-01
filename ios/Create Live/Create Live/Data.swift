@@ -97,7 +97,7 @@ class DataProvider {
                   creatorName: "Tony Huang",
                   endedAt: Date().addingTimeInterval(600),
                   name: "fb live",
-                  url: "https://stream.mux.com/v1TbvVV23L7ygUay3OtSCq02PScCzn7spXyzI94hAx6Q.m3u8",
+                  url: "https://stream.mux.com/9yJrPoyinrcu4ZIBi02K01F26yqlCfNxTnHFyTqUIM02Wo.m3u8",
                   chat: aChat(),
                   products: someProducts())
   }

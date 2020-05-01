@@ -102,7 +102,7 @@ class JoinStreamViewController: UIViewController, ChatViewControllerDelegate, Or
     guard let emoji = sender.title(for: .normal) else {
       return
     }
-    
+    emojiParade(emoji: emoji)
     // TODO: Emoji parade
   }
   
@@ -126,12 +126,11 @@ class JoinStreamViewController: UIViewController, ChatViewControllerDelegate, Or
   }
   
   func didAddMessage(message: String) {
-    // TODO add message
     hideChat()
   }
   
   func didBuy(_ product: Product) {
-    // TODO emoji parade
+    emojiParade(emoji: "🎉")
   }
   
   fileprivate func configureStreamControls() {
@@ -166,6 +165,31 @@ class JoinStreamViewController: UIViewController, ChatViewControllerDelegate, Or
     view.layer.addSublayer(bottomGradient)
     
     bringStreamControlsToFront()
+  }
+  
+  func emojiParade(emoji: String) {
+    let sizingLabel = UILabel(frame: .zero)
+    sizingLabel.font = UIFont.systemFont(ofSize: 42)
+    sizingLabel.text = emoji
+    sizingLabel.sizeToFit()
+    
+    let numEmojis = Int(view.bounds.size.width / (sizingLabel.bounds.size.width + 8))
+    
+    for n in 0...numEmojis {
+      let animatedLabel = UILabel(frame: CGRect(x: CGFloat(n) * (sizingLabel.bounds.width + 8),
+                                                y: view.bounds.height,
+                                                width: sizingLabel.bounds.size.width,
+                                                height: sizingLabel.bounds.size.height))
+      animatedLabel.text = emoji
+      animatedLabel.font = UIFont.systemFont(ofSize: 42)
+      view.addSubview(animatedLabel)
+      
+      UIView.animate(withDuration: TimeInterval(CGFloat.random(in: 0.8...1.8)), animations: {
+        animatedLabel.frame = CGRect(x: CGFloat(n) * (sizingLabel.bounds.width + 8), y: self.view.bounds.height / 3, width: sizingLabel.bounds.size.width, height: sizingLabel.bounds.size.height)
+      }) { (success) in
+        animatedLabel.removeFromSuperview()
+      }
+    }
   }
   
   /// Adds the livestream view on this entire screen and starts the livestream
