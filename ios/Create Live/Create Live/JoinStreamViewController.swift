@@ -147,7 +147,7 @@ class JoinStreamViewController: UIViewController, ChatViewControllerDelegate, Or
         return
       }
       productNameLabel.text = product.name
-      productPriceLabel.text = priceString
+      productPriceLabel.text = "$\(priceString + "0")"
     }
   }
   

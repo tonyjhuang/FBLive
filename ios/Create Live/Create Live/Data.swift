@@ -52,8 +52,8 @@ class DataProvider {
   class func someProducts() -> [Product] {
     return [
       Product(id: "fake_id",
-              name: "Fake pearls",
-              photoURL: "https://upload.wikimedia.org/wikipedia/commons/1/1d/Yandhi_Cover_Art_%28Free_License%29.jpg", price: 19.99,
+              name: "CD",
+              photoURL: "https://upload.wikimedia.org/wikipedia/commons/1/1d/Yandhi_Cover_Art_%28Free_License%29.jpg", price: 8.50,
               quantity: 5,
               remaining: 5),
       Product(id: "fake_id",

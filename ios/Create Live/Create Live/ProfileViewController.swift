@@ -139,7 +139,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         image.downloaded(from: itemsBought[indexPath.row].item_photo_url)
         
         let price = UILabel(frame: CGRect(x:10, y:45, width:100, height:20))
-        price.text = "Price: $" + String(itemsBought[indexPath.row].order.price)
+        price.text = "Price: $" + String(itemsBought[indexPath.row].order.price) + "0"
         price.textColor = grey
         price.font = UIFont(name:"NotoSansKannada-Light", size:CGFloat(16))
         
