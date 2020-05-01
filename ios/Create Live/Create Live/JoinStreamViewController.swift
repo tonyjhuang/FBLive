@@ -117,7 +117,7 @@ class JoinStreamViewController: UIViewController, ChatViewControllerDelegate, Or
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == "embedChatView",
       let destination = segue.destination as? ChatViewController {
-      destination.chat = stream.chat
+      destination.chatId = "O2TFvXlolO9ILtoDKJlN"
       destination.delegate = self
     } else if segue.identifier == "showOrderConfirmation", let destination = segue.destination as? OrderConfirmationViewController {
       destination.product = stream.products.first!
