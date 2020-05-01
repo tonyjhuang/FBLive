@@ -8,12 +8,19 @@
 
 import UIKit
 
+protocol ChatViewControllerDelegate {
+  func didAddMessage(message: String)
+}
+
 class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var textField: UITextField!
   
   @IBAction func sendMessageButtonTapped(_ sender: Any) {
-    
+    guard let message = textField.text else {
+      return
+    }
+    delegate?.didAddMessage(message: message)
   }
   
   let colors: [UIColor] = [
@@ -23,6 +30,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
   ]
   
   var chat = DataProvider.aChat()
+  var delegate: ChatViewControllerDelegate?
   
   func numberOfSections(in tableView: UITableView) -> Int {
     1
@@ -41,8 +49,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
   }
 
     override func viewDidLoad() {
-        super.viewDidLoad()
-      
+      super.viewDidLoad()
+      tableView.reloadData()
   }
   
   class func attributedString(with color: UIColor, for message: Message) -> NSAttributedString {
