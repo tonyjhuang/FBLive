@@ -105,7 +105,7 @@ class DataProvider {
                   creatorName: "Jay-Z",
                   endedAt: Date().addingTimeInterval(600),
                   name: "Jay-Z stream",
-                  url: "https://file-examples.com/wp-content/uploads/2017/04/file_example_MP4_480_1_5MG.mp4",
+                  url: "https://stream.mux.com/v1TbvVV23L7ygUay3OtSCq02PScCzn7spXyzI94hAx6Q.m3u8",
                   chat: aChat(),
                   products: someProducts())
   }

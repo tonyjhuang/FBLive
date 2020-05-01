@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol ChatViewControllerDelegate {
+protocol ChatViewControllerDelegate: NSObject {
   func didAddMessage(message: String)
 }
 
@@ -30,7 +30,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
   ]
   
   var chat: Chat?
-  var delegate: ChatViewControllerDelegate?
+  weak var delegate: ChatViewControllerDelegate?
   
   func numberOfSections(in tableView: UITableView) -> Int {
     1

@@ -39,8 +39,7 @@ func fetchStream() {
     
 }
 
-class JoinStreamViewController: UIViewController, ChatViewControllerDelegate {
-
+class JoinStreamViewController: UIViewController, ChatViewControllerDelegate, OrderConfirmationViewControllerDelegate {
 /*
   var streamPlaybackURL: URL?
   let db = Firestore.firestore()
@@ -120,12 +119,19 @@ class JoinStreamViewController: UIViewController, ChatViewControllerDelegate {
       let destination = segue.destination as? ChatViewController {
       destination.chat = stream.chat
       destination.delegate = self
+    } else if segue.identifier == "showOrderConfirmation", let destination = segue.destination as? OrderConfirmationViewController {
+      destination.product = stream.products.first!
+      destination.delegate = self
     }
   }
   
   func didAddMessage(message: String) {
     // TODO add message
     hideChat()
+  }
+  
+  func didBuy(_ product: Product) {
+    // TODO emoji parade
   }
   
   fileprivate func configureStreamControls() {
