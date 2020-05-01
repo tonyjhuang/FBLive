@@ -46,7 +46,7 @@ class OrderConfirmationViewController: UIViewController {
       guard let priceString = nf.string(from: product.price) else {
         return
       }
-      productPriceLabel.text = priceString
+      productPriceLabel.text = "$\(priceString)0"
     }
     
     

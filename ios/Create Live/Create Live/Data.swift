@@ -96,7 +96,7 @@ class DataProvider {
                   creator: cUser(),
                   creatorName: "Tony Huang",
                   endedAt: Date().addingTimeInterval(600),
-                  name: "Bad Guy (cover)",
+                  name: "fb live",
                   url: "https://stream.mux.com/v1TbvVV23L7ygUay3OtSCq02PScCzn7spXyzI94hAx6Q.m3u8",
                   chat: aChat(),
                   products: someProducts())
